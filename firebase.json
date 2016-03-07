@@ -1,0 +1,9 @@
+{
+  "firebase": "flow-regulator",
+  "public": ".",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**"
+  ]
+}
