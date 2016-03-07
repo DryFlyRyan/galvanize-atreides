@@ -1,62 +1,78 @@
-## SB Admin v2.0 rewritten in AngularJS
+<h1>Flow Regulator for Galvanize Beer Taps</h1>
 
-[![Join the chat at https://gitter.im/start-angular/sb-admin-angular](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/start-angular/sb-admin-angular?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+<h3>Project Summary</h3>
 
-This project is a port of the famous Free Admin Bootstrap Theme [SB Admin v2.0](http://startbootstrap.com/template-overviews/sb-admin-2/) to Angular Theme.
+The purpose of this project is to design and implement a system by which Galvanize operations personnel can monitor keg usage within their assigned facilities as well as control the function of the tap itself.
 
-Find out more [Free Angular Themes at StartAngular.com](http://www.startangular.com/).
+The project will employ a web-application interface, a central deployed server, and both hardware and software to control the taps themselves.
 
-## Installation
-####1. Clone this project or Download that ZIP file
+The goal is to provide galvanize with a system that is both easy to use and easy to remotely deploy to new campuses.
 
-```sh
-$ git clone https://github.com/start-angular/sb-admin-angular.git
-```
+<h3>Anticipated Techologies</h3>
 
-####2.  Make sure you have [bower](http://bower.io/), [grunt-cli](https://www.npmjs.com/package/grunt-cli) and  [npm](https://www.npmjs.org/) installed globally
- 
- 
-```sh
-$ sudo apt-get install npm
-$ sudo npm install -g grunt-cli
-$ sudo npm install -g bower
-```
-####3. On the command prompt run the following commands
+**Frontend:**
 
-```sh
-$ cd `project-directory`
-```
-- bower install is ran from the postinstall
-```sh
-$ npm install 
-```
-- a shortcut for `grunt serve`
-```sh
-$ npm start
-```
-- a shortcut for `grunt serve:dist` to minify the files for deployment
-```sh
-$ npm run dist 
-```
+* AngularJS
+* Bootstrap w/ Styling Theme (e.g. BS Material)
+* Socket.io
+* D3.js / chart.js
 
 
-**Note:**
-If you get this following error, 
-```text
-Error: EACCES, permission denied '.config/configstore/insight-bower.yml'
-You don't have access to this file.
-```
-changing ownner .config
+**Server:**
 
-```sh
-sudo chown -R [user name] ~/.config
-```
+* Node.js
+* Express
+* Socket.io
+* OAuth2 via Passport's LinkedIn strategy
+* Untappd Web Services
+* AWS
+* PostgreSQL
 
+**Raspberry Pi**
 
-## Roadmap
+* Python (ideally)
+* Node.js / Express (fallback)
+* Socket.io
+* MongoDB
 
-- Add sample AJAX calls and make the directives more modular
+<h3>Anticipated Hardware</h3>
 
-### Automation tools
+***Disclaimer:***
 
-- [Grunt](http://gruntjs.com/)
+  * [Raspberry Pi 3 Canakit Starter](http://www.amazon.com/gp/product/B01C6Q2GSY?keywords=raspberry%20pi%203&qid=1457215916&ref_=sr_1_3&s=pc&sr=1-3) - $80
+  * Soleniod Valve - (still vetting out some good options here) - $30
+  * [Liquid Flow Meter](https://www.adafruit.com/products/828) - $10
+  * Resistors (I have a bunch of these, so I'll put the system together and then document what's necessary)
+  * Bread Board - ~$15 (assuming we can't get a usb interface to work with the relay and flow meter)
+  * 12 VDC 1000 ma power adapter - $10
+  * Slimline Case - (Looking for an appropriate model for this as we speak)
+
+<h3>UI Breakdown</h3>
+
+**Frontend Views:**
+
+* "On Tap" -
+
+    This view will serve as the only publicly accessible view and will serve as a landing page for folks looking to see what is on tap at their local Galvanize campus and what time the taps open. This also gives the option of using monitors to display the same information next to taps. Ideally we will be able to pull in beer ratings and recent comments from Untappd to give additional information.
+
+* Login -
+
+    This will likely be simply a modal window that will initiate the OAuth2 process that will be initiated by the server. A successful login will bring the user to the dashboard.
+
+* Dashboard -
+
+    This view will give authorized users access to the devices that they have read access to. This view will be populated by recent graphs demonstrating the flow-meter output from each of the Pi units (i.e. beers poured, amount remaining), current beers on tap, etc. The dashboard will also allow users to add new kegs and associate them with devices (populated by the Untappd API) as well as setting a manual override for a limited amount of time on a device.
+
+* Device Editing
+
+    This view will simply allow for the updating of schedules for each of the devices that a user has write access to.
+
+* DB Additions
+
+    This view allows for users to add devices, users, and campuses based on their access level.
+
+* Reporting
+
+    This will be a vital feature, no doubt, but one that will likely evolve over time as staff use data becomes more available. Initial data will likely be able to be exported in a limited number of ways and will be limited to campus-centric reporting. I'll continue to work with operations staff to develop more tuned reporting functionality after the system goes live.
+
+[<h3>Initial ERD</h3>](./project_docs/KegControlERD.png)
