@@ -38,7 +38,8 @@ angular
                     'scripts/directives/header/header.js',
                     'scripts/directives/header/header-notification/header-notification.js',
                     'scripts/directives/sidebar/sidebar.js',
-                    'scripts/directives/sidebar/sidebar-search/sidebar-search.js'
+                    'scripts/directives/sidebar/sidebar-search/sidebar-search.js',
+                    'scripts/controllers/chartContoller.js'
                     ]
                 }),
                 $ocLazyLoad.load(
@@ -73,6 +74,15 @@ angular
                   name:'ngTouch',
                   files:['bower_components/angular-touch/angular-touch.js']
                 })
+            },
+            loadMyFile:function($ocLazyLoad) {
+              return $ocLazyLoad.load({
+                name:'chart.js',
+                files:[
+                  'bower_components/angular-chart.js/dist/angular-chart.min.js',
+                  'bower_components/angular-chart.js/dist/angular-chart.css'
+                ]
+              })
             }
         }
     })

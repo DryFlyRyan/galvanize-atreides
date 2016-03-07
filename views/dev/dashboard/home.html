@@ -1,30 +1,73 @@
 <div>
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Dashboard</h1>
+            <h1 class="page-header">Welcome Name</h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>
     <!-- /.row -->
-    <div class="row">
-        
-        <stats number="6" comments="New comments!" colour="primary" type="comments"></stats>
-        <stats number="12" comments="New tasks!" colour="primary" type="user"></stats>
-        <stats number="18" comments="New orders!" colour="yellow" type="shopping-cart"></stats>
-        <stats number="24" comments="Support tickets!" colour="red" type="support"></stats>
 
-    </div>
-    
     <!-- /.panel -->
     <div class="row">
         <div class="col-lg-8">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <i class="fa fa-clock-o fa-fw"></i> Responsive Timeline
+                    Sample Kegerator Monitor
                 </div>
-                <!-- /.panel-heading -->
-                <timeline></timeline>
-                <!-- /.panel-body -->
+                <div class="panel-body">
+                  <!-- Chart Placeholder -->
+                  <div class="col-lg-8 col-sm-12" id="line-chart" ng-controller="ChartCtrl">
+                      <div class="panel panel-default">
+                          <div class="panel-heading">Line Chart</div>
+                          <div class="panel-body">
+                              <canvas id="line" class="chart chart-line chart-xl" data="line.data" labels="line.labels" legend="true"
+                              click="line.onClick" series="line.series"></canvas>
+                          </div>
+                      </div>
+                  </div>
+                  <!-- Keg Placeholder -->
+                  <img class="col-sm-4" src='http://www.clker.com/cliparts/f/6/e/5/11954299431778310410johnny_automatic_beer_keg.svg.med.png' alt='Beer Keg clip art'/>
+
+                  <div class="panel panel-default col-sm-8 col-lg-12">
+                    <h5 class="col-sm-12 col-lg-6">Current Beer: <a href="">This Beer</a></h5>
+                    <h5 class="col-sm-12 col-lg-6">Purchased From: <a href="">This Brewery</a></h5>
+                    <h5 class="col-sm-12 col-lg-6">Keg Size: A Size</h5>
+                    <h5 class="col-sm-12 col-lg-6">Pours Remaining: This Many</h5>
+                    <h5 class="col-sm-12 col-lg-6">Date tapped: Bout this long ago</h5>
+                    <h5 class="col-sm-12 col-lg-6">Est. Time Remaining: Bout this long</h5>
+
+                  </div>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h2>Sample Kegerator Monitor 2</h2>
+                </div>
+                <div class="panel-body">
+                  <!-- Chart Placeholder -->
+                  <div class="col-lg-8 col-sm-12" id="line-chart" ng-controller="ChartCtrl">
+                      <div class="panel panel-default">
+                          <div class="panel-heading">Line Chart</div>
+                          <div class="panel-body">
+                              <canvas id="line" class="chart chart-line chart-xl" data="line.data" labels="line.labels" legend="true"
+                              click="line.onClick" series="line.series"></canvas>
+                          </div>
+                      </div>
+                  </div>
+                  <!-- Keg Placeholder -->
+                  <img class="col-sm-4" src='http://www.clker.com/cliparts/f/6/e/5/11954299431778310410johnny_automatic_beer_keg.svg.med.png' alt='Beer Keg clip art'/>
+
+                  <div class="panel panel-default col-sm-8 col-lg-12">
+                    <h5 class="col-sm-12 col-lg-6">Current Beer: <a href="">This Beer</a></h5>
+                    <h5 class="col-sm-12 col-lg-6">Purchased From: <a href="">This Brewery</a></h5>
+                    <h5 class="col-sm-12 col-lg-6">Keg Size: A Size</h5>
+                    <h5 class="col-sm-12 col-lg-6">Pours Remaining: This Many</h5>
+                    <h5 class="col-sm-12 col-lg-6">Date tapped: Bout this long ago</h5>
+                    <h5 class="col-sm-12 col-lg-6">Est. Time Remaining: Bout this long</h5>
+
+                  </div>
+                </div>
             </div>
             <!-- /.panel -->
         </div>
@@ -35,13 +78,10 @@
                     <i class="fa fa-bell fa-fw"></i> Notifications Panel
                 </div>
                 <!-- /.panel-heading -->
-                <notifications></notifications> 
+                <notifications></notifications>
                 <!-- /.panel-body -->
             </div>
             <!-- /.panel -->
-
-            <chat></chat>
-             <!-- /.panel .chat-panel -->
         </div>
         <!-- /.col-lg-4 -->
     </div>
