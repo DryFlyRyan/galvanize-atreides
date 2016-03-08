@@ -14,11 +14,11 @@
                 <div class="panel-heading">
                     Name: {{tap.name}} Campus: {{tap.campus}}
                 </div>
-                <div class="panel-body">
+                <div class="panel-body" ng-init="tap.findTimes()">
                   <!-- Chart Placeholder -->
-                  <div class="panel panel-default col-sm-12">
-                    <h4 class="col-md-5">Opening Time: {{tap.schedule.tuesday.open}}</a></h4>
-                    <h4 class="col-md-5">Closing Time: {{tap.schedule.tuesday.close}}</a></h4>
+                  <div class="panel panel-default col-sm-12"  ng-repeat="time in tap.times">
+                    <h4 class="col-md-5">Opening Time: {{time.openTime}}</h4>
+                    <h4 class="col-md-5">Closing Time: {{time.closeTime}}</h4>
                   </div>
                   <div class="col-lg-8 col-sm-12" id="line-chart" ng-controller="ChartCtrl">
                       <div class="panel panel-default">
@@ -40,6 +40,30 @@
                     <h5 class="col-sm-12 col-lg-6">Date tapped: {{tap.dateSinceTapped}} Days Ago </h5>
                     <h5 class="col-sm-12 col-lg-6">Est. Time Remaining: {{tap.timeUntilEmpty() | number:1}}</h5>
 
+                  </div>
+                  <div class="col-md-12">
+                    <div class="legend-box">
+                      <div class="day-box-title col-sm-4">
+                        Day
+                      </div>
+                      <div class="open-box-title col-sm-4">
+                        Opens
+                      </div>
+                      <div class="close-box-title col-sm-4">
+                        Closes
+                      </div>
+                    </div>
+                    <div class="schedule-box col-md-12" ng-repeat="day in tap.schedule">
+                      <div class="day-box col-sm-4">
+                        {{day.day}}
+                      </div>
+                      <div class="open-box-title col-sm-4">
+                        {{day.open}}
+                      </div>
+                      <div class="close-box-title col-sm-4">
+                        {{day.close}}
+                      </div>
+                    </div>
                   </div>
                 </div>
             </div>

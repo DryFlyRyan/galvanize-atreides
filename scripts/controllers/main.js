@@ -7,19 +7,7 @@
  * Controller of the sbAdminApp
  */
 angular.module('sbAdminApp')
-  .controller('MainCtrl', function($scope,$position) {
-    $scope.findVolumeRemaining = function(volume, volumeRead) {
-      console.log(volume, volumeRead);
-      return volume - volumeRead;
-    }
-
-    $scope.poursRemaining = function(volumeRemaining) {
-      return Math.floor(volumeRemaining / 12);
-    }
-
-    $scope.timeUntilEmpty = function(volumeRemaining, volumePerDay) {
-      return volumeRemaining / volumePerDay;
-    }
+  .controller('MainCtrl', function($scope,$position, $filter) {
 
     $scope.taps = [
       {
@@ -31,7 +19,26 @@ angular.module('sbAdminApp')
         brewery: "Descutes Brewing",
         distributor: "Dan's Distributing",
         size: "Quarter Barrel",
+        currentDate: new Date(),
         dateSinceTapped: 3.5,
+        times: [],
+        findTimes: function() {
+          var day = $filter('date')(this.currentDate, "EEEE")
+          var open;
+          var close;
+          var timeArray = []
+          this.schedule.forEach(function(element) {
+            // console.log(day, element.day);
+            // console.log(day == element.day);
+            if (day == element.day) {
+              open = element.open;
+              close = element.close;
+              timeArray.push({openTime: open, closeTime: close});
+            }
+          })
+          this.times = timeArray;
+          console.log(this.times);
+        },
         volume: 992,
         volumeRead: 120,
         flowRate: function() {
@@ -44,40 +51,51 @@ angular.module('sbAdminApp')
           return this.volumeRemaining() / 12;
         },
         timeUntilEmpty: function() {
-          console.log(this.volumeRemaining(), this.flowRate());
           return this.volumeRemaining() / this.flowRate()
         },
         schedule:
-        {
-          monday: {
+        [
+          {
+            day: "Monday",
             open: "2:30 PM",
             close: "6:00 PM"
           },
-          tuesday: {
+          {
+            day: "Tuesday",
+            open: "10:30 AM",
+            close: "12:45 PM"
+          },
+          {
+            day: "Tuesday",
             open: "2:30 PM",
             close: "6:00 PM"
           },
-          wednesday: {
+          {
+            day: "Wednesday",
             open: "2:30 PM",
             close: "6:00 PM"
           },
-          thursday: {
+          {
+            day: "Thursday",
             open: "2:30 PM",
             close: "6:00 PM"
           },
-          friday: {
+          {
+            day: "Friday",
             open: "2:30 PM",
             close: "6:00 PM"
           },
-          saturday: {
+          {
+            day: "Saturday",
             open: null,
             close: null
           },
-          sunday: {
+          {
+            day: "Sunday",
             open: null,
             close: null
           },
-        }
+        ]
       }
     ]
   });
