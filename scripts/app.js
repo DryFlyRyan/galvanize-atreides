@@ -1,14 +1,14 @@
 'use strict';
 /**
  * @ngdoc overview
- * @name sbAdminApp
+ * @name galvanizeFlowMonitor
  * @description
- * # sbAdminApp
+ * # galvanizeFlowMonitor
  *
  * Main module of the application.
  */
 angular
-  .module('sbAdminApp', [
+  .module('galvanizeFlowMonitor', [
     'oc.lazyLoad',
     'ui.router',
     'ui.bootstrap',
@@ -33,7 +33,7 @@ angular
             loadMyDirectives:function($ocLazyLoad){
                 return $ocLazyLoad.load(
                 {
-                    name:'sbAdminApp',
+                    name:'galvanizeFlowMonitor',
                     files:[
                     'scripts/directives/header/header.js',
                     'scripts/directives/header/header-notification/header-notification.js',
@@ -93,7 +93,7 @@ angular
         resolve: {
           loadMyFiles:function($ocLazyLoad) {
             return $ocLazyLoad.load({
-              name:'sbAdminApp',
+              name:'galvanizeFlowMonitor',
               files:[
               'scripts/controllers/main.js',
               'scripts/directives/notifications/notifications.js',
@@ -102,24 +102,24 @@ angular
           }
         }
       })
-      .state('login',{
-        templateUrl:'views/pages/login.html',
-        url:'/login'
-    })
-      .state('dashboard.device',{
-        templateUrl:'views/dev/device.html',
-        url:'/device/{deviceID}',
-        controller:'MainCtrl',
-        resolve: {
-          loadMyFile:function($ocLazyLoad) {
-            return $ocLazyLoad.load({
-              name:'main.js',
-              files:[
-                ''
-              ]
-            })
-          }
-        }
+    //   .state('login',{
+    //     templateUrl:'views/pages/login.html',
+    //     url:'/login'
+    // })
+      .state('dashboard.devices',{
+        url:'/devices/{deviceID}',
+        controller: 'MainCtrl',
+        templateUrl:'views/dev/dashboard/device.html'
+        // resolve: {
+        //   loadMyFile:function($ocLazyLoad) {
+        //     return $ocLazyLoad.load({
+        //       name:'main.js',
+        //       files:[
+        //         ''
+        //       ]
+        //     })
+        //   }
+        // }
     })
       .state('dashboard.chart',{
         templateUrl:'views/chart.html',
@@ -135,7 +135,7 @@ angular
               ]
             }),
             $ocLazyLoad.load({
-                name:'sbAdminApp',
+                name:'galvanizeFlowMonitor',
                 files:['scripts/controllers/chartContoller.js']
             })
           }

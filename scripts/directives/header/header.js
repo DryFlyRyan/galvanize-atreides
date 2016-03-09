@@ -6,7 +6,7 @@
  * @description
  * # adminPosHeader
  */
-angular.module('sbAdminApp')
+angular.module('galvanizeFlowMonitor')
 	.directive('header',function(){
 		return {
         templateUrl:'scripts/directives/header/header.html',
@@ -14,5 +14,3 @@ angular.module('sbAdminApp')
         replace: true,
     	}
 	});
-
-

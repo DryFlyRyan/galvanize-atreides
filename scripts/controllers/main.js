@@ -1,13 +1,17 @@
 'use strict';
 /**
  * @ngdoc function
- * @name sbAdminApp.controller:MainCtrl
+ * @name galvanizeFlowMonitor.controller:MainCtrl
  * @description
  * # MainCtrl
- * Controller of the sbAdminApp
+ * Controller of the galvanizeFlowMonitor
  */
-angular.module('sbAdminApp')
-  .controller('MainCtrl', function($scope,$position, $filter) {
+angular.module('galvanizeFlowMonitor')
+  .controller('MainCtrl', function($scope,$position, $filter, $stateParams) {
+    if ($stateParams.deviceID) {
+      $scope.paramsDeviceID = $stateParams.deviceID;
+      console.log($scope.paramsDeviceID);
+    }
     $scope.toggleSchedule = function(){
       console.log("clicked!");
       if ($scope.showSchedule) {

@@ -1,12 +1,12 @@
 'use strict';
 /**
  * @ngdoc function
- * @name sbAdminApp.controller:MainCtrl
+ * @name galvanizeFlowMonitor.controller:MainCtrl
  * @description
  * # MainCtrl
- * Controller of the sbAdminApp
+ * Controller of the galvanizeFlowMonitor
  */
-angular.module('sbAdminApp')
+angular.module('galvanizeFlowMonitor')
   .controller('ChartCtrl', ['$scope', '$timeout', function ($scope, $timeout) {
     $scope.line = {
 	    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
@@ -28,7 +28,7 @@ angular.module('sbAdminApp')
 		   [65, 59, 80, 81, 56, 55, 40],
 		   [28, 48, 40, 19, 86, 27, 90]
 		]
-    	
+
     };
 
     $scope.donut = {
@@ -60,7 +60,7 @@ angular.module('sbAdminApp')
     	data : [300, 500, 100, 40, 120],
     	type : 'PolarArea',
 
-    	toggle : function () 
+    	toggle : function ()
     	{
     		this.type = this.type === 'PolarArea' ?
     	    'Pie' : 'PolarArea';

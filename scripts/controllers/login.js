@@ -1,12 +1,12 @@
 'use strict';
 /**
  * @ngdoc function
- * @name sbAdminApp.controller:MainCtrl
+ * @name galvanizeFlowMonitor.controller:MainCtrl
  * @description
  * # MainCtrl
- * Controller of the sbAdminApp
+ * Controller of the galvanizeFlowMonitor
  */
-angular.module('sbAdminApp')
+angular.module('galvanizeFlowMonitor')
   .controller('LoginCtrl', function($scope,$position) {
     $scope.visible = false;
   });
