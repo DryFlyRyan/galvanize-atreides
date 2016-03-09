@@ -5,13 +5,7 @@
     "type": "git",
     "url": "https://github.com/start-angular/sb-admin-angular"
   },
-  "dependencies": {
-    "bower": "^1.7.7",
-    "dotenv": "^2.0.0",
-    "express": "^4.13.4",
-    "fs": "0.0.2",
-    "serve-favicon": "^2.3.0"
-  },
+  "dependencies": {},
   "devDependencies": {
     "grunt": "^0.4.1",
     "grunt-autoprefixer": "^0.7.3",
@@ -46,7 +40,7 @@
   },
   "scripts": {
     "test": "grunt test",
-    "start": "node server.js",
+    "start": "grunt serve",
     "dist": "grunt serve:dist",
     "postinstall": "bower install"
   }
