@@ -9,77 +9,76 @@
 
     <!-- /.panel -->
     <div class="row">
-        <div class="col-lg-8" ng-repeat="tap in taps">
+<div class="col-lg-12">
+  <div class="col-lg-8" >
+    <div class="col-lg-12" ng-repeat="tap in taps">
+      <div class="panel panel-default">
+        <div class="panel-heading"> Name: {{tap.name}} Campus: {{tap.campus}} </div>
+        <div class="panel-body" ng-init="tap.findTimes()">
+          <!-- Chart Placeholder -->
+          <div class="panel
+          panel-default col-sm-12" ng-repeat="time in tap.times">
+          <h4 class="col-md-5">Opening Time: {{time.openTime}}</h4>
+          <h4 class="col-md-5">Closing Time: {{time.closeTime}}</h4> </div>
+          <div class="col-lg-8 col-sm-12" id="line-chart" ng-controller="ChartCtrl">
             <div class="panel panel-default">
-                <div class="panel-heading">
-                    Name: {{tap.name}} Campus: {{tap.campus}}
-                </div>
-                <div class="panel-body" ng-init="tap.findTimes()">
-                  <!-- Chart Placeholder -->
-                  <div class="panel panel-default col-sm-12"  ng-repeat="time in tap.times">
-                    <h4 class="col-md-5">Opening Time: {{time.openTime}}</h4>
-                    <h4 class="col-md-5">Closing Time: {{time.closeTime}}</h4>
-                  </div>
-                  <div class="col-lg-8 col-sm-12" id="line-chart" ng-controller="ChartCtrl">
-                      <div class="panel panel-default">
-                          <div class="panel-heading">Line Chart</div>
-                          <div class="panel-body">
-                              <canvas class="chart chart-line chart-xl" data="line.data" labels="line.labels" legend="true"
-                              click="line.onClick" series="line.series"></canvas>
-                          </div>
-                      </div>
-                  </div>
-                  <!-- Keg Placeholder -->
-                  <img class="col-sm-4" src='http://www.clker.com/cliparts/f/6/e/5/11954299431778310410johnny_automatic_beer_keg.svg.med.png' alt='Beer Keg clip art'/>
-
-                  <div class="panel panel-default col-sm-8 col-lg-12">
-                    <h5 class="col-sm-12 col-lg-6">Current Beer: <a href="">{{tap.currentBeer}}</a></h5>
-                    <h5 class="col-sm-12 col-lg-6">Purchased From: <a href="">{{tap.distributor}}</a></h5>
-                    <h5 class="col-sm-12 col-lg-6">Keg Size: {{tap.size}}</h5>
-                    <h5 class="col-sm-12 col-lg-6">Pours Remaining: {{tap.poursRemaining() | number:1}}</h5>
-                    <h5 class="col-sm-12 col-lg-6">Date tapped: {{tap.dateSinceTapped}} Days Ago </h5>
-                    <h5 class="col-sm-12 col-lg-6">Est. Time Remaining: {{tap.timeUntilEmpty() | number:1}}</h5>
-
-                  </div>
-                  <div class="col-md-12">
-                    <div class="legend-box">
-                      <div class="day-box-title col-sm-4">
-                        Day
-                      </div>
-                      <div class="open-box-title col-sm-4">
-                        Opens
-                      </div>
-                      <div class="close-box-title col-sm-4">
-                        Closes
-                      </div>
-                    </div>
-                    <div class="schedule-box col-md-12" ng-repeat="day in tap.schedule">
-                      <div class="day-box col-sm-4">
-                        {{day.day}}
-                      </div>
-                      <div class="open-box-title col-sm-4">
-                        {{day.open}}
-                      </div>
-                      <div class="close-box-title col-sm-4">
-                        {{day.close}}
-                      </div>
-                    </div>
-                  </div>
-                </div>
+              <div class="panel-heading">Line Chart
+              </div>
+              <div class="panel-body">
+                <canvas class="chart chart-line
+                chart-xl" data="line.data" labels="line.labels" legend="true" click="line.onClick" series="line.series"></canvas>
+              </div>
             </div>
-        </div>
+          </div>
+          <!--
+          Keg Placeholder --><img class="col-sm-4" src='http://www.clker.com/cliparts/f/6/e/5/11954299431778310410johnny_automatic_beer_keg.svg.med.png' alt='Beer Keg clip art' />
+
+          <div class="row"></div>
+          <div class="row">
+            <div class="panel panel-default">
+              <div class="btn-container panel-body">
+
+                <div class="col-sm-6"> <a ui-sref="/devices/{{tap.id}}" class="btn btn-primary col-sm-8 col-sm-offset-2">Edit
+                  Schedule</a> </div>
+                  <div class="col-sm-6"> <a class="btn
+                    btn-primary col-sm-8 col-sm-offset-2">Override Schedule</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- <div class="row"> <div
+            class="panel panel-default col-md-12 ng-hide"
+            ng-show="showSchedule"> <div class="panel panel-primary
+            col-sm-12"> <div class="panel-heading col-sm-12"> <div
+            class="day-box-title col-sm-4"> <span>Day</span> </div> <div
+            class="open-box-title col-sm-4"> <span>Opens</span> </div> <div
+            class="close-box-title col-sm-4"> <span>Closes</span> </div>
+          </div> </div> <div class="schedule-box col-md-12" ng-repeat="day
+          in tap.schedule"> <div class="panel panel-default col-sm-12">
+          <div class="panel-heading col-sm-12"> <div class="day-box
+          col-sm-4"> <span>{{day.day}}</span> </div> <div
+          class="open-box-title col-sm-4"> <span>{{day.open}}</span>
+        </div> <div class="close-box-title col-sm-4">
+        <span>{{day.close}}</span> </div> </div> </div> </div> </div>
+      </div> -->
+
+    </div>
+  </div>
+    </div>
+  </div>
+  <div class="col-lg-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <i class="fa fa-bell fa-fw"></i> Notifications Panel
+      </div>
+      <!-- /.panel-heading -->
+      <notifications></notifications>
+      <!-- /.panel-body -->
+    </div>
+    <!-- /.panel -->
+  </div>
+</div>
         <!-- /.col-lg-8 -->
-        <div class="col-lg-4">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <i class="fa fa-bell fa-fw"></i> Notifications Panel
-                </div>
-                <!-- /.panel-heading -->
-                <notifications></notifications>
-                <!-- /.panel-body -->
-            </div>
-            <!-- /.panel -->
-        </div>
         <!-- /.col-lg-4 -->
     </div>
     <!-- /.row -->
