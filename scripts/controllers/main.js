@@ -7,7 +7,8 @@
  * Controller of the galvanizeFlowMonitor
  */
 angular.module('galvanizeFlowMonitor')
-  .controller('MainCtrl', function($scope,$position, $filter, $stateParams) {
+  .controller('MainCtrl',
+  ['$scope', '$position', '$filter', '$stateParams', 'DeviceFinderFactory', function($scope, $position, $filter, $stateParams, DeviceFinderFactory){
     if ($stateParams.deviceID) {
       $scope.paramsDeviceID = $stateParams.deviceID;
       console.log($scope.paramsDeviceID);
@@ -20,6 +21,8 @@ angular.module('galvanizeFlowMonitor')
         $scope.showSchedule = true;
       }
     };
+    // $scope.testString = DeviceFinderFactory.testString;
+    // console.log($scope.testString);
     $scope.showSchedule = true;
     $scope.taps = [
       {
@@ -189,4 +192,4 @@ angular.module('galvanizeFlowMonitor')
         ]
       }
     ]
-  });
+  }]);

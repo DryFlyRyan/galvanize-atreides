@@ -7,14 +7,12 @@
  *
  * Main module of the application.
  */
-angular
-  .module('galvanizeFlowMonitor', [
+angular.module('galvanizeFlowMonitor', [
     'oc.lazyLoad',
     'ui.router',
     'ui.bootstrap',
     'angular-loading-bar',
-  ])
-  .config(['$stateProvider','$urlRouterProvider','$ocLazyLoadProvider', '$locationProvider',function ($stateProvider,$urlRouterProvider,$ocLazyLoadProvider, $locationProvider) {
+  ]).config(['$stateProvider','$urlRouterProvider','$ocLazyLoadProvider', '$locationProvider',function ($stateProvider,$urlRouterProvider,$ocLazyLoadProvider, $locationProvider) {
 
     // $locationProvider.html5Mode(true);
 
@@ -23,7 +21,7 @@ angular
       events:true,
     });
 
-    $urlRouterProvider.otherwise('/dashboard/home');
+    // $urlRouterProvider.otherwise('/dashboard/home');
 
     $stateProvider
       .state('dashboard', {
@@ -97,6 +95,7 @@ angular
               files:[
               'scripts/controllers/main.js',
               'scripts/directives/notifications/notifications.js',
+              'scripts/services/deviceService.js',
               ]
             })
           }

@@ -17,7 +17,7 @@
   },
   "scripts": {
     "test": "grunt test",
-    "start": "node server.js",
+    "start": "node server/server.js",
     "dist": "grunt serve:dist",
     "postinstall": "bower install"
   }
