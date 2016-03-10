@@ -1,16 +1,13 @@
 angular.module('galvanizeFlowMonitor')
   .factory('DeviceFinderFactory',
   function($http) {
-  function getAllDevicesServerCall() {
-    return new Promise(function(resolve,reject){
-      $http.get('./api/v1/devices')
-    })
-    .then(function(data){
-      resolve(data);
-    })
-  }
+
+
   return {
-    getDevices: getAllDevicesServerCall(),
+    getDevices: function() {
+      console.log("getDevices Service is Running");
+      return $http.get('./api/v1/devices/')
+    },
     test: function() {
       return "Test String"
     }

@@ -39,13 +39,14 @@ The goal is to provide galvanize with a system that is both easy to use and easy
 
 ***Disclaimer:***
 
-  * [Raspberry Pi 3 Canakit Starter](http://www.amazon.com/gp/product/B01C6Q2GSY?keywords=raspberry%20pi%203&qid=1457215916&ref_=sr_1_3&s=pc&sr=1-3) - $80
-  * Soleniod Valve - (still vetting out some good options here) - $30
+  * [Raspberry Pi 3 Canakit Starter](http://www.amazon.com/gp/product/B01C6Q2GSY?psc=1&redirect=true&ref_=ox_sc_act_title_5&smid=A30ZYR2W3VAJ0A)
+  * [Soleniod Valve](http://www.amazon.com/gp/product/B00MP5WY3Y?psc=1&redirect=true&ref_=ox_sc_act_title_6&smid=AAOUP5IQ82N49)
   * [Liquid Flow Meter](https://www.adafruit.com/products/828) - $10
-  * Resistors (I have a bunch of these, so I'll put the system together and then document what's necessary)
-  * Bread Board - ~$15 (assuming we can't get a usb interface to work with the relay and flow meter)
-  * 12 VDC 1000 ma power adapter - $10
-  * Slimline Case - (Looking for an appropriate model for this as we speak)
+  * [12 VDC 1000 ma power adapter](http://www.amazon.com/gp/product/B005JRGOCM?psc=1&redirect=true&ref_=ox_sc_act_title_4&smid=A2S19KAYIQOOLR) - $10
+  * [Shrink Tubing](http://www.amazon.com/gp/product/B00RXCEDTW?psc=1&redirect=true&ref_=ox_sc_act_title_3&smid=A2Y736KGZ14HTQ)
+  * [Hose Fittings x 2](http://www.amazon.com/gp/product/B00AB5X28G?psc=1&redirect=true&ref_=ox_sc_act_title_2&smid=ATVPDKIKX0DER)
+  * [Different Hose Fittings x 2](http://www.amazon.com/gp/product/B00AB5WUXE?psc=1&redirect=true&ref_=ox_sc_act_title_1&smid=ATVPDKIKX0DER)
+
 
 <h3>UI Breakdown</h3>
 

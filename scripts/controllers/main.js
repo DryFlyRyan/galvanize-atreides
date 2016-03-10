@@ -21,9 +21,18 @@ angular.module('galvanizeFlowMonitor')
         $scope.showSchedule = true;
       }
     };
-    // $scope.testString = DeviceFinderFactory.testString;
+    // $scope.devices = DeviceFinderFactory.getDevices;
+    // console.log($scope.devices);
+    // $scope.testString = DeviceFinderFactory.test();
     // console.log($scope.testString);
-    $scope.showSchedule = true;
+    $scope.showSchedule = false;
+    $scope.getDevices = function() {
+      console.log("in get devices");
+      var promise = DeviceFinderFactory.getDevices()
+      promise.then(function(data){
+        console.log(data);
+      })
+    }
     $scope.taps = [
       {
         id: 123,

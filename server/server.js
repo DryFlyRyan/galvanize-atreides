@@ -21,7 +21,7 @@ app.use(express.static('.'));
 
 //Public Routes
 
-app.use(apiConnection + '/get-devices', devices);
+app.use(apiConnection + '/devices', devices);
 
 server.listen(port, function(){
   console.log("Server listening on ", port);
