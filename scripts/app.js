@@ -14,7 +14,7 @@ angular.module('galvanizeFlowMonitor', [
     'angular-loading-bar',
   ]).config(['$stateProvider','$urlRouterProvider','$ocLazyLoadProvider', '$locationProvider',function ($stateProvider,$urlRouterProvider,$ocLazyLoadProvider, $locationProvider) {
 
-    $locationProvider.html5Mode(true);
+    // $locationProvider.html5Mode(true);
 
     $ocLazyLoadProvider.config({
       debug:false,
@@ -117,10 +117,10 @@ angular.module('galvanizeFlowMonitor', [
     //     templateUrl:'views/pages/login.html',
     //     url:'/login'
     // })
-      .state('dashboard.devices',{
-        url:'/devices/{deviceID}',
+      .state('dashboard.taps',{
+        url:'/taps/{tapID}',
         controller: 'MainCtrl',
-        templateUrl:'views/dev/dashboard/device.html'
+        templateUrl:'views/dev/dashboard/tap.html'
     })
       .state('dashboard.campuses',{
         url:'/campuses',
@@ -134,6 +134,57 @@ angular.module('galvanizeFlowMonitor', [
               'scripts/controllers/campuses.js',
               'scripts/directives/notifications/notifications.js',
               'scripts/services/campusService.js',
+              ]
+            })
+          }
+        }
+    })
+      .state('dashboard.users',{
+        url:'/users',
+        controller: 'UserCtrl',
+        templateUrl:'views/dev/users/users.html',
+        resolve: {
+          loadMyFiles:function($ocLazyLoad) {
+            return $ocLazyLoad.load({
+              name:'galvanizeFlowMonitor',
+              files:[
+              'scripts/controllers/users.js',
+              'scripts/directives/notifications/notifications.js',
+              'scripts/services/userService.js',
+              ]
+            })
+          }
+        }
+    })
+      .state('dashboard.devices',{
+        url:'/devices',
+        controller: 'DeviceCtrl',
+        templateUrl:'views/dev/devices/devices.html',
+        resolve: {
+          loadMyFiles:function($ocLazyLoad) {
+            return $ocLazyLoad.load({
+              name:'galvanizeFlowMonitor',
+              files:[
+              'scripts/controllers/devices.js',
+              'scripts/directives/notifications/notifications.js',
+              'scripts/services/deviceService.js',
+              ]
+            })
+          }
+        }
+    })
+      .state('dashboard.ontap',{
+        url:'/ontap',
+        controller: 'DeviceCtrl',
+        templateUrl:'views/dev/ontap/ontap.html',
+        resolve: {
+          loadMyFiles:function($ocLazyLoad) {
+            return $ocLazyLoad.load({
+              name:'galvanizeFlowMonitor',
+              files:[
+              'scripts/controllers/devices.js',
+              'scripts/directives/notifications/notifications.js',
+              'scripts/services/deviceService.js',
               ]
             })
           }

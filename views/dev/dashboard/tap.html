@@ -1,4 +1,4 @@
-<div ng-init="getDevices()">
+<div ng-init="getTaps()">
     <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header">Welcome Name</h1>
@@ -9,7 +9,7 @@
 
     <!-- /.panel -->
     <div class="row">
-        <div class="col-lg-8" ng-repeat="tap in taps | filter: paramsDeviceID">
+        <div class="col-lg-8" ng-repeat="tap in taps | filter: paramsTapID">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     Name: {{tap.name}} Campus: {{tap.campus}}

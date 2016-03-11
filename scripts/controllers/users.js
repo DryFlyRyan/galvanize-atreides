@@ -1,9 +1,9 @@
 'use strict';
 /**
  * @ngdoc function
- * @name galvanizeFlowMonitor.controller:MainCtrl
+ * @name galvanizeFlowMonitor.controller:UserCtrl
  * @description
- * # MainCtrl
+ * # UserCtrl
  * Controller of the galvanizeFlowMonitor
  */
 angular.module('galvanizeFlowMonitor')
@@ -12,5 +12,16 @@ angular.module('galvanizeFlowMonitor')
     if ($stateParams.userID) {
       $scope.paramsUserID = $stateParams.userID;
     }
-    
+    $scope.getUsers = function() {
+      var promise = UserFinderFactory.getUsers();
+      promise.then(function(users){
+        $scope.users = users.data;
+      })
+    }
+    $scope.getUser = function(userID) {
+      var promise = UserFinderFactory.getUser(userID)
+      promise.then(function(user){
+        $scope.user = user.data;
+      })
+    }
 }]);

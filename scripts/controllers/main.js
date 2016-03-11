@@ -9,8 +9,8 @@
 angular.module('galvanizeFlowMonitor')
   .controller('MainCtrl',
   ['$scope', '$position', '$filter', '$stateParams', 'TapFinderFactory', function($scope, $position, $filter, $stateParams, TapFinderFactory){
-    if ($stateParams.deviceID) {
-      $scope.paramsDeviceID = $stateParams.deviceID;
+    if ($stateParams.tapID) {
+      $scope.paramsTapID = $stateParams.tapID;
     }
     $scope.toggleSchedule = function(){
       console.log("clicked!");
@@ -20,21 +20,20 @@ angular.module('galvanizeFlowMonitor')
         $scope.showSchedule = true;
       }
     };
-    $scope.taps = [];
 
     $scope.showSchedule = false;
-    $scope.getDevices = function() {
-      var deviceArray = []
+    $scope.getTaps = function() {
+      var tapArray = []
       var promise = TapFinderFactory.getTaps()
-      promise.then(function(data){
-        console.log(data.data);
-        data.data.forEach(function(element){
-          deviceArray.push(element);
+      promise.then(function(taps){
+        console.log(taps.data);
+        taps.data.forEach(function(element){
+          tapArray.push(element);
         })
       })
       .then(function(){
-        console.log(deviceArray);
-        $scope.taps = deviceArray;
+        console.log(tapArray);
+        $scope.taps = tapArray;
       })
     }
 

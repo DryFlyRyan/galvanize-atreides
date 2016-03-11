@@ -1,4 +1,4 @@
-<div ng-init="getDevices()">
+<div ng-init="getTaps()">
     <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header">Welcome Name</h1>
@@ -38,7 +38,7 @@
             <div class="panel panel-default">
               <div class="btn-container panel-body">
 
-                <div class="col-sm-6"> <a ui-sref="dashboard.devices({deviceID: tap.id})" class="btn btn-primary col-sm-8 col-sm-offset-2">Edit
+                <div class="col-sm-6"> <a ui-sref="dashboard.taps({tapID: tap.id})" class="btn btn-primary col-sm-8 col-sm-offset-2">Edit
                   Schedule</a> </div>
                   <div class="col-sm-6"> <a class="btn
                     btn-primary col-sm-8 col-sm-offset-2">Override Schedule</a>
@@ -46,24 +46,8 @@
                 </div>
               </div>
             </div>
-            <!-- <div class="row"> <div
-            class="panel panel-default col-md-12 ng-hide"
-            ng-show="showSchedule"> <div class="panel panel-primary
-            col-sm-12"> <div class="panel-heading col-sm-12"> <div
-            class="day-box-title col-sm-4"> <span>Day</span> </div> <div
-            class="open-box-title col-sm-4"> <span>Opens</span> </div> <div
-            class="close-box-title col-sm-4"> <span>Closes</span> </div>
-          </div> </div> <div class="schedule-box col-md-12" ng-repeat="day
-          in tap.schedule"> <div class="panel panel-default col-sm-12">
-          <div class="panel-heading col-sm-12"> <div class="day-box
-          col-sm-4"> <span>{{day.day}}</span> </div> <div
-          class="open-box-title col-sm-4"> <span>{{day.open}}</span>
-        </div> <div class="close-box-title col-sm-4">
-        <span>{{day.close}}</span> </div> </div> </div> </div> </div>
-      </div> -->
-
-    </div>
-  </div>
+          </div>
+        </div>
     </div>
   </div>
   <div class="col-lg-4">
