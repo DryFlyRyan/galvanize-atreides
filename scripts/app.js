@@ -14,7 +14,7 @@ angular.module('galvanizeFlowMonitor', [
     'angular-loading-bar',
   ]).config(['$stateProvider','$urlRouterProvider','$ocLazyLoadProvider', '$locationProvider',function ($stateProvider,$urlRouterProvider,$ocLazyLoadProvider, $locationProvider) {
 
-    // $locationProvider.html5Mode(true);
+    $locationProvider.html5Mode(true);
 
     $ocLazyLoadProvider.config({
       debug:false,
@@ -72,6 +72,18 @@ angular.module('galvanizeFlowMonitor', [
                   name:'ngTouch',
                   files:['bower_components/angular-touch/angular-touch.js']
                 })
+                $ocLazyLoad.load(
+                  {
+                    name:'moment',
+                    files:['bower_components/moment/moment.js']
+                  }
+                )
+                $ocLazyLoad.load(
+                  {
+                    name:'angular-moment',
+                    files:['bower_components/aangular-moment/angular-momeont.js']
+                  }
+                )
             },
             loadMyFile:function($ocLazyLoad) {
               return $ocLazyLoad.load({
@@ -95,7 +107,7 @@ angular.module('galvanizeFlowMonitor', [
               files:[
               'scripts/controllers/main.js',
               'scripts/directives/notifications/notifications.js',
-              'scripts/services/deviceService.js',
+              'scripts/services/tapService.js',
               ]
             })
           }
@@ -109,16 +121,23 @@ angular.module('galvanizeFlowMonitor', [
         url:'/devices/{deviceID}',
         controller: 'MainCtrl',
         templateUrl:'views/dev/dashboard/device.html'
-        // resolve: {
-        //   loadMyFile:function($ocLazyLoad) {
-        //     return $ocLazyLoad.load({
-        //       name:'main.js',
-        //       files:[
-        //         ''
-        //       ]
-        //     })
-        //   }
-        // }
+    })
+      .state('dashboard.campuses',{
+        url:'/campuses',
+        controller: 'CampusCtrl',
+        templateUrl:'views/dev/campuses/campuses.html',
+        resolve: {
+          loadMyFiles:function($ocLazyLoad) {
+            return $ocLazyLoad.load({
+              name:'galvanizeFlowMonitor',
+              files:[
+              'scripts/controllers/campuses.js',
+              'scripts/directives/notifications/notifications.js',
+              'scripts/services/campusService.js',
+              ]
+            })
+          }
+        }
     })
       .state('dashboard.chart',{
         templateUrl:'views/chart.html',

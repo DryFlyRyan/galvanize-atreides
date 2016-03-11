@@ -1,9 +1,9 @@
 angular.module('galvanizeFlowMonitor')
-  .factory('DeviceFinderFactory',
+  .factory('CampusFinderFactory',
   function($http) {
   return {
-    getDevices: function() {
-      return $http.get('./api/v1/devices/')
+    getCampuses: function() {
+      return $http.get('./api/v1/campuses/')
     },
     test: function() {
       return "Test String"

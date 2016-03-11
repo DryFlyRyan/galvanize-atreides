@@ -7,6 +7,10 @@
  * Controller of the galvanizeFlowMonitor
  */
 angular.module('galvanizeFlowMonitor')
-  .controller('FormCtrl', function($scope) {
-
-});
+  .controller('UserCtrl',
+  ['$scope', '$position', '$filter', '$stateParams', 'UserFinderFactory', function($scope, $position, $filter, $stateParams, UserFinderFactory) {
+    if ($stateParams.userID) {
+      $scope.paramsUserID = $stateParams.userID;
+    }
+    
+}]);
