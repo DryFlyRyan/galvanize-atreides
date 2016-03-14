@@ -1,3 +1,96 @@
+/* Sidebar */
+
+.sidebar-profile {
+  min-height: 100px;
+  width: 100%;
+  vertical-align: middle;
+  padding-bottom: 10px;
+}
+
+.sidebar-photo {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  margin-left: 10px;
+  margin-bottom: 10px;
+
+  display: inline-block;
+}
+
+.sidebar-user-name {
+  display: inline-block;
+  color: white;
+  margin-left: 10px;
+}
+
+/* Dashboard */
+.page-splash-campuses {
+  min-height: 150px;
+  background: url("https://members.galvanize.com/static/img/galvanize-community.jpg") 50% 50% no-repeat;
+  text-align: center;
+  position: relative;
+}
+/* Campus Page */
+
+.page-splash-campuses {
+  min-height: 150px;
+  background: url("https://members.galvanize.com/static/img/galvanize-community.jpg") 50% 50% no-repeat;
+  text-align: center;
+  position: relative;
+}
+
+.splash-title {
+  margin: 0;
+  padding: 0;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  position: absolute;
+  bottom: 10px;
+  color: white;
+}
+
+.campus-container {
+  position: relative;
+  background-color: white;
+  box-sizing: border-box;
+  /*border: 1px solid rgb(90,90,90);*/
+  /*border-radius: 6px;*/
+}
+
+.campus-header {
+  width: 100%;
+  height: 100px;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.5), #000);
+  position: relative;
+}
+
+.campus-body {
+  width: 100%;
+  height: 150px;
+  text-align: center;
+}
+
+
+.campus-photo {
+  position: absolute;
+  bottom: -35px;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  height: 70px;
+  width: 70px;
+  border: 5px solid white;
+  border-radius: 6px;
+}
+
+.campus-card {
+  margin-bottom: 30px;
+}
+
+
 /* Users Page*/
 
 .page-sub-wrapper {
@@ -67,4 +160,19 @@
 
 .profile-card {
   margin-bottom: 30px;
+}
+
+/* Style Overrides */
+
+.sidebar {
+  height: 100vh;
+  background: -webkit-linear-gradient(top, #333, #555) !important;
+}
+
+.nav>li>a {
+  color: rgb(255,255,255);
+}
+
+.nav>li>a:hover {
+  background: rgba(255,255,255,0.2) !important;
 }

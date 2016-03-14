@@ -19,10 +19,11 @@ angular.module('galvanizeFlowMonitor')
         $scope.users = users.data;
       })
     }
-    $scope.getUser = function(userID) {
-      var promise = UserFinderFactory.getUser(userID)
+    $scope.getUser = function() {
+      console.log("getting user");
+      var promise = UserFinderFactory.getUser()
       promise.then(function(user){
-        $scope.user = user.data;
+        $scope.user = user.data[0];
       })
     }
 }]);

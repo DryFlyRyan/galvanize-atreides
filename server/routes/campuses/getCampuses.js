@@ -1,27 +1,20 @@
+require('dotenv').load()
 var express = require('express');
 var router = express.Router();
+var unirest = require('unirest');
 
-var campuses = [
-  {
-    id: 25315,
-    name: "Platte",
-    photoURL: "http://images1.westword.com/imager/u/745xauto/7132948/brider-ext.jpg",
-    city: "Denver",
-    state: "Colorado",
-    country: "United States",
-  },
-  {
-    id: 214398,
-    name: "Golden Triangle",
-    photoURL: "http://www.xconomy.com/wordpress/wp-content/images/2014/06/Denver-Golden-Triangle.jpg",
-    city: "Denver",
-    state: "Colorado",
-    country: "United States"
-  },
-]
+var RequestCampuses = unirest.get('https://members.galvanize.com/api/v1/campuses')
 
 router.get('/', function(req, res){
-  res.send(campuses);
+  RequestCampuses
+    .header({'Accept': 'application/json'})
+    .auth({user: process.env.GALVANIZE_USER,                      pass: process.env.GALVANIZE_TOKEN,
+    sendImmediately: true
+         })
+    .end(function(response){
+      console.log(response);
+      res.send(response.body.results)
+    })
 })
 
 module.exports = router;

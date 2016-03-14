@@ -1,19 +1,21 @@
-<div class="col-lg-12" ng-init="getCampuses()">
-  <div class="col-lg-12" ng-repeat="campus in campuses">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        {{campus.name}}
-      </div>
-      <div class="panel-body">
-        <div class="photo-container col-sm-4">
-          <div class="col-sm-10 col-sm-offset-1 thumbnail">
-            <img class="col-sm-12" src="{{campus.photoURL}}" alt="Photo of {{campus.name}}" />
-          </div>
+<div class="col-sm-12 page-sub-wrapper" ng-init="getCampuses()">
+  <div class="page-splash-campuses">
+    <h1 class="splash-title">CAMPUSES</h1>
+  </div>
+  <div class="ceiling">
+
+  </div>
+  <div ng-repeat="campus in campuses | orderBy: 'label'">
+    <div class="col-lg-3 col-md-4 col-sm-6 campus-card">
+      <div class="campus-container">
+        <div class="campus-header">
+          <a href="">
+            <img class="campus-photo" src="/assets/logo.jpg"/>
+          </a>
         </div>
-        <div class="panel-body col-sm-8">
-          <h3>{{campus.city}}</h3>
-          <h3>{{campus.state}}</h3>
-          <h3>{{campus.country}}</h3>
+        <div class="campus-body">
+          <a href=""><h4 class="name-link-text">{{campus.label}}</h4></a>
+
         </div>
       </div>
     </div>

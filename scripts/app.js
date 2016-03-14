@@ -37,7 +37,9 @@ angular.module('galvanizeFlowMonitor', [
                     'scripts/directives/header/header-notification/header-notification.js',
                     'scripts/directives/sidebar/sidebar.js',
                     'scripts/directives/sidebar/sidebar-search/sidebar-search.js',
-                    'scripts/controllers/chartContoller.js'
+                    'scripts/controllers/chartContoller.js',
+                    'scripts/controllers/users.js',
+                    'scripts/services/userService.js'
                     ]
                 }),
                 $ocLazyLoad.load(

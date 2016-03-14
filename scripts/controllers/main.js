@@ -31,7 +31,6 @@ angular.module('galvanizeFlowMonitor')
       var tapArray = []
       var promise = TapFinderFactory.getTaps()
       promise.then(function(taps){
-        console.log(taps.data);
         taps.data.forEach(function(element){
           element.currentDate = new Date();
           element.findTimes = function() {
@@ -61,7 +60,6 @@ angular.module('galvanizeFlowMonitor')
         })
       })
       .then(function(){
-        console.log(tapArray);
         $scope.taps = tapArray;
       })
     }
