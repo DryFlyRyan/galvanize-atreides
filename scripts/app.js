@@ -21,7 +21,7 @@ angular.module('galvanizeFlowMonitor', [
       events:true,
     });
 
-    $urlRouterProvider.otherwise('/dashboard/home');
+    // $urlRouterProvider.otherwise('/dashboard/home');
 
     $stateProvider
       .state('dashboard', {
@@ -175,21 +175,21 @@ angular.module('galvanizeFlowMonitor', [
     })
       .state('dashboard.ontap',{
         url:'/ontap',
-        controller: 'DeviceCtrl',
+        controller: 'MainCtrl',
         templateUrl:'views/dev/ontap/ontap.html',
         resolve: {
           loadMyFiles:function($ocLazyLoad) {
             return $ocLazyLoad.load({
               name:'galvanizeFlowMonitor',
               files:[
-              'scripts/controllers/devices.js',
+              'scripts/controllers/main.js',
               'scripts/directives/notifications/notifications.js',
-              'scripts/services/deviceService.js',
+              'scripts/services/tapService.js',
               ]
             })
           }
         }
-    })
+      })
       .state('dashboard.chart',{
         templateUrl:'views/chart.html',
         url:'/chart',

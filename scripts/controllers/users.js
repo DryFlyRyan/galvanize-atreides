@@ -15,6 +15,7 @@ angular.module('galvanizeFlowMonitor')
     $scope.getUsers = function() {
       var promise = UserFinderFactory.getUsers();
       promise.then(function(users){
+        console.log(users.data);
         $scope.users = users.data;
       })
     }

@@ -1,0 +1,36 @@
+<div ng-init="getTaps()">
+  <!-- <h1>Testing {{taps}}</h1> -->
+  <div class="col-sm-12">
+    <div class="col-sm-3 col-sm-offset-9">
+      <div class="fa fa-angle-right col-sm-1">
+
+      </div>
+      <div class="panel panel-primary col-sm-11">
+        <div class="login-container col-sm-12">
+          <a href="" class="btn btn-danger">Login</a>
+        </div>
+        <div class="dropdown-container">
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="splash-wrapper" ng-repeat="tap in taps | filter:selectedTapID">
+    <div class="" ng-init="tap.findTimes();">
+      <div class="col-sm-12" ng-repeat="time in tap.times">
+        <div class="jumbotron">
+          <h3>Tap Will Open at {{time.openTime}}</h3>
+        </div>
+        <div class="jumbotron">
+          <h3>Tap Will Close at {{time.closeTime}}</h3>
+        </div>
+      </div>
+      <div class="col-sm-12">
+        <div class="jumbotron">
+          <h3>Currently On Tap: {{tap.currentBeer}}</h3>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

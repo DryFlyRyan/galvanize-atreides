@@ -1,17 +1,26 @@
-<div class="col-lg-12" ng-init="getUsers()">
-  <div class="col-lg-12" ng-repeat="user in users">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        {{user.firstName}} {{user.lastName}}
-      </div>
-      <div class="panel-body">
-        <div class="photo-container col-sm-4">
-          <div class="col-sm-10 col-sm-offset-1 thumbnail">
-            <img class="col-sm-12" src="{{user.photoURL}}" alt="Photo of {{user.firstName}} {{user.lastName}}" />
-          </div>
-        </div>
-        <div class="panel-body col-sm-8">
+<div class="col-sm-12 page-sub-wrapper" ng-init="getUsers()">
+  <div class="page-splash-profile">
+    <h1 class="splash-title">PEOPLE</h1>
+  </div>
+  <div class="ceiling">
 
+  </div>
+  <div ng-repeat="user in users | orderBy: 'last_name'">
+    <div class="col-lg-3 col-md-4 col-sm-6 profile-card">
+      <div class="profile-container">
+        <div class="profile-header">
+          <a href="">
+            <img class="profile-photo ng-hide" ng-show="user.photo" src="{{user.photo}}" alt="Photo of {{user.first_name}} {{user.last_name}}"/>
+            <img class="profile-photo ng-hide" ng-show="!user.photo" src="/assets/logo.jpg" alt="Photo of {{user.first_name}} {{user.last_name}}" />
+          </a>
+        </div>
+        <div class="profile-body">
+          <a href=""><h4 class="name-link-text">{{user.first_name}} {{user.last_name}}</h4></a>
+          <h4>{{user.companies[0].title}}</h4>
+          <!-- <h5>Campuses:</h5> -->
+          <!-- <div class="col-sm-12" ng-repeat="campus in user.campuses | orderBy: 'name'">
+            <a><h5 class="campus-list-item">{{campus.name}}</h5></a>
+          </div> -->
         </div>
       </div>
     </div>

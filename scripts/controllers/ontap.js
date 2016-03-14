@@ -1,13 +1,13 @@
 'use strict';
 /**
  * @ngdoc function
- * @name galvanizeFlowMonitor.controller:MainCtrl
+ * @name galvanizeFlowMonitor.controller:OntapCtrl
  * @description
- * # MainCtrl
+ * # OntapCtrl
  * Controller of the galvanizeFlowMonitor
  */
 angular.module('galvanizeFlowMonitor')
-  .controller('MainCtrl',
+  .controller('OntapCtrl',
   ['$scope', '$position', '$filter', '$stateParams', 'TapFinderFactory', function($scope, $position, $filter, $stateParams, TapFinderFactory){
     console.log("Entered Main Controller");
     if ($stateParams.tapID) {
@@ -33,30 +33,6 @@ angular.module('galvanizeFlowMonitor')
       promise.then(function(taps){
         console.log(taps.data);
         taps.data.forEach(function(element){
-          element.currentDate = new Date();
-          element.findTimes = function() {
-           var day = $filter('date')(this.currentDate, "EEEE")
-           var open;
-           var close;
-           var timeArray = []
-           this.schedule.forEach(function(element) {
-             if (day == element.day) {
-               open = element.open;
-               close = element.close;
-               timeArray.push({openTime: open, closeTime: close});
-             }
-           })
-           this.times = timeArray;
-          }
-          element.flowRate = function() {
-           return this.volumeRead / this.dateSinceTapped;
-          }
-          element.volumeRemaining = function() {
-           return this.volume - this.volumeRead;
-          }
-          element.timeUntilEmpty = function() {
-           return this.volumeRemaining() / this.flowRate()
-          }
           tapArray.push(element);
         })
       })

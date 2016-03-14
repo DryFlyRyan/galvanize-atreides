@@ -21,7 +21,7 @@ var server = http.Server(app);
 app.use(express.static('.'));
 
 //Public Routes
-
+  
 app.use(apiConnection + '/taps', taps);
 app.use(apiConnection + '/devices', devices);
 app.use(apiConnection + '/campuses', campuses);

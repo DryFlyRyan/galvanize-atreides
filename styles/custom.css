@@ -1,0 +1,70 @@
+/* Users Page*/
+
+.page-sub-wrapper {
+  padding: 0 !important;
+}
+
+.page-splash-profile {
+  min-height: 150px;
+  background: url("https://members.galvanize.com/static/img/galvanize-community.jpg") 50% 50% no-repeat;
+  text-align: center;
+  position: relative;
+}
+
+.splash-title {
+  margin: 0;
+  padding: 0;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  position: absolute;
+  bottom: 10px;
+  color: white;
+}
+
+.ceiling {
+  padding-top: 30px;
+}
+
+.profile-container {
+  position: relative;
+  background-color: white;
+  box-sizing: border-box;
+  /*border: 1px solid rgb(90,90,90);*/
+  /*border-radius: 6px;*/
+}
+
+.profile-header {
+  width: 100%;
+  height: 100px;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.5), #000);
+  position: relative;
+}
+
+.profile-body {
+  width: 100%;
+  height: 150px;
+  text-align: center;
+}
+
+.name-link-text {
+  padding-top: 40px;
+}
+
+.profile-photo {
+  position: absolute;
+  bottom: -35px;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  height: 70px;
+  width: 70px;
+  border: 5px solid white;
+  border-radius: 6px;
+}
+
+.profile-card {
+  margin-bottom: 30px;
+}
