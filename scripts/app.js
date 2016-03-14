@@ -21,7 +21,7 @@ angular.module('galvanizeFlowMonitor', [
       events:true,
     });
 
-    $urlRouterProvider.otherwise('/dashboard/home');
+    // $urlRouterProvider.otherwise('/dashboard/home');
 
     $stateProvider
       .state('dashboard', {
