@@ -5,6 +5,7 @@ var http = require('http');
 var favicon = require('serve-favicon');
 var port = process.env.PORT || 3000;
 var fs = require('fs');
+var cors = require('cors');
 
 // Routes
 var apiConnection = '/api/v1';
@@ -19,9 +20,10 @@ var server = http.Server(app);
 
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(express.static('.'));
+app.use(cors());
 
 //Public Routes
-  
+
 app.use(apiConnection + '/taps', taps);
 app.use(apiConnection + '/devices', devices);
 app.use(apiConnection + '/campuses', campuses);
