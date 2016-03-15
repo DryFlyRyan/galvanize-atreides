@@ -172,7 +172,7 @@
 
 .profile-body {
   width: 100%;
-  height: 150px;
+  height: 200px;
   text-align: center;
 }
 
@@ -196,6 +196,23 @@
 .profile-card {
   margin-bottom: 30px;
 }
+
+.profile-location-box {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  height: 50px;
+  background: rgb(100,100,100);
+}
+
+.profile-location-box-fill {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  vertical-align: middle;
+}
+
+
 
 /* Style Overrides */
 

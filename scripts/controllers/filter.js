@@ -8,7 +8,7 @@
  */
 angular.module('galvanizeFlowMonitor')
   .controller('CampusCtrl',
-  ['$scope', '$position', '$filter', '$stateParams', 'CampusFinderFactory', function($scope, $position, $filter, $stateParams, CampusFinderFactory){
+  ['$scope', '$position', '$filter', '$stateParams', 'FilterFactory', function($scope, $position, $filter, $stateParams, FilterFactory){
 
     $scope.getCampuses = function() {
       var campusArray = []

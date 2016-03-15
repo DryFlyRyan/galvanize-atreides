@@ -6,27 +6,26 @@
 
   </div>
 
-  <div class="filter-block" ng-controller="CampusCtrl">
+  <div class="filter-block">
     <div class="col-md-4 col-sm-12 field-container" ng-init="getCampuses()">
 
-        <select class="form-control field-box" name="" >
-          <option ng-repeat="campus in campuses | orderBy: 'label'">{{campus.label}}</option>
+        <select class="form-control field-box" name="" ng-model="campusFilter" ng-options="campus as campus.label for campus in campuses | orderBy: 'label'">
+          <option value="" disabled>Choose A Campus</option>
         </select>
 
     </div>
     <div class="col-md-4 col-sm-12 field-container">
-      <input class="form-control field-box input-box" placeholder="Search By Name">
+      <input class="form-control field-box input-box" ng-model="nameSearch" placeholder="Search By Name">
     </div>
     <div class="col-md-4 col-sm-12 field-container">
-      <input class="form-control field-box input-box" placeholder="Search By Title">
+      <input class="form-control field-box input-box" ng-model="titleSearch" placeholder="Search By Title">
     </div>
   </div>
-
   <div class="ceiling">
 
   </div>
 
-  <div ng-repeat="user in users | orderBy: 'last_name'">
+  <div ng-repeat="user in users | filter: nameSearch | filter: titleSearch | filter: {homeCampusID: campusFilter.id}">
     <div class="col-lg-3 col-md-4 col-sm-6 profile-card">
       <div class="profile-container">
         <div class="profile-header">
@@ -36,12 +35,21 @@
           </a>
         </div>
         <div class="profile-body">
+
           <a href=""><h4 class="name-link-text">{{user.first_name}} {{user.last_name}}</h4></a>
           <h4>{{user.companies[0].title}}</h4>
+          <p>
+            {{user.homeCampus.id}}
+          </p>
           <!-- <h5>Campuses:</h5> -->
           <!-- <div class="col-sm-12" ng-repeat="campus in user.campuses | orderBy: 'name'">
             <a><h5 class="campus-list-item">{{campus.name}}</h5></a>
           </div> -->
+          <div class="profile-location-box">
+            <div class="profile-location-box-fill">
+              <h4 class="profile-location-text"><i class="fa fa-map-marker"></i> {{user.campuses[0].label}}</h4>
+            </div>
+          </div>
         </div>
       </div>
     </div>

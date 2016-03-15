@@ -3,7 +3,7 @@ var express = require('express');
 var router = express.Router();
 var unirest = require('unirest');
 
-var RequestUsers = unirest.get('https://members.galvanize.com/api/v2/users?limit=10000')
+var RequestUsers = unirest.get('https://members.galvanize.com/api/v2/users?limit=400')
 
 var RequestMe = unirest.get('https://members.galvanize.com/api/v2/me')
 
