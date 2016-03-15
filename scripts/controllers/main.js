@@ -8,7 +8,7 @@
  */
 angular.module('galvanizeFlowMonitor')
   .controller('MainCtrl',
-  ['$scope', '$position', '$filter', '$stateParams', 'TapFinderFactory', function($scope, $position, $filter, $stateParams, TapFinderFactory){
+  ['$scope', '$position', '$filter', '$stateParams', 'TapFinderFactory', 'CampusFinderFactory', function($scope, $position, $filter, $stateParams, TapFinderFactory, CampusFinderFactory){
     console.log("Entered Main Controller");
     if ($stateParams.tapID) {
       $scope.paramsTapID = $stateParams.tapID;
