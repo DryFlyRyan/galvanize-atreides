@@ -1,3 +1,38 @@
+/* UI Elements */
+
+.filter-block {
+    background: linear-gradient(to bottom, rgba(0,0,0,0.5), #000);
+    height: 70px;
+    vertical-align: middle;
+}
+
+.field-container {
+  position: relative;
+  height: 100%;
+}
+
+@media screen and (max-width: 991px) {
+  .filter-block {
+      background: linear-gradient(to bottom, rgba(0,0,0,0.5), #000);
+      height: 210px;
+      vertical-align: middle;
+  }
+  .field-container {
+    position: relative;
+    height: 33%;
+  }
+}
+
+.field-box {
+  position: absolute;
+  width: 90%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
 /* Sidebar */
 
 .sidebar-profile {

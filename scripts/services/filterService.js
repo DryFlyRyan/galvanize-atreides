@@ -1,5 +1,5 @@
 angular.module('galvanizeFlowMonitor')
-  .factory('UserFinderFactory',
+  .factory('FilterFactory',
   function($http) {
   return {
     getUsers: function() {
@@ -11,8 +11,8 @@ angular.module('galvanizeFlowMonitor')
     getMe: function() {
       return $http.get('./api/v1/users/me');
     },
-    test: function() {
-      return "Test String"
-    }
+    campusFilter: "",
+    nameFilter: "",
+    
     }
   });

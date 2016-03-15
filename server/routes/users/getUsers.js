@@ -14,6 +14,7 @@ router.get('/', function(req, res){
     sendImmediately: true
            })
     .end(function(response){
+      console.log(response);
     var filteredResults = filterGalvanizeEmployeesFromUsers(response.body.results)
     res.send(filteredResults)
   })

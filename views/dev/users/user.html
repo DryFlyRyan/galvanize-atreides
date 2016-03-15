@@ -5,27 +5,6 @@
   <div class="ceiling">
 
   </div>
-
-  <div class="filter-block" ng-controller="CampusCtrl">
-    <div class="col-md-4 col-sm-12 field-container" ng-init="getCampuses()">
-
-        <select class="form-control field-box" name="" >
-          <option ng-repeat="campus in campuses | orderBy: 'label'">{{campus.label}}</option>
-        </select>
-
-    </div>
-    <div class="col-md-4 col-sm-12 field-container">
-      <input class="form-control field-box input-box" placeholder="Search By Name">
-    </div>
-    <div class="col-md-4 col-sm-12 field-container">
-      <input class="form-control field-box input-box" placeholder="Search By Title">
-    </div>
-  </div>
-
-  <div class="ceiling">
-
-  </div>
-
   <div ng-repeat="user in users | orderBy: 'last_name'">
     <div class="col-lg-3 col-md-4 col-sm-6 profile-card">
       <div class="profile-container">

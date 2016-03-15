@@ -141,6 +141,12 @@ angular.module('galvanizeFlowMonitor', [
           }
         }
     })
+      .state('dashboard.campuses.campus', {
+        url:'/{campusID}',
+        controller: 'CampusCtrl',
+        templateUrl:'views/dev/campuses/campus.html',
+
+    })
       .state('dashboard.users',{
         url:'/users',
         controller: 'UserCtrl',
@@ -153,10 +159,17 @@ angular.module('galvanizeFlowMonitor', [
               'scripts/controllers/users.js',
               'scripts/directives/notifications/notifications.js',
               'scripts/services/userService.js',
+              'scripts/controllers/campuses.js',
+'scripts/services/campusService.js'
               ]
             })
           }
         }
+    })
+      .state('dashboard.users.user', {
+        url:'/users/{userID}',
+        controller: 'UserCtrl',
+        templateUrl:'views/dev/users/user.html'
     })
       .state('dashboard.devices',{
         url:'/devices',

@@ -9,10 +9,7 @@
 angular.module('galvanizeFlowMonitor')
   .controller('CampusCtrl',
   ['$scope', '$position', '$filter', '$stateParams', 'CampusFinderFactory', function($scope, $position, $filter, $stateParams, CampusFinderFactory){
-    if ($stateParams.campusID) {
-      $scope.paramsCampusID = $stateParams.campusID;
-    }
-    $scope.showSchedule = false;
+
     $scope.getCampuses = function() {
       var campusArray = []
       var promise = CampusFinderFactory.getCampuses()
@@ -25,4 +22,8 @@ angular.module('galvanizeFlowMonitor')
         $scope.campuses = campusArray;
       })
     }
+
+    $scope.campusFilter;
+    $scope.nameFilter;
+    $scope.titleFilter;
   }]);

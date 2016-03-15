@@ -1,9 +1,9 @@
 <div class="navbar-default sidebar" role="navigation">
     <div class="sidebar-nav navbar-collapse">
-      <a class="sidebar-profile" ng-controller="UserCtrl" ng-init="getUser()">
-        <img class="sidebar-photo ng-hide" ng-show="user.photo" src="{{user.photo}}" alt="Photo of {{user.first_name}} {{user.last_name}}"/>
-        <img class="sidebar-photo ng-hide" ng-show="!user.photo" src="/assets/logo.jpg" alt="Photo of {{user.first_name}} {{user.last_name}}" />
-        <h3 class="sidebar-user-name">{{user.first_name}}</h3>
+      <a class="sidebar-profile" ng-controller="UserCtrl" ng-init="getMe()">
+        <img class="sidebar-photo ng-hide" ng-show="me.photo" src="{{me.photo}}" alt="Photo of {{me.first_name}} {{me.last_name}}"/>
+        <img class="sidebar-photo ng-hide" ng-show="!me.photo" src="/assets/logo.jpg" alt="Photo of {{me.first_name}} {{me.last_name}}" />
+        <h3 class="sidebar-user-name">{{me.first_name}}</h3>
       </a>
         <ul class="nav in" id="side-menu">
             <li ui-sref-active="active">

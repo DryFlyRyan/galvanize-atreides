@@ -1,6 +1,6 @@
 <div class="col-sm-12 page-sub-wrapper" ng-init="getCampuses()">
   <div class="page-splash-campuses">
-    <h1 class="splash-title">CAMPUSES</h1>
+    <h1 class="splash-title">testing testing</h1>
   </div>
   <div class="ceiling">
 
@@ -9,12 +9,12 @@
     <div class="col-lg-3 col-md-4 col-sm-6 campus-card">
       <div class="campus-container">
         <div class="campus-header">
-          <a ui-sref="dashboard.campuses.campus({campusID: campus.id})">
+          <a href="">
             <img class="campus-photo" src="/assets/logo.jpg"/>
           </a>
         </div>
         <div class="campus-body">
-          <a ui-sref="dashboard.campuses.campus({campusID: campus.id})"><h4 class="name-link-text">{{campus.label}}</h4></a>
+          <a href="dashboard.campuses.{{campus.id}}"><h4 class="name-link-text">{{campus.label}}</h4></a>
 
         </div>
       </div>
