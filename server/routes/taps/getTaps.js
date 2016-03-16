@@ -116,7 +116,7 @@ var devices = [{
     this.times = timeArray;
   },
   volume: 992,
-  volumeRead: 120,
+  volumeRead: 553,
   flowRate: function() {
     return this.volumeRead / this.dateSinceTapped;
   },

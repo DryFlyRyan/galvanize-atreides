@@ -59,12 +59,111 @@
 }
 
 /* Dashboard */
-.page-splash-campuses {
+
+.dashboard-container {
+  width: 100%;
+  position: relative;
+}
+
+/*.page-splash-campuses {
   min-height: 150px;
   background: url("https://members.galvanize.com/static/img/galvanize-community.jpg") 50% 50% no-repeat;
   text-align: center;
   position: relative;
+}*/
+
+.tap-container {
+  /*position: relative;*/
+  background-color: white;
+  box-sizing: border-box;
+  margin-bottom: 50px;
+  height: 600px;
 }
+
+.tap-header {
+  width: 100%;
+  height: 100px;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.5), #000);
+  position: relative;
+  text-align: center;
+}
+
+.tap-title-container {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.tap-headline-text {
+  color: white;
+  font-size: 18pt;
+  display: inline-block;
+  margin: auto;
+}
+
+.tap-body {
+  position: relative;
+  padding-top: 30px;
+  width: 100%;
+  height: 500px;
+  background: white;
+  margin-bottom: 50px;
+}
+
+
+
+.time-container {
+  position: relative;
+  display: inline-block;
+}
+
+.time-headline {
+  display: inline-block;
+  font-size: 16pt;
+}
+
+.keg-level-indicator {
+  position: relative;
+  display: inline-block;
+}
+
+.keg-cover-container {
+  position: relative;
+  display: inline-block;
+  margin: 0 !important;
+  padding: 0 !important;
+  /*background: blue;*/
+}
+
+.keg-img {
+  display: inline-block;
+  width: 100%;
+  height: auto;
+  /*position: absolute;
+  top:0;
+  left:0;*/
+  background: transparent;
+  z-index: 99;
+}
+
+.keg-fill {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #1B5E20;
+}
+
+.btn-container {
+  margin-top: 30px;
+}
+
+.time-block {
+  background: green;
+  border-radius: 6px;
+  margin: 5px 0;
+  text-align: center;
+}
+
 /* Campus Page */
 
 .page-splash-campuses {

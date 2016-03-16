@@ -56,11 +56,19 @@ angular.module('galvanizeFlowMonitor')
           element.timeUntilEmpty = function() {
            return this.volumeRemaining() / this.flowRate()
           }
+          element.percentageRemaining = function() {
+            return (Math.round(this.volumeRemaining() / this.volume * 100));
+          }
+          element.getColor = function() {
+            var hue = this.percentageRemaining() * 1.2;
+            return 'hsla('+ hue + ', 80%, 45%,0.6)'
+          }
           tapArray.push(element);
         })
       })
       .then(function(){
         $scope.taps = tapArray;
+        console.log($scope.taps);
       })
     }
 
