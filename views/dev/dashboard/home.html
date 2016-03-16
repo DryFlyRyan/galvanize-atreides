@@ -1,63 +1,68 @@
 <div ng-init="getTaps()">
   <div class="page-splash-profile">
   </div>
-  <div class="ceiling">
+  <!-- <div class="ceiling">
 
-  </div>
+  </div> -->
   <!-- /.row -->
 
   <!-- /.panel -->
     <div class="dashboard-container">
-      <div class="col-lg-8 col-sm-12" ng-repeat="tap in taps">
-        <div class="tap-container">
-          <div class="tap-header">
+      <div class="col-lg-8 col-sm-12 " ng-repeat="tap in taps">
+        <div class="tap-container col-sm-10 col-sm-offset-1">
+          <div class="tap-header col-sm-12">
+            <a href="">
+              <img class="profile-photo" src="/assets/logo.jpg" alt="Galvanize Logo" />
+            </a>
 
-              <p class="tap-headline-text">{{tap.name}}</p>
-            </br>
-              <p class="tap-headline-text">{{tap.campus}}</p>
-            </div>
+          </div>
             <!-- {{tap.getColor()}} -->
 
-          <div class="tap-body" ng-init="tap.findTimes()">
-            <div class="col-sm-8 time-container" >
-              <div ng-repeat="time in tap.times">
-                <div class="time-block col-sm-10 col-sm-offset-1">
-                  <p class="col-sm-12 time-headline">Opening Time: {{time.openTime}}</p>
-                </div>
-                <div class="time-block col-sm-10 col-sm-offset-1">
-                  <p class="time-headline">Closing Time: {{time.closeTime}}</p>
-                </div>
-              </div>
+          <div class="tap-body col-sm-12" ng-init="tap.findTimes()">
+            <div class="tap-title-container">
+              <a ui-sref="dashboard.taps({tapID: tap.id})"<p class="tap-headline-text">{{tap.name}}</p></a>
+            </br>
+            <p class="tap-headline-text">{{tap.campus}}</p>
             </div>
-
-            <div class="keg-level-indicator col-sm-3">
-              <div class="keg-cover-container">
-                <div class="keg-fill" ng-style="{height: tap.percentageRemaining() + '%', background: tap.getColor()}"></div>
-                <div class="keg-cover-container">
-                  <img class="keg-img" src="assets/keg-cover.png" alt='Keg Cover' />
-                </div>
-              </div>
-
-            </div>
-
-            <div class="btn-container col-sm-12">
-
-                <div class="col-sm-6"> <a ui-sref="dashboard.taps({tapID: tap.id})" class="btn btn-primary col-sm-8 col-sm-offset-2">Edit
-                  Schedule</a> </div>
-                  <div class="col-sm-6"> <a class="btn
-                    btn-primary col-sm-8 col-sm-offset-2">Override Schedule</a>
+            <div class="dashboard-content">
+              <div class="col-sm-8 time-container" >
+                <div ng-repeat="time in tap.times">
+                  <div class="time-block time-block-open col-sm-10 col-sm-offset-1">
+                    <p class="col-sm-12 time-headline">Opening Time: {{time.openTime}}</p>
+                  </div>
+                  <div class="time-block time-block-close col-sm-10 col-sm-offset-1">
+                    <p class="time-headline">Closing Time: {{time.closeTime}}</p>
                   </div>
                 </div>
+              </div>
+
+              <div class="keg-level-indicator col-sm-3">
+                <div class="keg-cover-container">
+                  <div class="keg-fill" ng-style="{height: tap.percentageRemaining() + '%', background: tap.getColor()}"></div>
+                  <div class="keg-cover-container">
+                    <img class="keg-img" src="assets/keg-cover.png" alt='Keg Cover' />
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="btn-group-container col-sm-12">
+              <div class="btn-container col-md-4 col-sm-12">
+                <a ui-sref="dashboard.taps({tapID: tap.id})" class="btn btn-primary dashboard-btn col-sm-12">Change Keg</a>
+              </div>
+              <div class="btn-container col-md-4 col-sm-12">
+                <a class="btn
+                btn-primary dashboard-btn col-sm-12">Change Schedule</a>
+              </div>
+              <div class="btn-container col-md-4 col-sm-12">
+                <a class="btn
+                btn-primary dashboard-btn col-sm-12">Manual Override</a>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="col-lg-4">
-        <!-- <div class="panel panel-default">
-          <div class="panel-heading">
-            <i class="fa fa-bell fa-fw"></i> Notifications Panel
-          </div>
-          <notifications></notifications>
-        </div> -->
+
       </div>
     </div>
 </div>

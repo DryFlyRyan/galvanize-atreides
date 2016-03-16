@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-var devices = [{
+var taps = [{
   id: 123,
   name: "4th Floor Tap",
   campus: "Platte",
@@ -11,39 +11,10 @@ var devices = [{
   brewery: "Deschutes Brewing",
   distributor: "Dan's Distributing",
   size: "Quarter Barrel",
-  currentDate: new Date(),
   dateSinceTapped: 3.5,
   times: [],
-  findTimes: function() {
-    var day = $filter('date')(this.currentDate, "EEEE")
-    var open;
-    var close;
-    var timeArray = []
-    this.schedule.forEach(function(element) {
-      // console.log(day, element.day);
-      // console.log(day == element.day);
-      if (day == element.day) {
-        open = element.open;
-        close = element.close;
-        timeArray.push({openTime: open, closeTime: close});
-      }
-    })
-    this.times = timeArray;
-  },
   volume: 992,
   volumeRead: 120,
-  flowRate: function() {
-    return this.volumeRead / this.dateSinceTapped;
-  },
-  volumeRemaining: function() {
-    return this.volume - this.volumeRead;
-  },
-  poursRemaining: function() {
-    return this.volumeRemaining() / 12;
-  },
-  timeUntilEmpty: function() {
-    return this.volumeRemaining() / this.flowRate()
-  },
   schedule:
   [
     {
@@ -98,37 +69,10 @@ var devices = [{
   brewery: "Stone Brewing",
   distributor: "JSON Distributing",
   size: "Quarter Barrel",
-  currentDate: new Date(),
   dateSinceTapped: 4.5,
   times: [],
-  findTimes: function() {
-    var day = $filter('date')(this.currentDate, "EEEE")
-    var open;
-    var close;
-    var timeArray = []
-    this.schedule.forEach(function(element) {
-      if (day == element.day) {
-        open = element.open;
-        close = element.close;
-        timeArray.push({openTime: open, closeTime: close});
-      }
-    })
-    this.times = timeArray;
-  },
   volume: 992,
   volumeRead: 553,
-  flowRate: function() {
-    return this.volumeRead / this.dateSinceTapped;
-  },
-  volumeRemaining: function() {
-    return this.volume - this.volumeRead;
-  },
-  poursRemaining: function() {
-    return this.volumeRemaining() / 12;
-  },
-  timeUntilEmpty: function() {
-    return this.volumeRemaining() / this.flowRate()
-  },
   schedule:
   [
     {
@@ -171,7 +115,16 @@ var devices = [{
 }]
 
 router.get('/', function(req, res){
-  res.send(devices);
+  res.send(taps);
+})
+
+router.get('/:tapID', function(req,res) {
+  taps.forEach(function(element){
+    if (element.id === parseInt(req.params.tapID)) {
+      console.log(element);
+      res.send(element);
+    }
+  })
 })
 
 module.exports = router;

@@ -123,7 +123,19 @@ angular.module('galvanizeFlowMonitor', [
       .state('dashboard.taps',{
         url:'/taps/{tapID}',
         controller: 'MainCtrl',
-        templateUrl:'views/dev/dashboard/tap.html'
+        templateUrl:'views/dev/dashboard/tap.html',
+        resolve: {
+          loadMyFiles:function($ocLazyLoad) {
+            return $ocLazyLoad.load({
+              name:'galvanizeFlowMonitor',
+              files:[
+              'scripts/controllers/main.js',
+              'scripts/directives/notifications/notifications.js',
+              'scripts/services/tapService.js',
+              ]
+            })
+          }
+        }
     })
       .state('dashboard.campuses',{
         url:'/campuses',

@@ -5,8 +5,8 @@ angular.module('galvanizeFlowMonitor')
     getTaps: function() {
       return $http.get('./api/v1/taps/')
     },
-    test: function() {
-      return "Test String"
+    getTap: function(tapID) {
+      return $http.get('./api/v1/taps/' + tapID)
     }
     }
   });
