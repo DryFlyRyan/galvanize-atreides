@@ -8,8 +8,7 @@
  */
 angular.module('galvanizeFlowMonitor')
   .controller('MainCtrl',
-  ['$scope', '$position', '$filter', '$stateParams', 'TapFinderFactory', 'CampusFinderFactory', function($scope, $position, $filter, $stateParams, TapFinderFactory, CampusFinderFactory){
-    console.log("Entered Main Controller");
+  ['$scope', '$position', '$filter', '$stateParams', 'TapFinderFactory', 'CampusFinderFactory', 'BeerSearchFactory', function($scope, $position, $filter, $stateParams, TapFinderFactory, CampusFinderFactory, BeerSearchFactory){
     if ($stateParams.tapID) {
       $scope.paramsTapID = $stateParams.tapID;
     }
@@ -17,7 +16,6 @@ angular.module('galvanizeFlowMonitor')
     $scope.selectedTapID = "123";
 
     $scope.toggleSchedule = function(){
-      console.log("clicked!");
       if ($scope.showSchedule) {
         $scope.showSchedule = false;
       } else if (!$scope.showSchedule){
@@ -87,6 +85,16 @@ angular.module('galvanizeFlowMonitor')
         var formattedElement = $scope.formatTap(tap.data)
         $scope.selectedTap = formattedElement;
         console.log($scope.selectedTap);
+      })
+    }
+
+    $scope.beerSearchQuery = ""
+    $scope.searchBeers = function(searchQuery) {
+      var promise = BeerSearchFactory.searchBeers(searchQuery)
+      promise.then(function(data){
+        var beers = data.data.body.response.beers.items
+        $scope.searchedBeers = beers;
+        console.log($scope.searchedBeers);
       })
     }
 

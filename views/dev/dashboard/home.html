@@ -49,15 +49,79 @@
 
             <div class="btn-group-container col-sm-12">
               <div class="btn-container col-md-4 col-sm-12">
-                <a ui-sref="dashboard.taps({tapID: tap.id})" class="btn btn-primary dashboard-btn col-sm-12">Change Keg</a>
+                <a data-toggle="modal" data-target="#keg-search-modal-{{tap.id}}" class="btn btn-primary dashboard-btn col-sm-12">Change Keg</a>
               </div>
               <div class="btn-container col-md-4 col-sm-12">
-                <a class="btn
-                btn-primary dashboard-btn col-sm-12">Change Schedule</a>
+                <a data-toggle="modal" data-target="#schedule-modal-{{tap.id}}" class="btn btn-primary dashboard-btn col-sm-12">Change Schedule</a>
               </div>
               <div class="btn-container col-md-4 col-sm-12">
-                <a class="btn
-                btn-primary dashboard-btn col-sm-12">Manual Override</a>
+                <a data-toggle="modal" data-target="#override-confirmation-modal-{{tap.id}}" class="btn btn-primary dashboard-btn col-sm-12">Manual Override</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Keg Search Modal -->
+
+        <div class="modal fade" id="keg-search-modal-{{tap.id}}" tabindex="-1" aria-labeledby="modal-{{tap.id}}-label" aria-hidden="true" style="display:none;">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title" id="keg-search-modal-{{tap.id}}-label">Change Keg</h4>
+              </div>
+              <div class="modal-body">
+                 <div class="form-group">
+                   <label for="">Beer Search</label>
+                   <input type="text" class="form-control" id="" placeholder="Search for a Beer" ng-model="beerSearchQuery">
+                 </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" ng-click="searchBeers(beerSearchQuery)">Search</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal fade" id="schedule-modal-{{tap.id}}" tabindex="-1" aria-labeledby="schedule-modal-{{tap.id}}-label" aria-hidden="true" style="display:none;">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title" id="modal-{{tap.id}}-label">Change Schedule</h4>
+              </div>
+              <div class="modal-body">
+                 <div class="form-group">
+                   <label for=""></label>
+                   <input type="text" class="form-control" id="" placeholder="">
+
+                 </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal fade" id="override-confirmation-modal-{{tap.id}}" tabindex="-1" aria-labeledby="override-confirmation-modal-{{tap.id}}-label" aria-hidden="true" style="display:none;">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title" id="modal-{{tap.id}}-label">Confirm Override</h4>
+              </div>
+              <div class="modal-body">
+                 <div class="form-group">
+                   <label for=""></label>
+                   <input type="text" class="form-control" id="" placeholder="">
+                 </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
               </div>
             </div>
           </div>

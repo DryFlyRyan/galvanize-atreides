@@ -40,7 +40,8 @@ angular.module('galvanizeFlowMonitor', [
                     'scripts/controllers/chartContoller.js',
                     'scripts/controllers/users.js',
                     'scripts/services/userService.js',
-                    'scripts/services/campusService.js'
+                    'scripts/services/campusService.js',
+                    'scripts/services/beerSearchService.js'
                     ]
                 }),
                 $ocLazyLoad.load(
