@@ -1,50 +1,34 @@
-<div class="col-sm-12 page-sub-wrapper" ng-init="getUsers()">
+<div class="col-sm-12 page-sub-wrapper" ng-init="searchBeers(passedSearchQuery)">
   <div class="page-splash-profile">
-    <h1 class="splash-title">PEOPLE</h1>
+    <h1 class="splash-title">BEER SEARCH</h1>
   </div>
   <div class="ceiling">
 
   </div>
 
   <div class="filter-block">
-    <div class="col-md-4 col-sm-12 field-container" ng-init="getCampuses()">
-
-        <select class="form-control field-box" name="" ng-model="campusFilter" ng-options="campus as campus.label for campus in campuses | orderBy: 'label'">
-          <option value="" disabled>Choose A Campus</option>
-        </select>
-
-    </div>
     <div class="col-md-4 col-sm-12 field-container">
-      <input class="form-control field-box input-box" ng-model="nameSearch" placeholder="Search By Name">
-    </div>
-    <div class="col-md-4 col-sm-12 field-container">
-      <input class="form-control field-box input-box" ng-model="titleSearch" placeholder="Search By Title">
+      <input class="form-control field-box input-box" ng-model="beerSearchQuery" placeholder="Search for a Beer" value="beerSearchQuery">
     </div>
   </div>
   <div class="ceiling">
 
   </div>
 
-  <div ng-repeat="user in users | filter: nameSearch | filter: titleSearch | filter: {homeCampusID: campusFilter.id}">
+  <div ng-repeat="beer in searchedBeers | filter: beerSearchQuery">
     <div class="col-lg-3 col-md-4 col-sm-6 profile-card">
       <div class="profile-container">
         <div class="profile-header">
           <a href="">
-            <img class="profile-photo ng-hide" ng-show="user.photo" src="{{user.photo}}" alt="Photo of {{user.first_name}} {{user.last_name}}"/>
-            <img class="profile-photo ng-hide" ng-show="!user.photo" src="/assets/logo.jpg" alt="Photo of {{user.first_name}} {{user.last_name}}" />
+            <img class="profile-photo"  src="{{beer.brewery_label}}" alt="Photo of {{beer.brewery_name}}"/>
           </a>
         </div>
         <div class="profile-body">
 
-          <a href=""><h4 class="name-link-text">{{user.first_name}} {{user.last_name}}</h4></a>
-          <h4>{{user.companies[0].title}}</h4>
-          <p>
-            {{user.homeCampus.id}}
-          </p>
-          <!-- <h5>Campuses:</h5> -->
-          <!-- <div class="col-sm-12" ng-repeat="campus in user.campuses | orderBy: 'name'">
-            <a><h5 class="campus-list-item">{{campus.name}}</h5></a>
-          </div> -->
+          <a href=""><h4 class="name-link-text">{{beer.beer_name}}</h4></a>
+          <h4>{{beer.brewery_name}}</h4>
+
+
           <div class="profile-location-box">
             <div class="profile-location-box-fill">
               <h4 class="profile-location-text"><i class="fa fa-map-marker"></i> {{user.campuses[0].label}}</h4>

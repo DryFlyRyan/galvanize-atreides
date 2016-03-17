@@ -13,7 +13,17 @@ angular.module('galvanizeFlowMonitor')
       $scope.paramsTapID = $stateParams.tapID;
     }
 
-    $scope.selectedTapID = "123";
+    $scope.selectedTapID;
+
+    $scope.showKegFinderModal = false;
+
+    $scope.toggleModal = function() {
+      if ($scope.showKegFinderModal === false) {
+        $scope.showKegFinderModal = true;
+      } else {
+        $scope.showKegFinderModal = false;
+      }
+    }
 
     $scope.toggleSchedule = function(){
       if ($scope.showSchedule) {
@@ -89,11 +99,24 @@ angular.module('galvanizeFlowMonitor')
     }
 
     $scope.beerSearchQuery = ""
+    $scope.passedSearchQuery = $stateParams.searchQuery;
     $scope.searchBeers = function(searchQuery) {
       var promise = BeerSearchFactory.searchBeers(searchQuery)
       promise.then(function(data){
         var beers = data.data.body.response.beers.items
-        $scope.searchedBeers = beers;
+        var beerArray = [];
+        beers.forEach(function(element) {
+          var squishedElement = {};
+          for (var key in element.beer) {
+            squishedElement[key] = element.beer[key]
+          }
+          for (var key in element.brewery) {
+            squishedElement[key] = element.brewery[key]
+          }
+          beerArray.push(squishedElement)
+        })
+
+        $scope.searchedBeers = beerArray;
         console.log($scope.searchedBeers);
       })
     }

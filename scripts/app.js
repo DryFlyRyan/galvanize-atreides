@@ -39,6 +39,7 @@ angular.module('galvanizeFlowMonitor', [
                     'scripts/directives/sidebar/sidebar-search/sidebar-search.js',
                     'scripts/controllers/chartContoller.js',
                     'scripts/controllers/users.js',
+                    'scripts/controllers/modal.js',
                     'scripts/services/userService.js',
                     'scripts/services/campusService.js',
                     'scripts/services/beerSearchService.js'
@@ -117,10 +118,27 @@ angular.module('galvanizeFlowMonitor', [
           }
         }
       })
-    //   .state('login',{
-    //     templateUrl:'views/pages/login.html',
-    //     url:'/login'
-    // })
+      .state('dashboard.beersearch',{
+        url:'/beersearch',
+        params: {
+          tapID: null,
+          searchQuery: null
+        },
+        controller: 'MainCtrl',
+        templateUrl:'views/dev/beers/beerSearch.html',
+        resolve: {
+          loadMyFiles:function($ocLazyLoad) {
+            return $ocLazyLoad.load({
+              name:'galvanizeFlowMonitor',
+              files:[
+              'scripts/controllers/main.js',
+              'scripts/directives/notifications/notifications.js',
+              'scripts/services/tapService.js',
+              ]
+            })
+          }
+        }
+    })
       .state('dashboard.taps',{
         url:'/taps/{tapID}',
         controller: 'MainCtrl',
@@ -241,4 +259,4 @@ angular.module('galvanizeFlowMonitor', [
     })
 
 
-  }]);
+  }])

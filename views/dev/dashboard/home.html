@@ -49,7 +49,7 @@
 
             <div class="btn-group-container col-sm-12">
               <div class="btn-container col-md-4 col-sm-12">
-                <a data-toggle="modal" data-target="#keg-search-modal-{{tap.id}}" class="btn btn-primary dashboard-btn col-sm-12">Change Keg</a>
+                <a data-toggle="modal" ng-click="toggleModal()" data-target="#keg-search-modal-{{tap.id}}" class="btn btn-primary dashboard-btn col-sm-12">Change Keg</a>
               </div>
               <div class="btn-container col-md-4 col-sm-12">
                 <a data-toggle="modal" data-target="#schedule-modal-{{tap.id}}" class="btn btn-primary dashboard-btn col-sm-12">Change Schedule</a>
@@ -63,7 +63,7 @@
 
         <!-- Keg Search Modal -->
 
-        <div class="modal fade" id="keg-search-modal-{{tap.id}}" tabindex="-1" aria-labeledby="modal-{{tap.id}}-label" aria-hidden="true" style="display:none;">
+        <div class="modal fade" id="keg-search-modal-{{tap.id}}" tabindex="-1" aria-labeledby="modal-{{tap.id}}-label" aria-hidden="true" style="display:none;" ng-class="{'hidden': !showKegFinderModal}">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
@@ -78,7 +78,8 @@
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" ng-click="searchBeers(beerSearchQuery)">Search</button>
+                <button type="button"
+                data-dismiss="modal" ui-sref="dashboard.beersearch({tapID: tap.id, searchQuery: beerSearchQuery})" class="btn btn-primary" data-dismiss="modal"  ng-click="toggleMOdal()">Search</button>
               </div>
             </div>
           </div>

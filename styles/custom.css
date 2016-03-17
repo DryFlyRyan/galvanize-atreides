@@ -1,5 +1,9 @@
 /* UI Elements */
 
+.hidden {
+  display: none;
+}
+
 .filter-block {
     background: linear-gradient(to bottom, rgba(0,0,0,0.5), #000);
     height: 70px;
