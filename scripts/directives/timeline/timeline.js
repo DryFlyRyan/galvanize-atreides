@@ -6,7 +6,7 @@
  * @description
  * # adminPosHeader
  */
-angular.module('galvanizeFlowMonitor')
+angular.module('atreides')
 	.directive('timeline',function() {
     return {
         templateUrl:'scripts/directives/timeline/timeline.html',

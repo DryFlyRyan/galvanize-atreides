@@ -1,4 +1,4 @@
-<div class="col-sm-12 page-sub-wrapper" ng-init="searchBeers(passedSearchQuery)">
+<div class="col-sm-12 page-sub-wrapper">
   <div class="page-splash-profile">
     <h1 class="splash-title">BEER SEARCH</h1>
   </div>
@@ -7,15 +7,21 @@
   </div>
 
   <div class="filter-block">
-    <div class="col-md-4 col-sm-12 field-container">
+    <div class="col-md-4 col-sm-10 field-container">
       <input class="form-control field-box input-box" ng-model="beerSearchQuery" placeholder="Search for a Beer" value="beerSearchQuery">
+    </div>
+    <div class="col-md-2 col-sm-2 field-container">
+    <a class="form-control field-box btn btn-primary btn-large" ng-click="searchBeers(beerSearchQuery)">SEARCH</a>
+    </div>
+    <div class="col-md-4 col-md-offset-2 col-sm-12 field-container">
+      <input class="form-control field-box input-box" ng-model="beerRefineSearch" placeholder="Refine Search">
     </div>
   </div>
   <div class="ceiling">
 
   </div>
 
-  <div ng-repeat="beer in searchedBeers | filter: beerSearchQuery">
+  <div ng-repeat="beer in searchedBeers | filter: beerRefineSearch">
     <div class="col-lg-3 col-md-4 col-sm-6 profile-card">
       <div class="profile-container">
         <div class="profile-header">

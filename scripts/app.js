@@ -1,13 +1,13 @@
 'use strict';
 /**
  * @ngdoc overview
- * @name galvanizeFlowMonitor
+ * @name atreides
  * @description
- * # galvanizeFlowMonitor
+ * # atreides
  *
  * Main module of the application.
  */
-angular.module('galvanizeFlowMonitor', [
+angular.module('atreides', [
     'oc.lazyLoad',
     'ui.router',
     'ui.bootstrap',
@@ -31,7 +31,7 @@ angular.module('galvanizeFlowMonitor', [
             loadMyDirectives:function($ocLazyLoad){
                 return $ocLazyLoad.load(
                 {
-                    name:'galvanizeFlowMonitor',
+                    name:'atreides',
                     files:[
                     'scripts/directives/header/header.js',
                     'scripts/directives/header/header-notification/header-notification.js',
@@ -108,7 +108,7 @@ angular.module('galvanizeFlowMonitor', [
         resolve: {
           loadMyFiles:function($ocLazyLoad) {
             return $ocLazyLoad.load({
-              name:'galvanizeFlowMonitor',
+              name:'atreides',
               files:[
               'scripts/controllers/main.js',
               'scripts/directives/notifications/notifications.js',
@@ -122,14 +122,13 @@ angular.module('galvanizeFlowMonitor', [
         url:'/beersearch',
         params: {
           tapID: null,
-          searchQuery: null
         },
         controller: 'MainCtrl',
         templateUrl:'views/dev/beers/beerSearch.html',
         resolve: {
           loadMyFiles:function($ocLazyLoad) {
             return $ocLazyLoad.load({
-              name:'galvanizeFlowMonitor',
+              name:'atreides',
               files:[
               'scripts/controllers/main.js',
               'scripts/directives/notifications/notifications.js',
@@ -146,7 +145,7 @@ angular.module('galvanizeFlowMonitor', [
         resolve: {
           loadMyFiles:function($ocLazyLoad) {
             return $ocLazyLoad.load({
-              name:'galvanizeFlowMonitor',
+              name:'atreides',
               files:[
               'scripts/controllers/main.js',
               'scripts/directives/notifications/notifications.js',
@@ -163,7 +162,7 @@ angular.module('galvanizeFlowMonitor', [
         resolve: {
           loadMyFiles:function($ocLazyLoad) {
             return $ocLazyLoad.load({
-              name:'galvanizeFlowMonitor',
+              name:'atreides',
               files:[
               'scripts/controllers/campuses.js',
               'scripts/directives/notifications/notifications.js',
@@ -186,7 +185,7 @@ angular.module('galvanizeFlowMonitor', [
         resolve: {
           loadMyFiles:function($ocLazyLoad) {
             return $ocLazyLoad.load({
-              name:'galvanizeFlowMonitor',
+              name:'atreides',
               files:[
               'scripts/controllers/users.js',
               'scripts/directives/notifications/notifications.js',
@@ -210,7 +209,7 @@ angular.module('galvanizeFlowMonitor', [
         resolve: {
           loadMyFiles:function($ocLazyLoad) {
             return $ocLazyLoad.load({
-              name:'galvanizeFlowMonitor',
+              name:'atreides',
               files:[
               'scripts/controllers/devices.js',
               'scripts/directives/notifications/notifications.js',
@@ -227,7 +226,7 @@ angular.module('galvanizeFlowMonitor', [
         resolve: {
           loadMyFiles:function($ocLazyLoad) {
             return $ocLazyLoad.load({
-              name:'galvanizeFlowMonitor',
+              name:'atreides',
               files:[
               'scripts/controllers/main.js',
               'scripts/directives/notifications/notifications.js',
@@ -251,7 +250,7 @@ angular.module('galvanizeFlowMonitor', [
               ]
             }),
             $ocLazyLoad.load({
-                name:'galvanizeFlowMonitor',
+                name:'atreides',
                 files:['scripts/controllers/chartContoller.js']
             })
           }

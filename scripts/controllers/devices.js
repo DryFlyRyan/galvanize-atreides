@@ -1,12 +1,12 @@
 'use strict';
 /**
  * @ngdoc function
- * @name galvanizeFlowMonitor.controller:DeviceCtrl
+ * @name atreides.controller:DeviceCtrl
  * @description
  * # DeviceCtrl
- * Controller of the galvanizeFlowMonitor
+ * Controller of the atreides
  */
-angular.module('galvanizeFlowMonitor')
+angular.module('atreides')
   .controller('DeviceCtrl',
   ['$scope', '$position', '$filter', '$stateParams', 'DeviceFinderFactory', function($scope, $position, $filter, $stateParams, DeviceFinderFactory) {
     if ($stateParams.deviceID) {

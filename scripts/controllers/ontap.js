@@ -1,12 +1,12 @@
 'use strict';
 /**
  * @ngdoc function
- * @name galvanizeFlowMonitor.controller:OntapCtrl
+ * @name atreides.controller:OntapCtrl
  * @description
  * # OntapCtrl
- * Controller of the galvanizeFlowMonitor
+ * Controller of the atreides
  */
-angular.module('galvanizeFlowMonitor')
+angular.module('atreides')
   .controller('OntapCtrl',
   ['$scope', '$position', '$filter', '$stateParams', 'TapFinderFactory', function($scope, $position, $filter, $stateParams, TapFinderFactory){
     console.log("Entered Main Controller");

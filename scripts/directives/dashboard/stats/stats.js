@@ -6,7 +6,7 @@
  * @description
  * # adminPosHeader
  */
-angular.module('galvanizeFlowMonitor')
+angular.module('atreides')
     .directive('stats',function() {
     	return {
   		templateUrl:'scripts/directives/dashboard/stats/stats.html',

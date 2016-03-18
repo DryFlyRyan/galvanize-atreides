@@ -1,12 +1,12 @@
 'use strict';
 /**
  * @ngdoc function
- * @name galvanizeFlowMonitor.controller:MainCtrl
+ * @name atreides.controller:MainCtrl
  * @description
  * # MainCtrl
- * Controller of the galvanizeFlowMonitor
+ * Controller of the atreides
  */
-angular.module('galvanizeFlowMonitor')
+angular.module('atreides')
   .controller('ChartCtrl', ['$scope', '$timeout', function ($scope, $timeout) {
     $scope.line = {
 	    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],

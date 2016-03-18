@@ -1,4 +1,4 @@
-angular.module('galvanizeFlowMonitor')
+angular.module('atreides')
   .factory('DeviceFinderFactory',
   function($http) {
   return {

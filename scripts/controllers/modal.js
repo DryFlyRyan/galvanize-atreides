@@ -1,4 +1,4 @@
-angular.module('galvanizeFlowMonitor').controller('ModalCtrl', function ($scope, $uibModal, $log) {
+angular.module('atreides').controller('ModalCtrl', function ($scope, $uibModal, $log) {
 
   $scope.items = ['item1', 'item2', 'item3'];
 
@@ -34,7 +34,7 @@ angular.module('galvanizeFlowMonitor').controller('ModalCtrl', function ($scope,
 // Please note that $uibModalInstance represents a modal window (instance) dependency.
 // It is not the same as the $uibModal service used above.
 
-angular.module('ui.bootstrap.demo').controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, items) {
+angular.module('atreides').controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, items) {
 
   $scope.items = items;
   $scope.selected = {

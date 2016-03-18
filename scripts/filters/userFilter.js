@@ -1,4 +1,4 @@
-angular.module('galvanizeFlowMonitor')
+angular.module('atreides')
   .filter('userFilter', function(){
     return function(array, campus, name, title) {
       var filteredArray = [];

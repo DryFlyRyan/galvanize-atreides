@@ -1,12 +1,12 @@
 'use strict';
 /**
  * @ngdoc function
- * @name galvanizeFlowMonitor.controller:CampusCtrl
+ * @name atreides.controller:CampusCtrl
  * @description
  * # CampusCtrl
- * Controller of the galvanizeFlowMonitor
+ * Controller of the atreides
  */
-angular.module('galvanizeFlowMonitor')
+angular.module('atreides')
   .controller('CampusCtrl',
   ['$scope', '$position', '$filter', '$stateParams', 'FilterFactory', function($scope, $position, $filter, $stateParams, FilterFactory){
 

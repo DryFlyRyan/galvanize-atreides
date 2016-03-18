@@ -1,12 +1,12 @@
 'use strict';
 /**
  * @ngdoc function
- * @name galvanizeFlowMonitor.controller:MainCtrl
+ * @name atreides.controller:MainCtrl
  * @description
  * # MainCtrl
- * Controller of the galvanizeFlowMonitor
+ * Controller of the atreides
  */
-angular.module('galvanizeFlowMonitor')
+angular.module('atreides')
   .controller('LoginCtrl', function($scope,$position) {
     $scope.visible = false;
   });

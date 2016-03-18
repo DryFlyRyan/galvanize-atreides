@@ -1,12 +1,12 @@
 'use strict';
 /**
  * @ngdoc function
- * @name galvanizeFlowMonitor.controller:UserCtrl
+ * @name atreides.controller:UserCtrl
  * @description
  * # UserCtrl
- * Controller of the galvanizeFlowMonitor
+ * Controller of the atreides
  */
-angular.module('galvanizeFlowMonitor')
+angular.module('atreides')
   .controller('UserCtrl',
   ['$scope', '$position', '$filter', '$stateParams', 'UserFinderFactory', 'CampusFinderFactory', function($scope, $position, $filter, $stateParams, UserFinderFactory, CampusFinderFactory) {
     if ($stateParams.userID) {

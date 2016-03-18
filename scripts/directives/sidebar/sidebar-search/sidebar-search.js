@@ -7,7 +7,7 @@
  * # adminPosHeader
  */
 
-angular.module('galvanizeFlowMonitor')
+angular.module('atreides')
   .directive('sidebarSearch',function() {
     return {
       templateUrl:'scripts/directives/sidebar/sidebar-search/sidebar-search.html',
