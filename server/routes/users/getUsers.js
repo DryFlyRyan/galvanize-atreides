@@ -3,12 +3,27 @@ var express = require('express');
 var router = express.Router();
 var unirest = require('unirest');
 
-var RequestUsers = unirest.get('https://members.galvanize.com/api/v2/users?limit=400')
+var RequestStarterUsers = unirest.get('https://members.galvanize.com/api/v2/users?limit=500');
+
+var RequestAllUsers = unirest.get('https://members.galvanize.com/api/v2/users?limit=10000');
 
 var RequestMe = unirest.get('https://members.galvanize.com/api/v2/me')
 
-router.get('/', function(req, res){
-  RequestUsers
+router.get('/galvanize-starters', function(req, res){
+  RequestStarterUsers
+    .header({'Accept': 'application/json'})
+    .auth({user: process.env.GALVANIZE_USER,                      pass: process.env.GALVANIZE_TOKEN,
+    sendImmediately: true
+           })
+    .end(function(response){
+      console.log(response);
+    var filteredResults = filterGalvanizeEmployeesFromUsers(response.body.results)
+    res.send(filteredResults)
+  })
+})
+
+router.get('/galvanize-all', function(req, res){
+  RequestAllUsers
     .header({'Accept': 'application/json'})
     .auth({user: process.env.GALVANIZE_USER,                      pass: process.env.GALVANIZE_TOKEN,
     sendImmediately: true

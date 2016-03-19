@@ -14,16 +14,27 @@ angular.module('atreides')
     }
     $scope.campusFilter = {};
     $scope.searchCampusID = $scope.campusFilter.id;
+    $scope.users;
     $scope.getUsers = function() {
       var usersArray = [];
-      var promise = UserFinderFactory.getUsers();
-      promise.then(function(users){
-        users.data.forEach(function(element){
+      var starter = UserFinderFactory.getStarterUsers();
+      var all = UserFinderFactory.getAllUsers();
+      starter.then(function(starterUsers){
+        starterUsers.data.forEach(function(element){
           element.homeCampusID = element.campuses[0].id;
           usersArray.push(element);
         })
         $scope.users = usersArray;
-        // console.log($scope.users);
+        return all;
+      })
+      .then(function(allUsers){
+        usersArray = [];
+        allUsers.data.forEach(function(element){
+          element.homeCampusID = element.campuses[0].id;
+          usersArray.push(element)
+        })
+        $scope.users = usersArray;
+        $scope.$apply;
       })
     }
     $scope.getMe = function() {

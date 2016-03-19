@@ -25,6 +25,36 @@ angular.module('atreides')
       }
     }
 
+    $scope.scheduleDays = [
+      {day: "Monday"},
+      {day: "Tuesday"},
+      {day: "Wednesday"},
+      {day: "Thursday"},
+      {day: "Friday"},
+      {day: "Saturday"},
+      {day: "Sunday"}
+    ]
+    $scope.hoursArray = [];
+    $scope.minutesArray = [];
+    $scope.createTime = function() {
+      for (var i = 0; i < 24; i++) {
+        var newHour = {
+          hour: i
+        }
+        $scope.hoursArray.push(newHour);
+      }
+      for (var j = 0; j < 4; j++) {
+        var newFifteen = {
+          minute: i * 15
+        }
+        $scope.minutesArray.push(newFifteen);
+      }
+    }
+
+    // $scope.editTime = function() {
+    //   if
+    // }
+
     $scope.toggleSchedule = function(){
       if ($scope.showSchedule) {
         $scope.showSchedule = false;
@@ -32,6 +62,10 @@ angular.module('atreides')
         $scope.showSchedule = true;
       }
     };
+
+    $scope.scheduleFilter = function(day) {
+      $scope.scheduleFilterDay = day;
+    }
 
     $scope.showSchedule = true;
 
@@ -68,6 +102,9 @@ angular.module('atreides')
         var hue = this.percentageRemaining() * 1.2;
         return 'hsla('+ hue + ', 80%, 45%,0.6)'
       }
+      element.schedule.forEach(function(timeElement) {
+        timeElement.editing = false;
+      })
       return element;
     }
 

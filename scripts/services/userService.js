@@ -2,8 +2,11 @@ angular.module('atreides')
   .factory('UserFinderFactory',
   function($http) {
   return {
-    getUsers: function() {
-      return $http.get('./api/v1/users/')
+    getStarterUsers: function() {
+      return $http.get('./api/v1/users/galvanize-starters')
+    },
+    getAllUsers: function() {
+      return $http.get('./api/v1/users/galvanize-all')
     },
     getUser: function(userID) {
       return $http.get('./api/v1/users/' + userID)
