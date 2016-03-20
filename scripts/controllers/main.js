@@ -25,7 +25,7 @@ angular.module('atreides')
       }
     }
 
-    $scope.scheduleDays = [
+    $scope.dayArray = [
       {day: "Monday"},
       {day: "Tuesday"},
       {day: "Wednesday"},
@@ -45,12 +45,45 @@ angular.module('atreides')
       }
       for (var j = 0; j < 4; j++) {
         var newFifteen = {
-          minute: i * 15
+          minute: j * 15
         }
         $scope.minutesArray.push(newFifteen);
       }
     }
+    $scope.createTime();
 
+    $scope.addSchedule = false;
+    $scope.addScheduleToggle = function() {
+      if (!$scope.addSchedule) {
+        $scope.addSchedule = true;
+      } else {
+        $scope.addSchedule = false;
+      }
+    }
+
+    $scope.addDay = "";
+    $scope.addHourStart = "";
+    $scope.addMinuteStart = "";
+    $scope.addHourEnd = "";
+    $scope.addMinuteEnd = "";
+
+    $scope.saveScheduleAddition = function(tap, newSchedule) {
+      console.log(newSchedule);
+      var newScheduleTime = {
+        day: newSchedule.day.day,
+        open: {
+          hour: newSchedule.open.hour.hour,
+          minute: newSchedule.open.minute.minute
+        },
+        close: {
+          hour: newSchedule.close.hour.hour,
+          minute: newSchedule.close.minute.minute
+        }
+      };
+      // console.log(tap.addDay);
+      console.log(newScheduleTime);
+      tap.schedule.push(newScheduleTime);
+    }
     // $scope.editTime = function() {
     //   if
     // }
@@ -71,21 +104,7 @@ angular.module('atreides')
 
     $scope.formatTap = function(element) {
       element.currentDate = new Date();
-      element.findTimes = function() {
-       var day = $filter('date')(this.currentDate, "EEEE")
-       var open;
-       var close;
-       var timeArray = []
-       this.schedule.forEach(function(element) {
-         if (day == element.day) {
-           open = element.open;
-           close = element.close;
-           timeArray.push({openTime: open, closeTime: close});
-         }
-       })
-       this.times = timeArray;
-      }
-      element.findTimes();
+      element.currentDay = $filter('date')(element.currentDate, "EEEE")
       element.flowRate = function() {
        return this.volumeRead / this.dateSinceTapped;
       }
@@ -102,10 +121,19 @@ angular.module('atreides')
         var hue = this.percentageRemaining() * 1.2;
         return 'hsla('+ hue + ', 80%, 45%,0.6)'
       }
-      element.schedule.forEach(function(timeElement) {
-        timeElement.editing = false;
-      })
+      $scope.formatSchedule(element);
+
       return element;
+    }
+
+    $scope.formatSchedule = function(tap) {
+      tap.schedule.forEach(function(element) {
+        if (!element.open && !element.close) {
+          element.open = "CLOSED";
+          element.close = "CLOSED";
+        }
+        element.editing = false;
+      })
     }
 
     $scope.getTaps = function() {

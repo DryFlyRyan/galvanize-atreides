@@ -19,33 +19,69 @@ var taps = [{
   [
     {
       day: "Monday",
-      open: "2:30 PM",
-      close: "6:00 PM"
+      open: {
+        hour: 14,
+        minute: 30
+      },
+      close: {
+        hour: 18,
+        minute: 0
+      }
     },
     {
       day: "Tuesday",
-      open: "10:30 AM",
-      close: "12:45 PM"
+      open: {
+        hour: 14,
+        minute: 30
+      },
+      close: {
+        hour: 18,
+        minute: 0
+      }
     },
     {
       day: "Tuesday",
-      open: "2:30 PM",
-      close: "6:00 PM"
+      open: {
+        hour: 14,
+        minute: 30
+      },
+      close: {
+        hour: 18,
+        minute: 0
+      }
     },
     {
       day: "Wednesday",
-      open: "2:30 PM",
-      close: "6:00 PM"
+      open: {
+        hour: 14,
+        minute: 30
+      },
+      close: {
+        hour: 18,
+        minute: 0
+      }
     },
     {
       day: "Thursday",
-      open: "2:30 PM",
-      close: "6:00 PM"
+      open: {
+        hour: 14,
+        minute: 30
+      },
+      close: {
+        hour: 18,
+        minute: 0
+      }
     },
     {
       day: "Friday",
-      open: "2:30 PM",
-      close: "6:00 PM"
+      open: {
+        hour: 14,
+        minute: 30
+      },
+      close: {
+        hour: 18,
+        minute: 0
+      }
     },
     {
       day: "Saturday",
@@ -70,41 +106,76 @@ var taps = [{
   distributor: "JSON Distributing",
   size: "Quarter Barrel",
   dateSinceTapped: 4.5,
-  times: [],
   volume: 992,
   volumeRead: 553,
   schedule:
   [
     {
       day: "Monday",
-      open: "4:00 PM",
-      close: "6:00 PM"
+      open: {
+        hour: 16,
+        minute: 30
+      },
+      close: {
+        hour: 18,
+        minute: 0
+      }
     },
 
     {
       day: "Tuesday",
-      open: "4:00 PM",
-      close: "8:00 PM"
+      open: {
+        hour: 16,
+        minute: 30
+      },
+      close: {
+        hour: 18,
+        minute: 0
+      }
     },
     {
       day: "Wednesday",
-      open: "4:00 PM",
-      close: "8:00 PM"
+      open: {
+        hour: 16,
+        minute: 30
+      },
+      close: {
+        hour: 18,
+        minute: 0
+      }
     },
     {
       day: "Thursday",
-      open: "4:00 PM",
-      close: "8:00 PM"
+      open: {
+        hour: 16,
+        minute: 30
+      },
+      close: {
+        hour: 18,
+        minute: 0
+      }
     },
     {
       day: "Friday",
-      open: "4:00 PM",
-      close: "6:00 PM"
+      open: {
+        hour: 16,
+        minute: 30
+      },
+      close: {
+        hour: 18,
+        minute: 0
+      }
     },
     {
       day: "Saturday",
-      open: null,
-      close: null
+      open: {
+        hour: 13,
+        minute: 0
+      },
+      close: {
+        hour: 17,
+        minute: 0
+      }
     },
     {
       day: "Sunday",
