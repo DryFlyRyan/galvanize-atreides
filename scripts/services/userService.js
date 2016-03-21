@@ -8,6 +8,9 @@ angular.module('atreides')
     getAllUsers: function() {
       return $http.get('./api/v1/users/galvanize-all')
     },
+    getUsers: function() {
+      return $http.get('./api/v1/users')
+    },
     getUser: function(userID) {
       return $http.get('./api/v1/users/' + userID)
     },

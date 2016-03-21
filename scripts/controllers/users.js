@@ -15,6 +15,20 @@ angular.module('atreides')
     $scope.campusFilter = {};
     $scope.searchCampusID = $scope.campusFilter.id;
     $scope.users;
+
+    // $scope.getUsers = function() {
+    //   var promise = UserFinderFactory.getUsers();
+    //
+    //   promise.then(function(users){
+    //     console.log(users);
+    //     users.data.forEach(function(element){
+    //       element.homeCampusID = element.campuses[0].id;
+    //
+    //     })
+    //     $scope.users = users.data;
+    //   })
+    // }
+
     $scope.getUsers = function() {
       var usersArray = [];
       var starter = UserFinderFactory.getStarterUsers();
@@ -37,6 +51,7 @@ angular.module('atreides')
         $scope.$apply;
       })
     }
+
     $scope.getMe = function() {
       var promise = UserFinderFactory.getMe()
       promise.then(function(user){
