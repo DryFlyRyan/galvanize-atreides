@@ -12,7 +12,7 @@ router.get('/', function(req, res){
     sendImmediately: true
          })
     .end(function(response){
-      console.log(response);
+      // console.log(response);
       res.send(response.body.results)
     })
 })

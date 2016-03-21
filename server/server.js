@@ -9,6 +9,11 @@ var fs = require('fs');
 var cors = require('cors');
 var bodyParser = require('body-parser');
 var later = require('later');
+var update = require('./update')
+
+update.createUser;
+update.updateUsers();
+
 
 // Routes
 var apiConnection = '/api/v1';
@@ -35,6 +40,7 @@ app.use(apiConnection + '/devices', devices);
 app.use(apiConnection + '/campuses', campuses);
 app.use(apiConnection + '/users', users);
 app.use(apiConnection + '/beersearch', beerSearch);
+
 
 server.listen(port, function(){
   console.log("Server listening on ", port);

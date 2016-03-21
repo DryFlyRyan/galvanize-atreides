@@ -2,7 +2,6 @@ var express = require('express');
 var router = express.Router();
 
 var taps = [{
-  id: 123,
   name: "4th Floor Tap",
   campus: "Platte",
   campus_id: 25315,

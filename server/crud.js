@@ -3,7 +3,7 @@ var knex = require('./db/knex');
 var pg = require('pg');
 var config = {
   client: 'pg',
-  connection: process.env.DATABASE_URL || 'postgres://localhost/atreides',
+  connection: process.env.DATABASE_URL || 'postgres://localhost/atreides_test',
   ssl: true
 }
 
@@ -95,7 +95,8 @@ function createCampuses(galvanizeID) {
 
 module.exports = {
   users: {
-    requestUsers: requestUsers,
-
+    createUser              : createUser,
+    requestUsers            : requestUsers,
+    requestUserByGalvanizeID: requestUserByGalvanizeID
   }
 }
