@@ -93,4 +93,9 @@ function createCampuses(galvanizeID) {
 //
 
 
-module.exports;
+module.exports = {
+  users: {
+    requestUsers: requestUsers,
+
+  }
+}
