@@ -86,6 +86,12 @@ function createCampuses(galvanizeID) {
   }, 'id')
 }
 
+function requestCampuses() {
+  return campuses().select().then(function(campuses){
+    return campuses;
+  })
+}
+
 // Device Functions
 
 // Keg Functions
@@ -98,5 +104,9 @@ module.exports = {
     createUser              : createUser,
     requestUsers            : requestUsers,
     requestUserByGalvanizeID: requestUserByGalvanizeID
+  },
+  campuses: {
+    createCampuses          : createCampuses,
+    requestCampuses         : requestCampuses
   }
 }

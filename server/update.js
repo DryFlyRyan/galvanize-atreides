@@ -82,6 +82,9 @@ function updateUsers() {
 
 function addUser() {
   crud.users.createUser(34566)
+  .then(function(user){
+    console.log(user);
+  })
 }
 
 addUser();
@@ -90,5 +93,5 @@ addUser();
 
 module.exports = {
   updateUsers: updateUsers,
-  createUser : addUser
+  addUser : addUser
 }

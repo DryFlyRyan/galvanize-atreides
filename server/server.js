@@ -11,8 +11,6 @@ var bodyParser = require('body-parser');
 var later = require('later');
 var update = require('./update')
 
-update.createUser;
-update.updateUsers();
 
 
 // Routes
