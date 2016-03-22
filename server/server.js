@@ -12,7 +12,6 @@ var later = require('later');
 var update = require('./update')
 
 
-
 // Routes
 var apiConnection = '/api/v1';
 var taps = require('./routes/taps/getTaps');
@@ -30,6 +29,11 @@ app.use(express.static('.'));
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json());
+
+// Update Functions
+
+update.updateCampuses();
+update.updateUsers();
 
 //Public Routes
 

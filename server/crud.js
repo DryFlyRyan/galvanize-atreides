@@ -80,7 +80,7 @@ function deleteUserByGalvanizeID(id){
 
 // Campus Functions
 
-function createCampuses(galvanizeID) {
+function createCampus(galvanizeID) {
   return campuses().insert({
     galvanize_campus_id : galvanizeID
   }, 'id')
@@ -106,7 +106,7 @@ module.exports = {
     requestUserByGalvanizeID: requestUserByGalvanizeID
   },
   campuses: {
-    createCampuses          : createCampuses,
+    createCampus            : createCampus,
     requestCampuses         : requestCampuses
   }
 }
