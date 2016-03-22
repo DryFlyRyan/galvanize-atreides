@@ -9,7 +9,7 @@ var fs = require('fs');
 var cors = require('cors');
 var bodyParser = require('body-parser');
 var later = require('later');
-var update = require('./update')
+
 
 
 // Routes
@@ -19,6 +19,10 @@ var devices = require('./routes/devices/getDevices');
 var campuses = require('./routes/campuses/getCampuses');
 var users = require('./routes/users/getUsers');
 var beerSearch = require('./routes/beers/beerSearch');
+
+// Modules
+
+var update = require('./update')
 
 // Express Server
 var app = express();
