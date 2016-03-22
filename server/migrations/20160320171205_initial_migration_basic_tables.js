@@ -11,7 +11,7 @@ exports.up = function(knex, Promise) {
     return knex.schema.createTable('kegs', function(table){
       table.increments().primary().unsigned();
       table.integer('size_id').references('id').inTable('keg_size_table').onDelete('cascade');
-      table.integer('untapped_id');
+      table.integer('untappd_id');
     })
   }).then(function(){
     return knex.schema.createTable('user_permissions', function(table){
