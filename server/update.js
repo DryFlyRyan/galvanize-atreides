@@ -180,7 +180,7 @@ function updateUsers() {
     sendImmediately: true
   })
   .end(function(response){
-    var filteredUsers = filterGalvanizeEmployees(response.body.results);;
+    var filteredUsers = filterGalvanizeEmployees(response.body.results);
     getUsers().then(function(users){
       filteredUsers.forEach(function(element){
         compareUsers(element, users)

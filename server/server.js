@@ -36,8 +36,8 @@ app.use(bodyParser.json());
 
 // Update Functions
 
-update.updateCampuses();
-update.updateUsers();
+// update.updateCampuses();
+// update.updateUsers();
 
 //Public Routes
 

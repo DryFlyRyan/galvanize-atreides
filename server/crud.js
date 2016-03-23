@@ -1,11 +1,11 @@
-require('dotenv').load();
+// require('dotenv').load();
 var knex = require('./db/knex');
 var pg = require('pg');
-var config = {
-  client: 'pg',
-  connection: process.env.DATABASE_URL || 'postgres://localhost/atreides_test',
-  ssl: true
-}
+// var config = {
+//   client: 'pg',
+//   connection: 'postgres://localhost/atreides_test',
+//   ssl: true
+// }
 
 /* Table References */
 
@@ -53,6 +53,9 @@ var flowLogs = function() {
   return knex('flow_logs');
 };
 
+var deviceSchedules = function() {
+  return knex('device_schedules');
+}
 
 // User Functions
 
@@ -94,19 +97,67 @@ function requestCampuses() {
 
 // Device Functions
 
+function requestDevices() {
+  return devices().select().then(function(devices){
+    return devices;
+  })
+}
+
+function requestTapByDevices() {
+  return campuses().select().innerJoin('campus_devices', 'campuses.id', 'campus_devices.campus_id').innerJoin('devices', 'campus_devices.device_id', 'devices.id').innerJoin('purchased_kegs', 'devices.id', 'purchased_kegs.device_id').innerJoin('kegs', 'purchased_kegs.keg_id', 'kegs.id').innerJoin('keg_size_table', 'kegs.size_id', 'keg_size_table.id').then(function(taps){
+    return taps;
+  });
+}
+
+function getSchedule(element) {
+  return deviceSchedules().select().where({
+    device_id: element.device_id
+  }).then(function(schedule){
+    return schedule;
+  })
+}
+
 // Keg Functions
+
+function getCurrentKegByDeviceID(deviceID) {
+  return purchasedKegs().select(
+    ''
+  ).where({
+    device_id: deviceID,
+  }).whereNotNull('deactivated_at').then(function(keg){
+    return keg;
+  })
+}
+
+function getKeg(kegID) {
+
+}
 
 //
 
 
 module.exports = {
+  taps: {
+    requestTapByDevices     : requestTapByDevices
+  },
   users: {
-    createUser              : createUser,
-    requestUsers            : requestUsers,
-    requestUserByGalvanizeID: requestUserByGalvanizeID
+  createUser                : createUser,
+  requestUsers              : requestUsers,
+  requestUserByGalvanizeID  : requestUserByGalvanizeID
   },
   campuses: {
-    createCampus            : createCampus,
-    requestCampuses         : requestCampuses
+  createCampus              : createCampus,
+  requestCampuses           : requestCampuses
+  },
+  devices: {
+  requestDevices            : requestDevices
+
+  },
+  kegs: {
+    getCurrentKeg           : getCurrentKegByDeviceID,
+
+  },
+  schedules: {
+    getSchedule             : getSchedule
   }
 }

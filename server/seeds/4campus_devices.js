@@ -29,11 +29,13 @@ exports.seed = function(knex, Promise) {
        return Promise.all([
          knex('purchased_kegs').insert({
            keg_id: 1,
-           device_id: 1
+           device_id: 1,
+           deactivated_at: null
          }),
          knex('purchased_kegs').insert({
            keg_id: 2,
-           device_id: 2
+           device_id: 2,
+           deactivated_at: null
          }),
        ])
      })

@@ -3,11 +3,11 @@ exports.seed = function(knex, Promise) {
   return knex('keg_size_table').del().then(function(){
     return Promise.all([
       knex('keg_size_table').insert({
-        name: 'Quarter Barrel',
+        size_name: 'Quarter Barrel',
         volume: 992
       }),
       knex('keg_size_table').insert({
-        name: 'Half Barrel',
+        size_name: 'Half Barrel',
         volume: 1984
       }),
     ])
