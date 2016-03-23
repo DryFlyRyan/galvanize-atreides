@@ -105,6 +105,7 @@ angular.module('atreides')
     $scope.formatTap = function(element) {
       element.currentDate = new Date();
       element.currentDay = $filter('date')(element.currentDate, "EEEE")
+      element.currentHour = $filter('date')(element.currentDate, "H")
       element.flowRate = function() {
        return this.volumeRead / this.dateSinceTapped;
       }
@@ -184,6 +185,15 @@ angular.module('atreides')
 
         $scope.searchedBeers = beerArray;
         console.log($scope.searchedBeers);
+      })
+    }
+
+    $scope.searchBeer = function(tap) {
+      console.log(tap);
+      var promise = BeerSearchFactory.searchBeer(tap.untappd_id);
+      promise.then(function(response){
+        console.log(response.data.body.response.beer.beer_name);
+        tap.beer_name = response.data.body.response.beer.beer_name
       })
     }
 

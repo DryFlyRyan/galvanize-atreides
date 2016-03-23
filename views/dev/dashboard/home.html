@@ -20,16 +20,16 @@
 
           <div class="tap-body col-sm-12" >
             <div class="tap-title-container">
-              <a ui-sref="dashboard.taps({tapID: tap.id})"<p class="tap-headline-text">{{tap.name}}</p></a>
+              <p class="tap-headline-text">{{tap.device_name}}</p>
             </br>
-            <p class="tap-headline-text">{{tap.campus}}</p>
+            <p class="tap-headline-text">{{tap.campus_label}} {{tap.currentHour}}</p>
             </div>
             <div class="dashboard-content">
               <div class="col-sm-8 time-container" >
                 <div ng-repeat="time in tap.schedule | filter: tap.currentDay">
                   <div class="ng-hide" ng-show="time.close.hour">
-                    <div class="time-block time-block-open col-sm-10 col-sm-offset-1">
-                      <p class="col-sm-12 time-headline">Opening Time: {{time.open.hour}} :<span class="ng-hide" ng-show="time.open.minute > 0">{{time.open.minute}}</span>
+                    <div class="time-block time-block-open col-sm-10 col-sm-offset-1" >
+                      <p class="col-sm-12 time-headline" >Opening Time: {{time.open.hour}} :<span class="ng-hide" ng-show="time.open.minute > 0">{{time.open.minute}}</span>
                       <span class="ng-hide" ng-show="time.open.minute < 1">00</span></p>
                     </div>
                     <div class="time-block time-block-close col-sm-10 col-sm-offset-1">
@@ -54,7 +54,24 @@
 
               </div>
             </div>
+            <div class="details-button">
+              <a ng-click="tap.showDetails = !tap.showDetails">
+                <span class="ng-hide" ng-show="!tap.showDetails">Show Details <i class="fa fa-chevron-down"></i></span>
+                <span class="ng-hide" ng-show="tap.showDetails">Hide Details <i class="fa fa-chevron-up"></i></span>
+              </a>
+            </div>
+            <div class="details-window col-sm-12 ng-hide" ng-show="tap.showDetails">
+              <div class="col-sm-6">
+                <div class="col-sm-12" ng-init="searchBeer(tap)">
+                  <h5>Current Beer: {{tap.beer_name}}</h5>
+                  <h5>Date Tapped: {{tap.created_at | amCalendar}}</h5>
+                  <h5># of Beers Remaining: {{tap.pours}}</h5>
+                </div>
+              </div>
+              <div class="col-sm-6">
 
+              </div>
+            </div>
             <div class="btn-group-container col-sm-12">
               <div class="btn-container col-md-4 col-sm-12">
                 <a ui-sref="dashboard.beersearch({tapID: tap.id})" class="btn btn-primary dashboard-btn col-sm-12">Change Keg</a>
@@ -173,9 +190,7 @@
                      </div>
                    </div>
                    <button class="col-sm-10 col-sm-offset-1 btn btn-danger add-time" type="button" name="button" ng-click="addScheduleToggle()">Add New Time Period</button>
-                   $scope: {{$scope.addDay}}
-                   $tap: {{$tap.addDay}}
-                   none: {{addDay}}
+
                  </div>
               </div>
               <div class="modal-footer modal-override">

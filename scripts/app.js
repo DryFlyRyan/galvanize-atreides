@@ -12,6 +12,7 @@ angular.module('atreides', [
     'ui.router',
     'ui.bootstrap',
     'angular-loading-bar',
+    'angularMoment'
   ]).config(['$stateProvider','$urlRouterProvider','$ocLazyLoadProvider', '$locationProvider',function ($stateProvider,$urlRouterProvider,$ocLazyLoadProvider, $locationProvider) {
 
     // $locationProvider.html5Mode(true);
@@ -86,7 +87,7 @@ angular.module('atreides', [
                 $ocLazyLoad.load(
                   {
                     name:'angular-moment',
-                    files:['bower_components/aangular-moment/angular-momeont.js']
+                    files:['bower_components/angular-moment/angular-moment.js']
                   }
                 )
             },

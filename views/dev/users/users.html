@@ -30,8 +30,9 @@
       <div class="profile-container">
         <div class="profile-header">
           <a href="">
-            <img class="profile-photo ng-hide" ng-show="user.photo" src="{{user.photo}}" alt="Photo of {{user.first_name}} {{user.last_name}}"/>
-            <img class="profile-photo ng-hide" ng-show="!user.photo" src="/assets/logo.jpg" alt="Photo of {{user.first_name}} {{user.last_name}}" />
+            <img class="profile-photo ng-hide" ng-show="user.photo && user.id != 2855" src="{{user.photo}}" alt="Photo of {{user.first_name}} {{user.last_name}}"/>
+            <img class="profile-photo ng-hide" ng-show="!user.photo && user.id != 2855" src="/assets/logo.jpg" alt="Photo of {{user.first_name}} {{user.last_name}}" />
+            <img class="profile-photo ng-hide" ng-show="user.id == 2855" src="http://pix.iemoji.com/images/emoji/apple/ios-9/256/robot-face.png" alt="Photo of {{user.first_name}} {{user.last_name}}" style="border: 5px solid black;"/>
           </a>
         </div>
         <div class="profile-body">

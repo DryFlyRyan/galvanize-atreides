@@ -10,13 +10,16 @@
       <div class="profile-container">
         <div class="profile-header">
           <a href="">
-            <img class="profile-photo ng-hide" ng-show="user.photo" src="{{user.photo}}" alt="Photo of {{user.first_name}} {{user.last_name}}"/>
-            <img class="profile-photo ng-hide" ng-show="!user.photo" src="/assets/logo.jpg" alt="Photo of {{user.first_name}} {{user.last_name}}" />
+            <img class="profile-photo ng-hide" ng-show="user.photo && user.id != 2855" src="{{user.photo}}" alt="Photo of {{user.first_name}} {{user.last_name}}"/>
+            <img class="profile-photo ng-hide" ng-show="!user.photo && user.id != 2855" src="/assets/logo.jpg" alt="Photo of {{user.first_name}} {{user.last_name}}" />
+            <img class="profile-photo ng-hide" ng-show="user.id === 2855" ssrc="http://pix.iemoji.com/images/emoji/apple/ios-9/256/robot-face.png" alt="Photo of {{user.first_name}} {{user.last_name}}" />
+
           </a>
         </div>
         <div class="profile-body">
-          <a href=""><h4 class="name-link-text">{{user.first_name}} {{user.last_name}}</h4></a>
+          <a href=""><h4 class="name-link-text">{{user.first_name}} {{user.last_name}}  {{user.id}}</h4></a>
           <h4>{{user.companies[0].title}}</h4>
+          {{user.id}}
           <!-- <h5>Campuses:</h5> -->
           <!-- <div class="col-sm-12" ng-repeat="campus in user.campuses | orderBy: 'name'">
             <a><h5 class="campus-list-item">{{campus.name}}</h5></a>
