@@ -202,7 +202,7 @@ angular.module('atreides')
       var promise = BeerSearchFactory.searchBeer(tap.untappd_id);
       promise.then(function(response){
         console.log(response.data.body.response.beer.beer_name);
-        tap.beer_name = response.data.body.response.beer.beer_name
+        tap.currentBeer = response.data.body.response.beer
       })
     }
 

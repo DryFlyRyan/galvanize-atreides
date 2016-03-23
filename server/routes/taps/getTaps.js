@@ -30,6 +30,7 @@ function returnTaps() {
       var flowArray = devicesArray.map(findFlowData)
       return Promise.all(flowArray)
     }).then(function(results){
+      // console.log(results);
       devicesArray.forEach(function(device){
         results.forEach(function(flowData){
           console.log(flowData[0].device_id);
@@ -39,6 +40,7 @@ function returnTaps() {
           }
         })
       })
+      // console.log(devicesArray);
       resolve(devicesArray)
     })
   })

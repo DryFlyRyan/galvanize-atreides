@@ -23,6 +23,7 @@ var beerSearch = require('./routes/beers/beerSearch');
 // Modules
 
 var update = require('./update')
+var seed = require('./seed')
 
 // Express Server
 var app = express();
@@ -38,6 +39,20 @@ app.use(bodyParser.json());
 
 // update.updateCampuses();
 // update.updateUsers();
+
+// Seed Functions
+
+setInterval(function(){
+  var pulseData = Math.ceil(Math.random() * 24)
+  console.log("setting flow data");
+  seed.generateFlowData(1, 1, pulseData)
+}, 300000)
+
+setInterval(function(){
+  var pulseData = Math.ceil(Math.random() * 16)
+  console.log("setting flow data");
+  seed.generateFlowData(2, 2, pulseData)
+}, 300000)
 
 //Public Routes
 

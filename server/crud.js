@@ -1,11 +1,6 @@
 // require('dotenv').load();
 var knex = require('./db/knex');
 var pg = require('pg');
-// var config = {
-//   client: 'pg',
-//   connection: 'postgres://localhost/atreides_test',
-//   ssl: true
-// }
 
 /* Table References */
 
@@ -138,6 +133,14 @@ function getTotalPoursByKegID(element) {
   })
 }
 
+function createFlowLog(deviceID, kegID, pulseData) {
+  return flowLogs().insert({
+    device_id: deviceID,
+    purchased_keg_id: kegID,
+    pulse_data: pulseData
+  })
+}
+
 
 module.exports = {
   taps: {
@@ -164,6 +167,7 @@ module.exports = {
     getSchedule             : getSchedule
   },
   flow: {
-    getFlowByKeg            : getTotalPoursByKegID
+    getFlowByKeg            : getTotalPoursByKegID,
+    createFlowLog           : createFlowLog
   }
 }
