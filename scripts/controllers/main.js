@@ -141,6 +141,7 @@ angular.module('atreides')
       var tapArray = []
       var promise = TapFinderFactory.getTaps()
       promise.then(function(taps){
+        console.log(taps);
         taps.data.forEach(function(element){
           var formattedElement = $scope.formatTap(element);
           tapArray.push(element);
