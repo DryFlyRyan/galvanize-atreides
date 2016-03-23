@@ -24,4 +24,18 @@ router.post('/', function(req,res) {
     })
 })
 
+router.get('/:BID', function(req, res) {
+  var beerID = req.params.BID;
+  unirest.get('https://api.untappd.com/v4/beer/info/' + req.params.BID)
+    .header({'Accept': 'application/json'})
+    .query({
+      client_id: process.env.UNTAPPD_ID,
+      client_secret: process.env.UNTAPPD_SECRET
+    })
+    .end(function(response){
+      console.log(response);
+      res.send(response)
+    })
+})
+
 module.exports = router;
