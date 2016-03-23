@@ -1,5 +1,6 @@
 <div ng-init="getTaps()">
   <div class="page-splash-profile">
+    <h1 class="splash-title">GALVANIZE ATREIDES</h1>
   </div>
   <!-- <div class="ceiling">
 
@@ -7,9 +8,9 @@
   <!-- /.row -->
 
   <!-- /.panel -->
-    <div class="dashboard-container">
-      <div class="col-lg-8 col-sm-12 " ng-repeat="tap in taps">
-        <div class="tap-container col-sm-10 col-sm-offset-1">
+    <div class="dashboard-container"  ng-repeat="tap in taps">
+      <div class="col-lg-8 col-sm-12">
+        <div class="tap-container col-sm-12">
           <div class="tap-header col-sm-12">
             <a href="">
               <img class="profile-photo" src="/assets/logo.jpg" alt="Galvanize Logo" />
@@ -20,8 +21,7 @@
 
           <div class="tap-body col-sm-12" >
             <div class="tap-title-container">
-              <p class="tap-headline-text">{{tap.device_name}}</p>
-            </br>
+              <p class="tap-headline-text-top">{{tap.device_name}}</p>
             <p class="tap-headline-text">{{tap.campus_label}} {{tap.currentHour}}</p>
             </div>
             <div class="dashboard-content">
@@ -63,9 +63,9 @@
             <div class="details-window col-sm-12 ng-hide" ng-show="tap.showDetails">
               <div class="col-sm-6">
                 <div class="col-sm-12" ng-init="searchBeer(tap)">
-                  <h5>Current Beer: {{tap.beer_name}}</h5>
+                  <h5>Current Beer: <a href="https://untappd.com/search?q={{tap.beer_name}}" target="_blank">{{tap.beer_name}}</a></h5>
                   <h5>Date Tapped: {{tap.created_at | amCalendar}}</h5>
-                  <h5># of Beers Remaining: {{tap.pours}}</h5>
+                  <h5># of Beers Remaining: {{tap.volumeRemaining() / 12 | number: 0}}</h5>
                 </div>
               </div>
               <div class="col-sm-6">
@@ -221,7 +221,33 @@
             </div>
           </div>
         </div>
+      </div>
+      <div class="col-lg-4 col-sm-12">
+        <div class="chart-ceiling">
 
+        </div>
+        <div class="col-sm-12" id="line-chart" ng-controller="ChartCtrl">
+            <div class="panel panel-default">
+              <div class="chart-header">
+                <p class="chart-header-text">
+                  Daily Usage</p></div>
+                <div class="panel-body">
+                    <canvas id="line" class="chart chart-line chart-xl" data="line.data" labels="line.labels" legend="true"
+                    click="line.onClick" series="line.series"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12" id="line-chart" ng-controller="ChartCtrl">
+            <div class="panel panel-default">
+                <div class="chart-header">
+                  <p class="chart-header-text">
+                    Monthly Usage</p></div>
+                <div class="panel-body">
+                    <canvas id="line" class="chart chart-line chart-xl" data="line.data" labels="line.labels" legend="true"
+                    click="line.onClick" series="line.series"></canvas>
+                </div>
+            </div>
+        </div>
       </div>
     </div>
 </div>

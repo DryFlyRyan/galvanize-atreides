@@ -129,11 +129,14 @@ function getCurrentKegByDeviceID(deviceID) {
   })
 }
 
-function getKeg(kegID) {
-
+// Flow Log Functions
+function getTotalPoursByKegID(element) {
+  return purchasedKegs().select().where({
+    keg_id: element.keg_id
+  }).innerJoin('flow_logs', 'flow_logs.purchased_keg_id', 'purchased_kegs.keg_id').then(function(results){
+    return results;
+  })
 }
-
-//
 
 
 module.exports = {
@@ -159,5 +162,8 @@ module.exports = {
   },
   schedules: {
     getSchedule             : getSchedule
+  },
+  flow: {
+    getFlowByKeg            : getTotalPoursByKegID
   }
 }

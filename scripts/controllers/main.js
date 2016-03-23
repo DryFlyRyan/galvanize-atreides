@@ -109,12 +109,21 @@ angular.module('atreides')
       element.flowRate = function() {
        return this.volumeRead / this.dateSinceTapped;
       }
+      element.volumeRead = 0;
+      element.sumVolume= function(){
+        for(var i = 0; i < element.flowData.length; i++) {
+          element.volumeRead += element.flowData[i].pulse_data;
+        }
+      }
+      element.sumVolume();
       element.volumeRemaining = function() {
        return this.volume - this.volumeRead;
       }
+      element.volumeRemaining()
       element.timeUntilEmpty = function() {
        return this.volumeRemaining() / this.flowRate()
       }
+      element.timeUntilEmpty()
       element.percentageRemaining = function() {
         return (Math.round(this.volumeRemaining() / this.volume * 100));
       }

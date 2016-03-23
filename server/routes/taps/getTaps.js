@@ -17,29 +17,45 @@ function returnTaps() {
       return Promise.all(promiseArray);
     })
     .then(function(results){
-      console.log(results);
+      // console.log(results);
       devicesArray.forEach(function(device){
         results.forEach(function(schedule){
-          console.log(schedule[0].device_id);
           if (device.device_id === schedule[0].device_id) {
-            console.log(device);
             device.schedule = schedule[0].schedule;
             resultsArray.push(device);
           }
         })
       })
-
     }).then(function(){
-      console.log(resultsArray);
-      resolve(resultsArray)
+      var flowArray = devicesArray.map(findFlowData)
+      return Promise.all(flowArray)
+    }).then(function(results){
+      devicesArray.forEach(function(device){
+        results.forEach(function(flowData){
+          console.log(flowData[0].device_id);
+          if (device.device_id === flowData[0].device_id) {
+            device.flowData = flowData
+            console.log(device.flowData);
+          }
+        })
+      })
+      resolve(devicesArray)
     })
   })
 }
 
-function findSchedule(tapID){
+function findSchedule(element){
   return new Promise(function(resolve,reject){
-    crud.schedules.getSchedule(tapID).then(function(schedule){
+    crud.schedules.getSchedule(element).then(function(schedule){
       resolve(schedule);
+    })
+  })
+}
+
+function findFlowData(element){
+  return new Promise(function(resolve,reject){
+    crud.flow.getFlowByKeg(element).then(function(flowData){
+      resolve(flowData)
     })
   })
 }
@@ -55,7 +71,6 @@ router.get('/', function(req, res){
   console.log('root route hit');
   returnTaps()
   .then(function(taps){
-    console.log(taps);
     res.send(taps);
   })
 })
