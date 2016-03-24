@@ -25,6 +25,36 @@ angular.module('atreides')
       }
     }
 
+    $scope.isTapOpen = function(tap) {
+      var date = new Date();
+      var day = $filter('date')(element.currentDate, "EEEE")
+      var hour = $filter('date')(element.currentDate, "H")
+      var timesArray = [];
+      var earliest=23;
+      var openHour;
+      var closeHour;
+      for (var i = 0; i < tap.schedule.length; i++){
+        if (tap.schedule[i].day == day && tap.schedule[i].close.hour > hour) {
+          timesArray.push(tap.schedule[i])
+        }
+      }
+      if (timesArray.length > 1) {
+        for (var j = 0; j<timesArray.length; j++ ) {
+          if (timesArray[i].open.hour < earliest) {
+            earliest = timesArray.open.hour;
+            openHour = timesArray.open.hour;
+            closeHour = timesArray.close.hour;
+          }
+        }
+      }
+      if (hour >= openHour && hour < closeHour) {
+        $scope.tapOpen = true;
+      } else {
+        $scope.tapOpen = false;
+      }
+      console.log($scope.tapOpen);
+    }
+
     $scope.dayArray = [
       {day: "Monday"},
       {day: "Tuesday"},

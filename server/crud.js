@@ -134,10 +134,12 @@ function getTotalPoursByKegID(element) {
 }
 
 function createFlowLog(deviceID, kegID, pulseData) {
+  var now = new Date();
   return flowLogs().insert({
     device_id: deviceID,
     purchased_keg_id: kegID,
-    pulse_data: pulseData
+    pulse_data: pulseData,
+    created_at: now
   })
 }
 

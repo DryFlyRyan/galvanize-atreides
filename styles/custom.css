@@ -1,3 +1,9 @@
+.drop-shadow-right {
+  -webkit-box-shadow: 3px 3px 0px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 3px 3px 0px 0px rgba(0,0,0,0.75);
+  box-shadow: 3px 3px 0px 0px rgba(0,0,0,0.75);
+}
+
 /* UI Elements */
 
 .hidden {
@@ -27,6 +33,21 @@
   }
 }
 
+.permissions-select {
+  margin-top: 10px;
+}
+
+.button-container {
+  margin-top: 10px;
+}
+
+.details-window {
+  border: 1px solid rgb(90,90,90);
+  border-radius: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
 .field-box {
   position: absolute;
   width: 90%;
@@ -35,6 +56,11 @@
   left: 0;
   right: 0;
   margin: auto;
+}
+
+.beer-card {
+  background: rgb(221,221,221);
+  /*border: 1px solid rgb(90,90,90);*/
 }
 
 .calendar-container {
@@ -148,9 +174,16 @@
 .tap-header {
   width: 100%;
   height: 100px;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.5), #000);
   position: relative;
   text-align: center;
+}
+
+.tap-open {
+  background: rgb(93, 184, 91);
+}
+
+.tap-close {
+  background: rgb(217, 83, 80);
 }
 
 .tap-title-container {
@@ -255,14 +288,6 @@
   margin: 5px 0;
   padding: 10px;
   text-align: center;
-}
-
-.time-block-open {
-  background: #4CAF50;
-}
-
-.time-block-close {
-  background: #FF5722;
 }
 
 /* Campus Page */

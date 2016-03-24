@@ -46,7 +46,7 @@ setInterval(function(){
   var pulseData = Math.ceil(Math.random() * 24)
   console.log("setting flow data");
   seed.generateFlowData(1, 1, pulseData)
-}, 300000)
+}, 1800000)
 
 setInterval(function(){
   var pulseData = Math.ceil(Math.random() * 16)

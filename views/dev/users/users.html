@@ -63,17 +63,17 @@
           </div>
           <div class="modal-body">
              <div class="form-group">
-               <select class="permissions-select col-sm-5" ng-model="permChangeCampus" ng-options="campus as campus.label for campus in user.campuses">
+               <select class="form-control permissions-select" ng-model="permChangeCampus" ng-options="campus as campus.label for campus in user.campuses">
 
                </select>
-               <select class="permissions-select col-sm-5 col-sm-offset-2" ng-model="roleName">
+               <select class="form-control permissions-select" ng-model="roleName">
                  <option>Read Only</option>
                  <option>Manage Taps</option>
                  <option>Admin Access</option>
                </select>
              </div>
           </div>
-          <div class="modal-footer">
+          <div class="modal-footer button-container">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             <button type="button" class="btn btn-primary" data-dismiss="modal">Save changes</button>
           </div>
