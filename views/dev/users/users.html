@@ -27,8 +27,8 @@
 
   <div ng-repeat="user in users | filter: nameSearch | filter: titleSearch | filter: {homeCampusID: campusFilter.id}">
     <div class="col-lg-3 col-md-4 col-sm-6 profile-card">
-      <div class="profile-container">
-        <div class="profile-header">
+      <div class="card-container">
+        <div class="card-header">
           <a href="" data-toggle="modal" data-target="#user-permissions-modal-{{user.id}}">
             <img class="profile-photo ng-hide" ng-show="user.photo && user.id != 2855" src="{{user.photo}}" alt="Photo of {{user.first_name}} {{user.last_name}}"/>
             <img class="profile-photo ng-hide" ng-show="!user.photo && user.id != 2855" src="/assets/logo.jpg" alt="Photo of {{user.first_name}} {{user.last_name}}" />

@@ -76,15 +76,15 @@
               </div>
             </div>
             <div class="btn-group-container col-sm-12">
-              <div class="btn-container col-md-4 col-sm-12">
+              <div class="button-container col-md-4 col-sm-12">
                 <!-- <a ui-sref="dashboard.beersearch({tapID: tap.id})" class="btn btn-primary dashboard-btn drop-shadow-right col-sm-12">Change Keg</a> -->
 
                 <a data-toggle="modal" ng-click="toggleModal()" data-target="#keg-search-modal-{{tap.id}}" class="btn btn-primary drop-shadow-right dashboard-btn col-sm-12">Change Keg</a>
               </div>
-              <div class="btn-container col-md-4 col-sm-12">
+              <div class="button-container col-md-4 col-sm-12">
                 <a data-toggle="modal" data-target="#schedule-modal-{{tap.id}}" class="btn btn-primary dashboard-btn drop-shadow-right col-sm-12">Change Schedule</a>
               </div>
-              <div class="btn-container col-md-4 col-sm-12">
+              <div class="button-container col-md-4 col-sm-12">
                 <a data-toggle="modal" data-target="#override-confirmation-modal-{{tap.id}}" class="btn btn-primary dashboard-btn drop-shadow-right col-sm-12">Manual Override</a>
               </div>
             </div>
@@ -115,8 +115,8 @@
               </div>
               <div ng-repeat="beer in searchedBeers | filter: beerRefineSearch">
                 <div class="col-md-4 col-sm-6 profile-card ">
-                  <div class="profile-container">
-                    <div class="profile-header">
+                  <div class="card-container">
+                    <div class="card-header">
                       <a href="">
                         <img class="profile-photo"  src="{{beer.brewery_label}}" alt="Photo of {{beer.brewery_name}}"/>
                       </a>

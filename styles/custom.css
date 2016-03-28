@@ -1,14 +1,28 @@
+/* Effects */
+
 .drop-shadow-right {
   -webkit-box-shadow: 3px 3px 0px 0px rgba(0,0,0,0.75);
   -moz-box-shadow: 3px 3px 0px 0px rgba(0,0,0,0.75);
   box-shadow: 3px 3px 0px 0px rgba(0,0,0,0.75);
 }
 
-/* UI Elements */
-
 .hidden {
   display: none;
 }
+
+.ceiling {
+  padding-top: 30px;
+}
+
+.chart-ceiling {
+  padding-top: 50px;
+}
+
+/* UI ELEMENTS */
+
+/* Ceilings and Layouts*/
+
+/* Search and Filter Styling */
 
 .filter-block {
     background: linear-gradient(to bottom, rgba(0,0,0,0.5), #000);
@@ -33,21 +47,6 @@
   }
 }
 
-.permissions-select {
-  margin-top: 10px;
-}
-
-.button-container {
-  margin-top: 10px;
-}
-
-.details-window {
-  border: 1px solid rgb(90,90,90);
-  border-radius: 5px;
-  margin-top: 5px;
-  margin-bottom: 5px;
-}
-
 .field-box {
   position: absolute;
   width: 90%;
@@ -58,69 +57,8 @@
   margin: auto;
 }
 
-.beer-card {
-  background: rgb(221,221,221);
-  /*border: 1px solid rgb(90,90,90);*/
-}
-
-.calendar-container {
-  width: 100%;
-  position: relative;
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-}
-
-
-.calendar-btn {
-  width: 12%;
-  box-sizing: border-box;
-  border-radius: 0px;
-  color: rgb(90,90,90);
-  background: white;
-  border: 1px solid rgb(90,90,90);
-}
-
-.calendar-btn:active {
-  background: rgb(40, 96, 144);
-}
-
-.schedule-header {
-  position: relative;
-  display: inline-block;
-  text-align: center;
-  font-size: 12pt;
-  margin-top: 15px;
-  color: rgb(90,90,90);
-  /*border-bottom: 1px solid rgb(90,90,90);*/
-}
-
-.schedule-box {
-  text-align: center;
-  font-size: 12pt;
-  color: rgb(90,90,90);
-}
-
-.time-cell {
-  margin-top: 2px;
-  margin-bottom: 2px;
-  border-top: 1px solid rgb(90,90,90);
-}
-
-.crud-button {
-  margin-left: 3px;
-  margin-right: 3px;
-}
-
-.add-time {
+.permissions-select {
   margin-top: 10px;
-  margin-bottom: 15px;
-}
-
-.modal-override {
-  border: none;
 }
 
 /* Sidebar */
@@ -138,7 +76,6 @@
   border-radius: 50%;
   margin-left: 10px;
   margin-bottom: 10px;
-
   display: inline-block;
 }
 
@@ -148,149 +85,22 @@
   margin-left: 10px;
 }
 
-/* Dashboard */
+/* UI Overrides*/
 
-.dashboard-container {
-  width: 100%;
-  position: relative;
+.sidebar {
+  height: 100vh;
+  background: -webkit-linear-gradient(top, #333, #555) !important;
 }
 
-/*.page-splash-campuses {
-  min-height: 150px;
-  background: url("https://members.galvanize.com/static/img/galvanize-community.jpg") 50% 50% no-repeat;
-  text-align: center;
-  position: relative;
-}*/
-
-.tap-container {
-  display: inline-block;
-  background-color: white;
-  box-sizing: border-box;
-  padding:0;
-  margin-top: 50px;
-
+.nav>li>a {
+  color: rgb(255,255,255);
 }
 
-.tap-header {
-  width: 100%;
-  height: 100px;
-  position: relative;
-  text-align: center;
+.nav>li>a:hover {
+  background: rgba(255,255,255,0.2) !important;
 }
 
-.tap-open {
-  background: rgb(93, 184, 91);
-}
-
-.tap-close {
-  background: rgb(217, 83, 80);
-}
-
-.tap-title-container {
-  margin-top: 30px;
-  text-align: center;
-}
-
-.tap-headline-text {
-  /*color: white;*/
-  font-size: 16pt;
-  display: inline-block;
-  margin: auto;
-  margin-top: 0 !important;
-  margin-bottom: 0 !important;
-}
-
-.tap-headline-text-top {
-  font-size: 20pt;
-}
-
-.tap-body {
-  /*position: relative;*/
-  padding-top: 30px;
-  width: 100%;
-  /*height: 500px;*/
-  background: white;
-  margin-bottom: 50px;
-}
-
-.dashboard-content {
-  margin-top: 10px;
-  display: flex;
-  flex-flow: row;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-}
-
-.time-container {
-  position: relative;
-  display: inline-block;
-}
-
-.time-headline {
-  display: inline-block;
-  font-size: 16pt;
-}
-
-.keg-level-indicator {
-  position: relative;
-  display: inline-block;
-}
-
-.keg-cover-container {
-  position: relative;
-  display: inline-block;
-  margin: 0 !important;
-  padding: 0 !important;
-  /*background: blue;*/
-}
-
-.keg-img {
-  display: inline-block;
-  width: 100%;
-  height: auto;
-  /*position: absolute;
-  top:0;
-  left:0;*/
-  background: transparent;
-  z-index: 99;
-}
-
-.keg-fill {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background: #1B5E20;
-}
-
-.btn-group-container {
-  /*margin-top: 15px;*/
-}
-
-.btn-container {
-  margin-top: 15px;
-  /*margin-bottom: 15px;*/
-}
-
-@media screen and (max-width: 991px) {
-  .btn-container {
-    margin-top: 5px;
-    margin-bottom: 5px;
-  }
-}
-
-.dashboard-btn {
-  border-radius: 0;
-}
-
-.time-block {
-  margin: 5px 0;
-  padding: 10px;
-  text-align: center;
-}
-
-/* Campus Page */
+/* SPLASH STYLING */
 
 .page-splash-campuses {
   min-height: 150px;
@@ -309,52 +119,6 @@
   position: absolute;
   bottom: 10px;
   color: white;
-}
-
-.campus-container {
-  position: relative;
-  background-color: white;
-  box-sizing: border-box;
-  /*border: 1px solid rgb(90,90,90);*/
-  /*border-radius: 6px;*/
-}
-
-.campus-header {
-  width: 100%;
-  height: 100px;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.5), #000);
-  position: relative;
-}
-
-.campus-body {
-  width: 100%;
-  height: 150px;
-  text-align: center;
-}
-
-
-.campus-photo {
-  position: absolute;
-  bottom: -35px;
-  left: 0;
-  right: 0;
-  margin-left: auto;
-  margin-right: auto;
-  height: 70px;
-  width: 70px;
-  border: 5px solid white;
-  border-radius: 6px;
-}
-
-.campus-card {
-  margin-bottom: 30px;
-}
-
-
-/* Users Page*/
-
-.page-sub-wrapper {
-  padding: 0 !important;
 }
 
 .page-splash-profile {
@@ -376,27 +140,66 @@
   color: white;
 }
 
-.ceiling {
-  padding-top: 30px;
+/* CARD STYLING */
+
+/* Top Level Containers*/
+
+.dashboard-container {
+  width: 100%;
+  position: relative;
 }
 
-.chart-ceiling {
-  padding-top: 50px;
-}
-
-.profile-container {
+.card-container {
   position: relative;
   background-color: white;
   box-sizing: border-box;
-  /*border: 1px solid rgb(90,90,90);*/
-  /*border-radius: 6px;*/
 }
 
-.profile-header {
+.tap-container {
+  display: inline-block;
+  background-color: white;
+  box-sizing: border-box;
+  padding:0;
+  margin-top: 50px;
+}
+
+/* Inner Containers */
+
+.details-window {
+  border: 1px solid rgb(90,90,90);
+  border-radius: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.tap-title-container {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.time-container {
+  position: relative;
+  display: inline-block;
+}
+
+.card-header {
   width: 100%;
   height: 100px;
   background: linear-gradient(to bottom, rgba(0,0,0,0.5), #000);
   position: relative;
+}
+
+.chart-header-text {
+  margin-left: 15px;
+  font-size: 12pt;
+  color: white;
+}
+
+.tap-header {
+  width: 100%;
+  height: 100px;
+  position: relative;
+  text-align: center;
 }
 
 .chart-header {
@@ -411,11 +214,10 @@
   align-items: center;
 }
 
-.chart-header-text {
-  margin-left: 15px;
-  font-size: 12pt;
-
-  color: white;
+.campus-body {
+  width: 100%;
+  height: 150px;
+  text-align: center;
 }
 
 .profile-body {
@@ -428,22 +230,11 @@
   padding-top: 40px;
 }
 
-.profile-photo {
-  position: absolute;
-  bottom: -35px;
-  left: 0;
-  right: 0;
-  margin-left: auto;
-  margin-right: auto;
-  height: 70px;
-  width: 70px;
-  border: 5px solid white;
-  border-radius: 6px;
-  z-index: 99;
-}
-
-.profile-card {
-  margin-bottom: 30px;
+.tap-body {
+  padding-top: 30px;
+  width: 100%;
+  background: white;
+  margin-bottom: 50px;
 }
 
 .profile-location-box {
@@ -461,19 +252,201 @@
   vertical-align: middle;
 }
 
-
-
-/* Style Overrides */
-
-.sidebar {
-  height: 100vh;
-  background: -webkit-linear-gradient(top, #333, #555) !important;
+.dashboard-content {
+  margin-top: 10px;
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
 }
 
-.nav>li>a {
-  color: rgb(255,255,255);
+/* Card Specific Styling */
+
+.beer-card {
+  background: rgb(221,221,221);
 }
 
-.nav>li>a:hover {
-  background: rgba(255,255,255,0.2) !important;
+.tap-headline-text {
+  /*color: white;*/
+  font-size: 16pt;
+  display: inline-block;
+  margin: auto;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.tap-headline-text-top {
+  font-size: 20pt;
+}
+
+.tap-open {
+  background: rgb(93, 184, 91);
+}
+
+.tap-close {
+  background: rgb(217, 83, 80);
+}
+
+.time-headline {
+  display: inline-block;
+  font-size: 16pt;
+}
+
+.campus-card {
+  margin-bottom: 30px;
+}
+
+.profile-card {
+  margin-bottom: 30px;
+}
+
+.page-sub-wrapper {
+  padding: 0 !important;
+}
+
+/* Keg Indicator Styling */
+
+.keg-cover-container {
+  position: relative;
+  display: inline-block;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.keg-level-indicator {
+  position: relative;
+  display: inline-block;
+}
+
+.keg-img {
+  display: inline-block;
+  width: 100%;
+  height: auto;
+  background: transparent;
+  z-index: 99;
+}
+
+.keg-fill {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #1B5E20;
+}
+
+.time-block {
+  margin: 5px 0;
+  padding: 10px;
+  text-align: center;
+}
+
+/* Button Styling */
+
+.button-container {
+  margin-top: 15px;
+}
+
+@media screen and (max-width: 991px) {
+  .button-container {
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+}
+
+.dashboard-btn {
+  border-radius: 0;
+}
+
+/* Card Photos */
+
+.campus-photo {
+  position: absolute;
+  bottom: -35px;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  height: 70px;
+  width: 70px;
+  border: 5px solid white;
+  border-radius: 6px;
+}
+
+.profile-photo {
+  position: absolute;
+  bottom: -35px;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  height: 70px;
+  width: 70px;
+  border: 5px solid white;
+  border-radius: 6px;
+  z-index: 99;
+}
+
+/* MODALS */
+
+/* Modal Containers */
+
+.calendar-container {
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+.schedule-header {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  font-size: 12pt;
+  margin-top: 15px;
+  color: rgb(90,90,90);
+}
+
+.schedule-box {
+  text-align: center;
+  font-size: 12pt;
+  color: rgb(90,90,90);
+}
+
+/* Modal Button Styling */
+
+.calendar-btn {
+  width: 12%;
+  box-sizing: border-box;
+  border-radius: 0px;
+  color: rgb(90,90,90);
+  background: white;
+  border: 1px solid rgb(90,90,90);
+}
+
+.calendar-btn:active {
+  background: rgb(40, 96, 144);
+}
+
+.time-cell {
+  margin-top: 2px;
+  margin-bottom: 2px;
+  border-top: 1px solid rgb(90,90,90);
+}
+
+.crud-button {
+  margin-left: 3px;
+  margin-right: 3px;
+}
+
+.add-time {
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+
+.modal-override {
+  border: none;
 }
