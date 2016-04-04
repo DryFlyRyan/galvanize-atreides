@@ -79,7 +79,7 @@
               <div class="button-container col-md-4 col-sm-12">
                 <!-- <a ui-sref="dashboard.beersearch({tapID: tap.id})" class="btn btn-primary dashboard-btn drop-shadow-right col-sm-12">Change Keg</a> -->
 
-                <a data-toggle="modal" ng-click="toggleModal()" data-target="#keg-search-modal-{{tap.id}}" class="btn btn-primary drop-shadow-right dashboard-btn col-sm-12">Change Keg</a>
+                <a data-toggle="modal" ng-click="openBeerSearch(tap,'lg')" data-target="#keg-search-modal-{{tap.id}}" class="btn btn-primary drop-shadow-right dashboard-btn col-sm-12">Change Keg</a>
               </div>
               <div class="button-container col-md-4 col-sm-12">
                 <a data-toggle="modal" data-target="#schedule-modal-{{tap.id}}" class="btn btn-primary dashboard-btn drop-shadow-right col-sm-12">Change Schedule</a>
@@ -98,7 +98,6 @@
             <div class="modal-content">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h4 class="modal-title" id="keg-search-modal-{{tap.id}}-label">Change Keg</h4>
               </div>
               <div class="modal-body">
                 <div class="filter-block">
@@ -113,34 +112,30 @@
                   </div>
                 </div>
               </div>
+
+              <!-- Beer Results Page -->
+
               <div ng-repeat="beer in searchedBeers | filter: beerRefineSearch">
-                <div class="col-md-4 col-sm-6 profile-card ">
-                  <div class="card-container">
-                    <div class="card-header">
-                      <a href="">
-                        <img class="profile-photo"  src="{{beer.brewery_label}}" alt="Photo of {{beer.brewery_name}}"/>
-                      </a>
-                    </div>
-                    <div class="profile-body beer-card">
+                <a>
+                  <div class="col-md-4 col-sm-6 profile-card ">
+                    <div class="card-container">
+                      <div class="card-header">
+                        <a href="">
+                          <img class="profile-photo"  src="{{beer.brewery_label}}" alt="Photo of {{beer.brewery_name}}"/>
+                        </a>
+                      </div>
+                      <div class="profile-body beer-card">
 
-                      <a href=""><h4 class="name-link-text">{{beer.beer_name}}</h4></a>
-                      <h4>{{beer.brewery_name}}</h4>
-
-
-
-                      <!-- <div class="profile-location-box">
-                        <div class="profile-location-box-fill">
-                          <h4 class="profile-location-text"><i class="fa fa-map-marker"></i> {{user.campuses[0].label}}</h4>
-                        </div>
-                      </div> -->
+                        <a href=""><h4 class="name-link-text">{{beer.beer_name}}</h4></a>
+                        <h4>{{beer.brewery_name}}</h4>
+                      </div>
                     </div>
                   </div>
-                </div>
+                </a>
               </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button"
-                data-dismiss="modal" ui-sref="dashboard.beersearch({tapID: tap.id, searchQuery: beerSearchQuery})" class="btn btn-primary" data-dismiss="modal"  ng-click="toggleModal()">Search</button>
+
+              <div class="">
+
               </div>
             </div>
           </div>

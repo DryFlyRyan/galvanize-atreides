@@ -8,14 +8,12 @@
  * Main module of the application.
  */
 angular.module('atreides', [
+    'ui.bootstrap',
     'oc.lazyLoad',
     'ui.router',
-    'ui.bootstrap',
     'angular-loading-bar',
     'angularMoment'
-  ]).config(['$stateProvider','$urlRouterProvider','$ocLazyLoadProvider', '$locationProvider',function ($stateProvider,$urlRouterProvider,$ocLazyLoadProvider, $locationProvider) {
-
-    // $locationProvider.html5Mode(true);
+  ]).config(['$stateProvider','$urlRouterProvider','$ocLazyLoadProvider', '$locationProvider', function ($stateProvider,$urlRouterProvider,$ocLazyLoadProvider, $locationProvider) {
 
     $ocLazyLoadProvider.config({
       debug:false,

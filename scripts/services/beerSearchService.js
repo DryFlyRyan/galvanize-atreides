@@ -1,6 +1,6 @@
 angular.module('atreides')
-  .factory('BeerSearchFactory',
-  function($http) {
+  .factory('BeerSearchFactory', ['$modal', '$http',
+  function($modal, $http) {
   return {
     searchBeers: function(searchQuery) {
       return $http.post('./api/v1/beersearch', {search: searchQuery})
@@ -8,8 +8,15 @@ angular.module('atreides')
     searchBeer: function(BID) {
       return $http.get('./api/v1/beersearch/' + BID)
     },
-    test: function() {
-      return "Test String"
+    openBeerSearchModal: function(size) {
+      var modalInstance = $modal.open({
+        animation: true,
+        templateUrl: 'views/dev/modals/beerSearch.html',
+        controller: 'ModalInstanceCtrl',
+        size: size
+      });
+
+      return modalInstance;
     }
     }
-  });
+  }]);

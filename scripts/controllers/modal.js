@@ -1,12 +1,19 @@
-angular.module('atreides').controller('ModalCtrl', function ($scope, $uibModal, $log) {
+'use strict';
+/**
+ * @ngdoc function
+ * @name atreides.controller:ModalCtrl
+ * @description
+ * # OntapCtrl
+ * Controller of the atreides application
+ */
 
-  $scope.items = ['item1', 'item2', 'item3'];
+angular.module('atreides').controller('ModalCtrl', ['$scope', '$modal', function ($scope, $modal) {
 
   $scope.animationsEnabled = true;
 
   $scope.open = function (size) {
 
-    var modalInstance = $uibModal.open({
+    var modalInstance = $modal.open({
       animation: $scope.animationsEnabled,
       templateUrl: 'myModalContent.html',
       controller: 'ModalInstanceCtrl',
@@ -20,32 +27,25 @@ angular.module('atreides').controller('ModalCtrl', function ($scope, $uibModal, 
 
     modalInstance.result.then(function (selectedItem) {
       $scope.selected = selectedItem;
-    }, function () {
-      $log.info('Modal dismissed at: ' + new Date());
-    });
+    })
   };
 
   $scope.toggleAnimation = function () {
     $scope.animationsEnabled = !$scope.animationsEnabled;
   };
 
-});
+}]);
 
-// Please note that $uibModalInstance represents a modal window (instance) dependency.
-// It is not the same as the $uibModal service used above.
+// Please note that $modalInstance represents a modal window (instance) dependency.
+// It is not the same as the $modal service used above.
 
-angular.module('atreides').controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, items) {
-
-  $scope.items = items;
-  $scope.selected = {
-    item: $scope.items[0]
-  };
+angular.module('atreides').controller('ModalInstanceCtrl', ['$scope', '$modalInstance', function ($scope, $modalInstance) {
 
   $scope.ok = function () {
-    $uibModalInstance.close($scope.selected.item);
+    $modalInstance.close($scope.selected.item);
   };
 
   $scope.cancel = function () {
-    $uibModalInstance.dismiss('cancel');
+    $modalInstance.dismiss('cancel');
   };
-});
+}]);

@@ -1,0 +1,47 @@
+<div class="modal fade" id="keg-search-modal-{{tap.id}}" tabindex="-1" aria-labeledby="modal-{{tap.id}}-label" aria-hidden="true" style="display:none;" ng-class="{'hidden': !showKegFinderModal}">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      </div>
+      <div class="modal-body">
+        <div class="filter-block">
+          <div class="col-md-4 col-sm-10 field-container">
+            <input class="form-control field-box input-box" ng-model="beerSearchQuery" placeholder="Search for a Beer" value="beerSearchQuery">
+          </div>
+          <div class="col-md-2 col-sm-2 field-container">
+          <a class="form-control field-box btn btn-primary btn-large" ng-click="searchBeers(beerSearchQuery)">SEARCH</a>
+          </div>
+          <div class="col-md-4 col-md-offset-2 col-sm-12 field-container">
+            <input class="form-control field-box input-box" ng-model="beerRefineSearch" placeholder="Refine Search">
+          </div>
+        </div>
+      </div>
+
+      <!-- Beer Results Page -->
+
+      <div ng-repeat="beer in searchedBeers | filter: beerRefineSearch">
+        <a>
+          <div class="col-md-4 col-sm-6 profile-card ">
+            <div class="card-container">
+              <div class="card-header">
+                <a href="">
+                  <img class="profile-photo"  src="{{beer.brewery_label}}" alt="Photo of {{beer.brewery_name}}"/>
+                </a>
+              </div>
+              <div class="profile-body beer-card">
+
+                <a href=""><h4 class="name-link-text">{{beer.beer_name}}</h4></a>
+                <h4>{{beer.brewery_name}}</h4>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="">
+
+      </div>
+    </div>
+  </div>
+</div>

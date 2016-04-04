@@ -13,48 +13,24 @@ angular.module('atreides')
       $scope.paramsTapID = $stateParams.tapID;
     }
 
-    $scope.selectedTapID;
-
+    $scope.showSchedule = true;
     $scope.showKegFinderModal = false;
+    $scope.addSchedule = false;
 
+    // Toggles
     $scope.toggleModal = function() {
-      if ($scope.showKegFinderModal === false) {
-        $scope.showKegFinderModal = true;
-      } else {
-        $scope.showKegFinderModal = false;
-      }
+      $scope.showKegFinderModal = !$scope.showKegFinderModal;
     }
 
-    $scope.isTapOpen = function(tap) {
-      var date = new Date();
-      var day = $filter('date')(element.currentDate, "EEEE")
-      var hour = $filter('date')(element.currentDate, "H")
-      var timesArray = [];
-      var earliest=23;
-      var openHour;
-      var closeHour;
-      for (var i = 0; i < tap.schedule.length; i++){
-        if (tap.schedule[i].day == day && tap.schedule[i].close.hour > hour) {
-          timesArray.push(tap.schedule[i])
-        }
-      }
-      if (timesArray.length > 1) {
-        for (var j = 0; j<timesArray.length; j++ ) {
-          if (timesArray[i].open.hour < earliest) {
-            earliest = timesArray.open.hour;
-            openHour = timesArray.open.hour;
-            closeHour = timesArray.close.hour;
-          }
-        }
-      }
-      if (hour >= openHour && hour < closeHour) {
-        $scope.tapOpen = true;
-      } else {
-        $scope.tapOpen = false;
-      }
-      console.log($scope.tapOpen);
+    $scope.addScheduleToggle = function() {
+      $scope.addSchedule = !$scope.addSchedule;
     }
 
+    $scope.toggleSchedule = function(){
+      $scope.showSchedule = $scope.showSchedule
+    }
+
+    // Scripts for creating select options
     $scope.dayArray = [
       {day: "Monday"},
       {day: "Tuesday"},
@@ -82,15 +58,7 @@ angular.module('atreides')
     }
     $scope.createTime();
 
-    $scope.addSchedule = false;
-    $scope.addScheduleToggle = function() {
-      if (!$scope.addSchedule) {
-        $scope.addSchedule = true;
-      } else {
-        $scope.addSchedule = false;
-      }
-    }
-
+    // Date Options
     $scope.addDay = "";
     $scope.addHourStart = "";
     $scope.addMinuteStart = "";
@@ -114,23 +82,11 @@ angular.module('atreides')
       console.log(newScheduleTime);
       tap.schedule.push(newScheduleTime);
     }
-    // $scope.editTime = function() {
-    //   if
-    // }
-
-    $scope.toggleSchedule = function(){
-      if ($scope.showSchedule) {
-        $scope.showSchedule = false;
-      } else if (!$scope.showSchedule){
-        $scope.showSchedule = true;
-      }
-    };
+    // Reorganize Schedule by Time?
 
     $scope.scheduleFilter = function(day) {
       $scope.scheduleFilterDay = day;
     }
-
-    $scope.showSchedule = true;
 
     $scope.formatTap = function(element) {
       element.currentDate = new Date();
@@ -227,6 +183,10 @@ angular.module('atreides')
       })
     }
 
+    $scope.openBeerSearch = function(tap, size) {
+      BeerSearchFactory.openBeerSearchModal(size)
+    }
+
     $scope.searchBeer = function(tap) {
       console.log(tap);
       var promise = BeerSearchFactory.searchBeer(tap.untappd_id);
@@ -235,5 +195,4 @@ angular.module('atreides')
         tap.currentBeer = response.data.body.response.beer
       })
     }
-
-  }]);
+}]);
