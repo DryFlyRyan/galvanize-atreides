@@ -79,7 +79,7 @@
               <div class="button-container col-md-4 col-sm-12">
                 <!-- <a ui-sref="dashboard.beersearch({tapID: tap.id})" class="btn btn-primary dashboard-btn drop-shadow-right col-sm-12">Change Keg</a> -->
 
-                <a data-toggle="modal" ng-click="openBeerSearch(tap,'lg')" data-target="#keg-search-modal-{{tap.id}}" class="btn btn-primary drop-shadow-right dashboard-btn col-sm-12">Change Keg</a>
+                <a ui-sref="dashboard.beersearch({tapID: tap.id})"class="btn btn-primary drop-shadow-right dashboard-btn col-sm-12">Change Keg</a>
               </div>
               <div class="button-container col-md-4 col-sm-12">
                 <a data-toggle="modal" data-target="#schedule-modal-{{tap.id}}" class="btn btn-primary dashboard-btn drop-shadow-right col-sm-12">Change Schedule</a>

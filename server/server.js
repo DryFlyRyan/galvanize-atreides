@@ -10,8 +10,6 @@ var cors = require('cors');
 var bodyParser = require('body-parser');
 var later = require('later');
 
-
-
 // Routes
 var apiConnection = '/api/v1';
 var taps = require('./routes/taps/getTaps');

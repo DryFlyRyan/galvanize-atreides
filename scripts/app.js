@@ -117,26 +117,6 @@ angular.module('atreides', [
           }
         }
       })
-      .state('dashboard.beersearch',{
-        url:'/beersearch',
-        params: {
-          tapID: null,
-        },
-        controller: 'MainCtrl',
-        templateUrl:'views/dev/beers/beerSearch.html',
-        resolve: {
-          loadMyFiles:function($ocLazyLoad) {
-            return $ocLazyLoad.load({
-              name:'atreides',
-              files:[
-              'scripts/controllers/main.js',
-              'scripts/directives/notifications/notifications.js',
-              'scripts/services/tapService.js',
-              ]
-            })
-          }
-        }
-    })
       .state('dashboard.taps',{
         url:'/taps/{tapID}',
         controller: 'MainCtrl',
@@ -153,7 +133,27 @@ angular.module('atreides', [
             })
           }
         }
-    })
+      })
+      .state('dashboard.beersearch',{
+        url:'/beersearch/:tapID',
+        params: {
+          tapID: null,
+        },
+        controller: 'BeerSearchCtrl',
+        templateUrl:'views/dev/beers/beerSearch.html',
+        resolve: {
+          loadMyFiles:function($ocLazyLoad) {
+            return $ocLazyLoad.load({
+              name:'atreides',
+              files:[
+              'scripts/controllers/beersearch.js',
+              'scripts/directives/notifications/notifications.js',
+              'scripts/services/tapService.js',
+              ]
+            })
+          }
+        }
+      })
       .state('dashboard.campuses',{
         url:'/campuses',
         controller: 'CampusCtrl',
