@@ -8,7 +8,7 @@
  */
  angular.module('atreides')
   .controller('BeerSearchCtrl',
-  ['$scope', '$stateParams', 'TapFinderFactory', 'CampusFinderFactory', 'BeerSearchFactory', function($scope, $stateParams, TapFinderFactory, CampusFinderFactory, BeerSearchFactory){
+  ['$scope', '$stateParams', 'TapFinderFactory', 'CampusFinderFactory', 'BeerSearchFactory', 'modalService', function($scope, $stateParams, TapFinderFactory, CampusFinderFactory, BeerSearchFactory, modalService){
     $scope.paramsTapID = $stateParams.tapID || "";
 
     $scope.getTap = function() {
@@ -26,5 +26,21 @@
         $scope.searchedBeers = data
       })
     }
+
+    $scope.changeKeg = function () {
+
+      var modalOptions = {
+        closeButtonText: 'Cancel',
+        actionButtonText: 'Change Keg',
+        headerText: 'Change Keg'
+      };
+
+      modalService.showModal({}, modalOptions)
+      // .then(function (result) {
+      //     dataService.deleteCustomer($scope.customer.id).then(function () {
+      //         $location.path('/customers');
+      //     }, processError);
+      // });
+}
 
   }])

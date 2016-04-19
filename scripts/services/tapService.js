@@ -1,41 +1,6 @@
 angular.module('atreides')
   .factory('TapFinderFactory',
   function($http) {
-    function formatTap(element) {
-      return new Promise(function(resolve, reject){
-        element.flowRate = function() {
-          return this.volumeRead / this.dateSinceTapped;
-        }
-        element.sumVolume= function(){
-          for(var i = 0; i < element.flowData.length; i++) {
-            element.volumeRead += element.flowData[i].pulse_data;
-          }
-        }
-        element.volumeRemaining = function() {
-          return this.volume - this.volumeRead;
-        }
-        element.timeUntilEmpty = function() {
-          return this.volumeRemaining() / this.flowRate()
-        }
-        element.percentageRemaining = function() {
-          return (Math.round(this.volumeRemaining() / this.volume * 100));
-        }
-        element.getColor = function() {
-          var hue = this.percentageRemaining() * 1.2;
-          return 'hsla('+ hue + ', 80%, 45%,0.6)'
-        }
-        element.schedule.forEach(function(scheduleElement){
-          if (!element.open && !element.close) {
-            element.open = "CLOSED";
-            element.close = "CLOSED";
-          }
-        })
-        element.sumVolume();
-        element.volumeRead = 0;
-        element.volumeRemaining()
-        element.timeUntilEmpty()
-      })
-    }
     return {
       formatTap: formatTap,
       getTaps: function() {
@@ -71,5 +36,40 @@ angular.module('atreides')
           })
         })
       },
+    }
+    function formatTap(element) {
+      return new Promise(function(resolve, reject){
+        element.flowRate = function() {
+          return this.volumeRead / this.dateSinceTapped;
+        }
+        element.sumVolume= function(){
+          for(var i = 0; i < element.flowData.length; i++) {
+            element.volumeRead += element.flowData[i].pulse_data;
+          }
+        }
+        element.volumeRemaining = function() {
+          return this.volume - this.volumeRead;
+        }
+        element.timeUntilEmpty = function() {
+          return this.volumeRemaining() / this.flowRate()
+        }
+        element.percentageRemaining = function() {
+          return (Math.round(this.volumeRemaining() / this.volume * 100));
+        }
+        element.getColor = function() {
+          var hue = this.percentageRemaining() * 1.2;
+          return 'hsla('+ hue + ', 80%, 45%,0.6)'
+        }
+        element.schedule.forEach(function(scheduleElement){
+          if (!element.open && !element.close) {
+            element.open = "CLOSED";
+            element.close = "CLOSED";
+          }
+        })
+        element.sumVolume();
+        element.volumeRead = 0;
+        element.volumeRemaining()
+        element.timeUntilEmpty()
+      })
     }
   });

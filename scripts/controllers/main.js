@@ -8,58 +8,46 @@
  */
 angular.module('atreides')
   .controller('MainCtrl',
-  ['$scope', '$position', '$filter', '$stateParams', 'TapFinderFactory', 'CampusFinderFactory', 'BeerSearchFactory', function($scope, $position, $filter, $stateParams, TapFinderFactory, CampusFinderFactory, BeerSearchFactory){
-    if ($stateParams.tapID) {
-      $scope.paramsTapID = $stateParams.tapID;
-    }
-
+  ['$scope', '$position', '$filter', '$stateParams', 'TapFinderFactory', 'CampusFinderFactory', 'BeerSearchFactory', 'ScheduleFactory', function($scope, $position, $filter, $stateParams, TapFinderFactory, CampusFinderFactory, BeerSearchFactory, ScheduleFactory){
     $scope.showSchedule = true;
-    $scope.showKegFinderModal = false;
     $scope.addSchedule = false;
 
     // Toggles
     $scope.addScheduleToggle = function() {
       $scope.addSchedule = !$scope.addSchedule;
     }
-
     $scope.toggleSchedule = function(){
       $scope.showSchedule = $scope.showSchedule
     }
 
     // Scripts for creating select options
-    $scope.dayArray = [
-      {day: "Monday"},
-      {day: "Tuesday"},
-      {day: "Wednesday"},
-      {day: "Thursday"},
-      {day: "Friday"},
-      {day: "Saturday"},
-      {day: "Sunday"}
-    ]
-    $scope.hoursArray = [];
-    $scope.minutesArray = [];
-    $scope.createTime = function() {
-      for (var i = 0; i < 24; i++) {
-        var newHour = {
-          hour: i
-        }
-        $scope.hoursArray.push(newHour);
-      }
-      for (var j = 0; j < 4; j++) {
-        var newFifteen = {
-          minute: j * 15
-        }
-        $scope.minutesArray.push(newFifteen);
-      }
-    }
-    $scope.createTime();
+    $scope.dayArray = ScheduleFactory.dayArray;
+    $scope.hoursArray = ScheduleFactory.hoursArray();
+    $scope.minutesArray = ScheduleFactory.minutesArray();
+
+    var currentDate = new Date();
+    var currentDay = $filter('date')(currentDate, "EEEE")
+    var currentHour = $filter('date')(currentDate, "H")
 
     // Date Options
-    $scope.addDay = "";
-    $scope.addHourStart = "";
-    $scope.addMinuteStart = "";
-    $scope.addHourEnd = "";
-    $scope.addMinuteEnd = "";
+
+    $scope.displaySchedule = function(schedule){
+      var todaysSchedule = [];
+      schedule.forEach(function(element) {
+        if(element.day === currentDay) {
+          todaysSchedule.push(element);
+        }
+      })
+      todaysSchedule.forEach(function(element){
+        if(element.close.hour >= currentHour) {
+          if (!$scope.nextTime) {
+            $scope.nextTime = element;
+          } else if ($scope.nextTime.close.hour > element.close.hour) {
+            $scope.nextTime = element;
+          }
+        }
+      })
+    }
 
     $scope.saveScheduleAddition = function(tap, newSchedule) {
       console.log(newSchedule);

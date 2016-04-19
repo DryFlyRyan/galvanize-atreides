@@ -41,7 +41,9 @@ angular.module('atreides', [
                     'scripts/controllers/modal.js',
                     'scripts/services/userService.js',
                     'scripts/services/campusService.js',
-                    'scripts/services/beerSearchService.js'
+                    'scripts/services/beerSearchService.js',
+                    'scripts/services/scheduleService.js',
+                    'scripts/services/modalService'
                     ]
                 }),
                 $ocLazyLoad.load(
@@ -111,7 +113,7 @@ angular.module('atreides', [
               files:[
               'scripts/controllers/main.js',
               'scripts/directives/notifications/notifications.js',
-              'scripts/services/tapService.js',
+              'scripts/services/tapService.js'
               ]
             })
           }

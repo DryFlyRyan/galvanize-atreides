@@ -21,7 +21,7 @@
 
   </div>
 
-  <div ng-repeat="beer in searchedBeers | filter: beerRefineSearch">
+  <div ng-show="searchedBeers" class="ng-hide" ng-repeat="beer in searchedBeers | filter: beerRefineSearch" ng-cloak>
     <div class="col-lg-3 col-md-4 col-sm-6 profile-card">
       <div class="card-container">
         <div class="card-header">
