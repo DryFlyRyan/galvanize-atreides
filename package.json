@@ -1,12 +1,13 @@
 {
-  "name": "sb-admin",
-  "version": "0.0.0",
+  "name": "Atreides",
+  "version": "0.5.0",
   "repository": {
-    "type": "git",
-    "url": "https://github.com/start-angular/sb-admin-angular"
+    "type": "git"
   },
+  
   "dependencies": {
     "body-parser": "^1.15.0",
+    "bookshelf": "^0.9.4",
     "bower": "^1.7.7",
     "cors": "^2.7.1",
     "dotenv": "^2.0.0",

@@ -1,4 +1,4 @@
-<div class="col-sm-12 page-sub-wrapper">
+<div class="col-sm-12 page-sub-wrapper" ng-init="getTap()">
   <div class="page-splash-profile">
     <h1 class="splash-title">BEER SEARCH</h1>
   </div>
@@ -22,10 +22,10 @@
   </div>
 
   <div ng-show="searchedBeers" class="ng-hide" ng-repeat="beer in searchedBeers | filter: beerRefineSearch" ng-cloak>
-    <div class="col-lg-3 col-md-4 col-sm-6 profile-card">
+    <div class="col-lg-3 col-md-4 col-sm-6 profile-card" ng-click="changeKeg(beer)">
       <div class="card-container">
         <div class="card-header">
-          <a href="">
+          <a>
             <img class="profile-photo"  src="{{beer.brewery_label}}" alt="Photo of {{beer.brewery_name}}"/>
           </a>
         </div>
@@ -34,13 +34,6 @@
           <a href=""><h4 class="name-link-text">{{beer.beer_name}}</h4></a>
           <h4>{{beer.brewery_name}}</h4>
 
-
-
-          <!-- <div class="profile-location-box">
-            <div class="profile-location-box-fill">
-              <h4 class="profile-location-text"><i class="fa fa-map-marker"></i> {{user.campuses[0].label}}</h4>
-            </div>
-          </div> -->
         </div>
       </div>
     </div>

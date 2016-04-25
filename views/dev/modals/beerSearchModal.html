@@ -1,0 +1,26 @@
+<div class="modal-header">
+  <h3>Change Keg on {{modalOptions.tap.name}} Tap?</h3>
+</div>
+<div class="modal-body">
+    <div class="col-lg-3 col-md-4 col-sm-6 profile-card">
+      <div class="card-container">
+        <div class="card-header">
+          <a>
+            <img class="profile-photo"  src="{{modalOptions.beer.brewery_label}}" alt="Photo of {{modalOptions.beer.brewery_name}}"/>
+          </a>
+        </div>
+        <div class="profile-body">
+
+          <a href=""><h4 class="name-link-text">{{modalOptions.beer.beer_name}}</h4></a>
+          <h4>{{modalOptions.beer.brewery_name}}</h4>
+
+        </div>
+      </div>
+    </div>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn"
+          data-ng-click="modalOptions.close()">{{modalOptions.closeButtonText}}</button>
+  <button class="btn btn-primary"
+          data-ng-click="modalOptions.ok();">{{modalOptions.actionButtonText}}</button>
+</div>

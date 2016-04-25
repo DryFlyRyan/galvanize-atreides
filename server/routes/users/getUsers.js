@@ -2,7 +2,6 @@ require('dotenv').load()
 var express = require('express');
 var router = express.Router();
 var unirest = require('unirest');
-var crud = require('../../crud.js')
 
 var RequestStarterUsers = unirest.get('https://members.galvanize.com/api/v2/users?limit=500');
 

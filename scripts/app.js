@@ -20,7 +20,7 @@ angular.module('atreides', [
       events:true,
     });
 
-    $urlRouterProvider.otherwise('/dashboard/home');
+    // $urlRouterProvider.otherwise('/dashboard/home');
 
     $stateProvider
       .state('dashboard', {
@@ -43,7 +43,7 @@ angular.module('atreides', [
                     'scripts/services/campusService.js',
                     'scripts/services/beerSearchService.js',
                     'scripts/services/scheduleService.js',
-                    'scripts/services/modalService'
+                    'scripts/services/modalService.js'
                     ]
                 }),
                 $ocLazyLoad.load(
@@ -120,7 +120,7 @@ angular.module('atreides', [
         }
       })
       .state('dashboard.taps',{
-        url:'/taps/{tapID}',
+        url:'/taps/:tapID',
         controller: 'MainCtrl',
         templateUrl:'views/dev/dashboard/tap.html',
         resolve: {
@@ -150,7 +150,7 @@ angular.module('atreides', [
               files:[
               'scripts/controllers/beersearch.js',
               'scripts/directives/notifications/notifications.js',
-              'scripts/services/tapService.js',
+              'scripts/services/tapService.js'
               ]
             })
           }

@@ -9,16 +9,15 @@
  angular.module('atreides')
   .controller('BeerSearchCtrl',
   ['$scope', '$stateParams', 'TapFinderFactory', 'CampusFinderFactory', 'BeerSearchFactory', 'modalService', function($scope, $stateParams, TapFinderFactory, CampusFinderFactory, BeerSearchFactory, modalService){
-    $scope.paramsTapID = $stateParams.tapID || "";
+    $scope.paramsTapID = $stateParams.tapID;
 
     $scope.getTap = function() {
-      var promise = TapFinderFactory.getTap($scope.paramsTapID)
-      promise.then(function(tap) {
-        var formattedElement = $scope.formatTap(tap.data)
-        $scope.selectedTap = formattedElement;
+      TapFinderFactory.getTap($scope.paramsTapID)
+      .then(function(data) {
+        $scope.selectedTap = data;
         console.log($scope.selectedTap);
+
       })
-    }
 
     $scope.searchBeers = function(searchQuery) {
       BeerSearchFactory.searchBeers(searchQuery)
@@ -27,20 +26,28 @@
       })
     }
 
-    $scope.changeKeg = function () {
+    $scope.changeKeg = function (beer) {
+      console.log("Trying to change keg");
 
       var modalOptions = {
         closeButtonText: 'Cancel',
         actionButtonText: 'Change Keg',
-        headerText: 'Change Keg'
+        headerText: 'Change Keg',
+        tap: $scope.selectedTap,
+        beer: beer
       };
 
-      modalService.showModal({}, modalOptions)
-      // .then(function (result) {
-      //     dataService.deleteCustomer($scope.customer.id).then(function () {
-      //         $location.path('/customers');
-      //     }, processError);
-      // });
-}
+      var modalDefaults = {
+          backdrop: true,
+          keyboard: true,
+          modalFade: true,
+          templateUrl: '/views/dev/modals/beerSearchModal.html'
+      };
 
-  }])
+      modalService.showModal(modalDefaults, modalOptions)
+      .then(function (result) {
+        console.log(result);
+      });
+    };
+
+}])

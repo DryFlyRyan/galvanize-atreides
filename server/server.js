@@ -1,5 +1,4 @@
 // Middleware
-console.log("Server Turning On");
 require('dotenv').load();
 var express = require('express');
 var http = require('http');
@@ -20,8 +19,6 @@ var beerSearch = require('./routes/beers/beerSearch');
 
 // Modules
 
-var update = require('./update')
-var seed = require('./seed')
 
 // Express Server
 var app = express();
@@ -38,21 +35,7 @@ app.use(bodyParser.json());
 // update.updateCampuses();
 // update.updateUsers();
 
-// Seed Functions
-
-setInterval(function(){
-  var pulseData = Math.ceil(Math.random() * 24)
-  console.log("setting flow data");
-  seed.generateFlowData(1, 1, pulseData)
-}, 1800000)
-
-setInterval(function(){
-  var pulseData = Math.ceil(Math.random() * 16)
-  console.log("setting flow data");
-  seed.generateFlowData(2, 2, pulseData)
-}, 300000)
-
-//Public Routes
+//Routes
 
 app.use(apiConnection + '/taps', taps);
 app.use(apiConnection + '/devices', devices);

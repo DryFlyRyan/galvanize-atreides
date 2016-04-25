@@ -23,13 +23,14 @@ angular.module('atreides')
       },
       getTap: function(tapID) {
         return new Promise(function(resolve,reject){
-          var tapArray = []
+
           $http.get('./api/v1/taps/' + tapID)
           .then(function(tap) {
+            console.log(tap);
             return formatTap(tap.data);
           })
-          .then(function(){
-            resolve(formattedElement)
+          .then(function(data){
+            resolve(data)
           })
           .catch(function(err){
             reject(err);
