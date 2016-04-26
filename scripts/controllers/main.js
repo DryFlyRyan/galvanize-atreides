@@ -73,6 +73,7 @@ angular.module('atreides')
     }
 
     $scope.getTaps = function() {
+      console.log("Model is getting taps.");
       TapFinderFactory.getTaps()
       .then(function(data){
         $scope.taps = data;
@@ -80,6 +81,7 @@ angular.module('atreides')
     }
 
     $scope.getTap = function() {
+      console.log("Model is getting tap ", $scope.paramsTapID);
       TapFinderFactory.getTap($scope.paramsTapID)
       .then(function(data) {
         $scope.selectedTap = data;

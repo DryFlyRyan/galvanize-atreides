@@ -4,10 +4,12 @@ angular.module('atreides')
     return {
       formatTap: formatTap,
       getTaps: function() {
+        console.log("getting taps");
         return new Promise(function(resolve,reject){
           var tapArray = []
           $http.get('./api/v1/taps/')
           .then(function(taps) {
+            console.log(taps);
             taps.data.forEach(function(element){
               var formattedElement = formatTap(element);
               tapArray.push(element);
@@ -22,8 +24,8 @@ angular.module('atreides')
         })
       },
       getTap: function(tapID) {
+        console.log("getting tap");
         return new Promise(function(resolve,reject){
-
           $http.get('./api/v1/taps/' + tapID)
           .then(function(tap) {
             console.log(tap);
@@ -62,7 +64,7 @@ angular.module('atreides')
           return 'hsla('+ hue + ', 80%, 45%,0.6)'
         }
         element.schedule.forEach(function(scheduleElement){
-          if (!element.open && !element.close) {
+          if (!scheduleElement.schedule.open && !scheduleElement.schedule.close) {
             element.open = "CLOSED";
             element.close = "CLOSED";
           }
@@ -71,6 +73,7 @@ angular.module('atreides')
         element.volumeRead = 0;
         element.volumeRemaining()
         element.timeUntilEmpty()
+        resolve(element)
       })
     }
   });
