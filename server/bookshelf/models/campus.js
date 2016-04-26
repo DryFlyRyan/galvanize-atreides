@@ -1,7 +1,6 @@
 var Bookshelf = require('../../database');
 
 require('./userPermission');
-require('./campusDevice');
 require('./purchasedKeg');
 
 var Campus = Bookshelf.Model.extend({
@@ -9,11 +8,8 @@ var Campus = Bookshelf.Model.extend({
   permission: function() {
     return this.hasMany('UserPermission', 'campus_id')
   },
-  campusDevice: function() {
-    return this.hasMany('CampusDevice', 'campus_id')
-  },
   device: function() {
-    return this.hasMany('Device').through('CampusDevice', 'id', 'device_id')
+    return this.hasMany('Device')
   },
   keg: function() {
     return this.hasMany('PurchasedKeg', 'campus_id')

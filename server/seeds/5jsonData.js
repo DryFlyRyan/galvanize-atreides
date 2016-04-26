@@ -4,7 +4,7 @@ exports.seed = function(knex, Promise) {
     return Promise.all([
       knex('device_schedules').insert({
         device_id: 1,
-        schedule: JSON.stringify([
+        schedule: JSON.stringify(
           {
             day: "Monday",
             open: {
@@ -15,7 +15,12 @@ exports.seed = function(knex, Promise) {
               hour: 18,
               minute: 0
             }
-          },
+          }
+        )
+      }),
+      knex('device_schedules').insert({
+        device_id: 1,
+        schedule: JSON.stringify(
           {
             day: "Tuesday",
             open: {
@@ -26,7 +31,12 @@ exports.seed = function(knex, Promise) {
               hour: 18,
               minute: 0
             }
-          },
+          }
+        )
+      }),
+      knex('device_schedules').insert({
+        device_id: 1,
+        schedule: JSON.stringify(
           {
             day: "Tuesday",
             open: {
@@ -37,7 +47,12 @@ exports.seed = function(knex, Promise) {
               hour: 18,
               minute: 0
             }
-          },
+          }
+        )
+      }),
+      knex('device_schedules').insert({
+        device_id: 1,
+        schedule: JSON.stringify(
           {
             day: "Wednesday",
             open: {
@@ -48,7 +63,12 @@ exports.seed = function(knex, Promise) {
               hour: 18,
               minute: 0
             }
-          },
+          }
+        )
+      }),
+      knex('device_schedules').insert({
+        device_id: 1,
+        schedule: JSON.stringify(
           {
             day: "Thursday",
             open: {
@@ -59,7 +79,12 @@ exports.seed = function(knex, Promise) {
               hour: 18,
               minute: 0
             }
-          },
+          }
+        )
+      }),
+      knex('device_schedules').insert({
+        device_id: 1,
+        schedule: JSON.stringify(
           {
             day: "Friday",
             open: {
@@ -70,7 +95,12 @@ exports.seed = function(knex, Promise) {
               hour: 18,
               minute: 0
             }
-          },
+          }
+        )
+      }),
+      knex('device_schedules').insert({
+        device_id: 1,
+        schedule: JSON.stringify(
           {
             day: "Saturday",
             open: null,
@@ -80,12 +110,12 @@ exports.seed = function(knex, Promise) {
             day: "Sunday",
             open: null,
             close: null
-          },
-        ])
+          }
+        )
       }),
       knex('device_schedules').insert({
         device_id: 2,
-        schedule: JSON.stringify([
+        schedule: JSON.stringify(
           {
             day: "Monday",
             open: {
@@ -96,8 +126,12 @@ exports.seed = function(knex, Promise) {
               hour: 18,
               minute: 0
             }
-          },
-
+          }
+        )
+      }),
+      knex('device_schedules').insert({
+        device_id: 2,
+        schedule: JSON.stringify(
           {
             day: "Tuesday",
             open: {
@@ -108,7 +142,12 @@ exports.seed = function(knex, Promise) {
               hour: 18,
               minute: 0
             }
-          },
+          }
+        )
+      }),
+      knex('device_schedules').insert({
+        device_id: 2,
+        schedule: JSON.stringify(
           {
             day: "Wednesday",
             open: {
@@ -119,7 +158,12 @@ exports.seed = function(knex, Promise) {
               hour: 18,
               minute: 0
             }
-          },
+          }
+        )
+      }),
+      knex('device_schedules').insert({
+        device_id: 2,
+        schedule: JSON.stringify(
           {
             day: "Thursday",
             open: {
@@ -130,7 +174,12 @@ exports.seed = function(knex, Promise) {
               hour: 18,
               minute: 0
             }
-          },
+          }
+        )
+      }),
+      knex('device_schedules').insert({
+        device_id: 2,
+        schedule: JSON.stringify(
           {
             day: "Friday",
             open: {
@@ -141,7 +190,12 @@ exports.seed = function(knex, Promise) {
               hour: 18,
               minute: 0
             }
-          },
+          }
+        )
+      }),
+      knex('device_schedules').insert({
+        device_id: 2,
+        schedule: JSON.stringify(
           {
             day: "Saturday",
             open: {
@@ -152,15 +206,19 @@ exports.seed = function(knex, Promise) {
               hour: 17,
               minute: 0
             }
-          },
+          }
+        )
+      }),
+      knex('device_schedules').insert({
+        device_id: 2,
+        schedule: JSON.stringify(
           {
             day: "Sunday",
             open: null,
             close: null
-          },
-        ])
+          }
+        )
       })
-
     ])
   })
 };

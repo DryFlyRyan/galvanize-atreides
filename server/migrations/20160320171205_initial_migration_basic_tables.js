@@ -6,6 +6,7 @@ exports.up = function(knex, Promise) {
     table.string('serial_number');
     table.integer('model_id').references('id').inTable('device_lookup').onDelete('cascade');
     table.string('device_name');
+    table.integer('campus_id').references('id').inTable('campuses').onDelete('cascade').nullable();
     table.boolean('active').notNullable();
     table.timestamp('created_at').notNullable();
     table.timestamp('updated_at').nullable();
@@ -27,14 +28,6 @@ exports.up = function(knex, Promise) {
       table.timestamp('created_at').notNullable();
       table.timestamp('updated_at').nullable();
 
-    })
-  }).then(function(){
-    return knex.schema.createTable('campus_devices', function(table){
-      table.increments().primary().unsigned();
-      table.integer('campus_id').references('id').inTable('campuses').onDelete('cascade');
-      table.integer('device_id').references('id').inTable('devices').onDelete('cascade');
-      table.boolean('active').notNullable()
-      table.timestamp('created_at').notNullable();
     })
   }).then(function(){
     return knex.schema.createTable('purchased_kegs', function(table){
@@ -60,8 +53,6 @@ exports.down = function(knex, Promise) {
   return knex.schema.dropTable('flow_logs')
   .then(function(){
     return knex.schema.dropTable('purchased_kegs')
-  }).then(function(){
-    return knex.schema.dropTable('campus_devices')
   }).then(function(){
     return knex.schema.dropTable('user_permissions')
   }).then(function(){

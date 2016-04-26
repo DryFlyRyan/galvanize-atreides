@@ -5,10 +5,10 @@ require('./kegSize');
 
 var Keg = Bookshelf.Model.extend({
   tableName: 'kegs',
-  purchasedKegs: function() {
+  PurchasedKegs: function() {
     return this.hasMany('PurchasedKeg')
   },
-  size: function() {
+  Size: function() {
     return this.belongsTo('KegSize', 'size_id')
   }
 })

@@ -2,13 +2,43 @@ var express = require('express');
 var router = express.Router();
 var unirest = require('unirest');
 
+var Kegs = require('../../bookshelf/collections/purchasedKegs').collection
+var Keg = require('../../bookshelf/models/purchasedKeg')
+
 var Devices = require('../../bookshelf/collections/devices').collection
 var Device = require('../../bookshelf/models/device')
 
+
+
 router.get('/', function(req, res){
-  new Devices().fetch({withRelated: ['CampusDevice', 'Campus', 'DeviceSchedule', 'PurchasedKeg']})
+  new Devices()
+    .fetch({withRelated: [
+      'Campus',
+      'DeviceLookup',
+      'PurchasedKeg',
+      'PurchasedKeg.Keg',
+      'PurchasedKeg.FlowLog',
+      'PurchasedKeg.Keg.Size',
+      'Schedule'
+    ]})
   .then(function(results){
-    res.send(results.toJSON())
+    res.send(results)
+  })
+})
+
+router.get('/:deviceID', function(req, res){
+  new Device({id: req.params.deviceID})
+    .fetch({withRelated: [
+      'Campus',
+      'DeviceLookup',
+      'PurchasedKeg',
+      'PurchasedKeg.Keg',
+      'PurchasedKeg.FlowLog',
+      'PurchasedKeg.Keg.Size',
+      'Schedule',
+    ]})
+  .then(function(results){
+    res.send(results)
   })
 })
 
@@ -22,187 +52,3 @@ router.get('/', function(req, res){
 // })
 
 module.exports = router;
-
-
-// var deviceSeed = [{
-//   name: "4th Floor Tap",
-//   campus: "Platte",
-//   campus_id: 25315,
-//   location: "Denver",
-//   currentBeer: "Mirror Pond",
-//   brewery: "Deschutes Brewing",
-//   distributor: "Dan's Distributing",
-//   size: "Quarter Barrel",
-//   dateSinceTapped: 3.5,
-//   times: [],
-//   volume: 992,
-//   volumeRead: 120,
-//   schedule:
-//   [
-//     {
-//       day: "Monday",
-//       open: {
-//         hour: 14,
-//         minute: 30
-//       },
-//       close: {
-//         hour: 18,
-//         minute: 0
-//       }
-//     },
-//     {
-//       day: "Tuesday",
-//       open: {
-//         hour: 14,
-//         minute: 30
-//       },
-//       close: {
-//         hour: 18,
-//         minute: 0
-//       }
-//     },
-//     {
-//       day: "Tuesday",
-//       open: {
-//         hour: 14,
-//         minute: 30
-//       },
-//       close: {
-//         hour: 18,
-//         minute: 0
-//       }
-//     },
-//     {
-//       day: "Wednesday",
-//       open: {
-//         hour: 14,
-//         minute: 30
-//       },
-//       close: {
-//         hour: 18,
-//         minute: 0
-//       }
-//     },
-//     {
-//       day: "Thursday",
-//       open: {
-//         hour: 14,
-//         minute: 30
-//       },
-//       close: {
-//         hour: 18,
-//         minute: 0
-//       }
-//     },
-//     {
-//       day: "Friday",
-//       open: {
-//         hour: 14,
-//         minute: 30
-//       },
-//       close: {
-//         hour: 18,
-//         minute: 0
-//       }
-//     },
-//     {
-//       day: "Saturday",
-//       open: null,
-//       close: null
-//     },
-//     {
-//       day: "Sunday",
-//       open: null,
-//       close: null
-//     },
-//   ]
-// },
-// {
-//   id: 245,
-//   name: "Downstairs Tap",
-//   campus: "Golden Triangle",
-//   campusID: 214398,
-//   location: "Denver",
-//   currentBeer: "Arrogant Bastard",
-//   brewery: "Stone Brewing",
-//   distributor: "JSON Distributing",
-//   size: "Quarter Barrel",
-//   dateSinceTapped: 4.5,
-//   volume: 992,
-//   volumeRead: 553,
-//   schedule:
-//   [
-//     {
-//       day: "Monday",
-//       open: {
-//         hour: 16,
-//         minute: 30
-//       },
-//       close: {
-//         hour: 18,
-//         minute: 0
-//       }
-//     },
-//
-//     {
-//       day: "Tuesday",
-//       open: {
-//         hour: 16,
-//         minute: 30
-//       },
-//       close: {
-//         hour: 18,
-//         minute: 0
-//       }
-//     },
-//     {
-//       day: "Wednesday",
-//       open: {
-//         hour: 16,
-//         minute: 30
-//       },
-//       close: {
-//         hour: 18,
-//         minute: 0
-//       }
-//     },
-//     {
-//       day: "Thursday",
-//       open: {
-//         hour: 16,
-//         minute: 30
-//       },
-//       close: {
-//         hour: 18,
-//         minute: 0
-//       }
-//     },
-//     {
-//       day: "Friday",
-//       open: {
-//         hour: 16,
-//         minute: 30
-//       },
-//       close: {
-//         hour: 18,
-//         minute: 0
-//       }
-//     },
-//     {
-//       day: "Saturday",
-//       open: {
-//         hour: 13,
-//         minute: 0
-//       },
-//       close: {
-//         hour: 17,
-//         minute: 0
-//       }
-//     },
-//     {
-//       day: "Sunday",
-//       open: null,
-//       close: null
-//     },
-//   ]
-// }]

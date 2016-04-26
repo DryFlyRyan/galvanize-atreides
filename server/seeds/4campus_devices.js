@@ -1,43 +1,56 @@
 
 exports.seed = function(knex, Promise) {
-   return knex('campus_devices').del().then(function(){
+    return knex('kegs').del().then(function(){
      return Promise.all([
-       knex('campus_devices').insert({
-         device_id: 1,
-         campus_id: 5
+       knex('kegs').insert({
+         size_id: 1,
+         untappd_id: 16630,
+         created_at: new Date()
        }),
-       knex('campus_devices').insert({
-         device_id: 2,
-         campus_id: 1
+       knex('kegs').insert({
+         size_id: 1,
+         untappd_id: 520911,
+         created_at: new Date()
+       }),
+       knex('kegs').insert({
+         size_id: 1,
+         untappd_id: 16630,
+         created_at: new Date()
+       }),
+       knex('kegs').insert({
+         size_id: 1,
+         untappd_id: 1099523,
+         created_at: new Date()
        })
      ])
-   }).then(function(){
-     return knex('kegs').del().then(function(){
-       return Promise.all([
-         knex('kegs').insert({
-           size_id: 1,
-           untappd_id: 16630
-         }),
-         knex('kegs').insert({
-           size_id: 1,
-           untappd_id: 520911
-         })
-       ])
-     })
-   }).then(function(){
-     return knex('purchased_kegs').del().then(function(){
-       return Promise.all([
-         knex('purchased_kegs').insert({
-           keg_id: 1,
-           device_id: 1,
-           deactivated_at: null
-         }),
-         knex('purchased_kegs').insert({
-           keg_id: 2,
-           device_id: 2,
-           deactivated_at: null
-         }),
-       ])
-     })
-   })
+    }).then(function(){
+    return knex('purchased_kegs').del().then(function(){
+     return Promise.all([
+       knex('purchased_kegs').insert({
+         keg_id: 1,
+         device_id: 1,
+         created_at: new Date(),
+         active: false
+       }),
+       knex('purchased_kegs').insert({
+         keg_id: 2,
+         device_id: 2,
+         created_at: new Date(),
+         active: false
+       }),
+       knex('purchased_kegs').insert({
+         keg_id: 3,
+         device_id: 1,
+         created_at: new Date(),
+         active: true
+       }),
+       knex('purchased_kegs').insert({
+         keg_id: 4,
+         device_id: 2,
+         created_at: new Date(),
+         active: true
+       })
+     ])
+    })
+  })
 };
