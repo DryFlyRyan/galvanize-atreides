@@ -31,22 +31,23 @@ angular.module('atreides')
 
     // Date Options
 
-    $scope.displaySchedule = function(schedule){
+    $scope.displaySchedule = function(tap){
       var todaysSchedule = [];
-      schedule.forEach(function(element) {
-        if(element.day === currentDay) {
+      tap.Schedule.forEach(function(element) {
+        if(element.schedule.day === currentDay) {
           todaysSchedule.push(element);
         }
       })
       todaysSchedule.forEach(function(element){
-        if(element.close.hour >= currentHour) {
+        if(element.schedule.close.hour >= currentHour) {
           if (!$scope.nextTime) {
-            $scope.nextTime = element;
+            tap.Schedule.nextTime = element;
           } else if ($scope.nextTime.close.hour > element.close.hour) {
-            $scope.nextTime = element;
+            tap.Schedule.nextTime = element;
           }
         }
       })
+      console.log(tap);
     }
 
     $scope.saveScheduleAddition = function(tap, newSchedule) {
@@ -87,4 +88,11 @@ angular.module('atreides')
         $scope.selectedTap = data;
       })
     }
+
+    $scope.searchBeer = function(tap){
+      BeerSearchFactory.searchBeer(tap.PurchasedKeg.Keg.untappd_id)
+        .then(function(beer) {
+          tap.PurchasedKeg.currentBeer = beer;
+        })
+    };
 }]);

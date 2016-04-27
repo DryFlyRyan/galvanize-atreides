@@ -40,39 +40,44 @@ angular.module('atreides')
         })
       },
     }
+
+    function sumVolumeRead(flowDataArray){
+      var volumeRead = 0;
+      flowDataArray.forEach(function(element) {
+        volumeRead += element.pulse_data;
+      })
+      return volumeRead;
+    }
+
+    function flowRate(volumeRead, startDate) {
+      return volumeRead / startDate;
+    }
+
+    function volumeRemaining(totalVolume, volumeRead) {
+      return totalVolume - volumeRead;
+    }
+
+    function percentageRemaining(volumeRemaining, totalVolume) {
+      return (Math.round(volumeRemaining / totalVolume * 100));
+    }
+
+    function getColor(percentageRemaining) {
+      var hue = percentageRemaining * 1.2;
+      return 'hsla(' + String(hue) + ',80%,45%,0.6)'
+    }
+
     function formatTap(element) {
       return new Promise(function(resolve, reject){
-        element.flowRate = function() {
-          return this.volumeRead / this.dateSinceTapped;
-        }
-        element.sumVolume= function(){
-          for(var i = 0; i < element.flowData.length; i++) {
-            element.volumeRead += element.flowData[i].pulse_data;
-          }
-        }
-        element.volumeRemaining = function() {
-          return this.volume - this.volumeRead;
-        }
-        element.timeUntilEmpty = function() {
-          return this.volumeRemaining() / this.flowRate()
-        }
-        element.percentageRemaining = function() {
-          return (Math.round(this.volumeRemaining() / this.volume * 100));
-        }
-        element.getColor = function() {
-          var hue = this.percentageRemaining() * 1.2;
-          return 'hsla('+ hue + ', 80%, 45%,0.6)'
-        }
-        element.schedule.forEach(function(scheduleElement){
-          if (!scheduleElement.schedule.open && !scheduleElement.schedule.close) {
-            element.open = "CLOSED";
-            element.close = "CLOSED";
-          }
-        })
-        element.sumVolume();
-        element.volumeRead = 0;
-        element.volumeRemaining()
-        element.timeUntilEmpty()
+        element.PurchasedKeg.volumeRead = sumVolumeRead(element.PurchasedKeg.FlowLog);
+
+        flowRate(element.PurchasedKeg.volumeRead, element.created_at);
+
+        element.PurchasedKeg.volumeRemaining = volumeRemaining(element.PurchasedKeg.Keg.Size.volume, element.PurchasedKeg.volumeRead)
+
+        element.PurchasedKeg.volumeRemainingPercentage = percentageRemaining(element.PurchasedKeg.volumeRemaining, element.PurchasedKeg.Keg.Size.volume);
+
+        element.PurchasedKeg.volumeHue = getColor(element.PurchasedKeg.volumeRemainingPercentage)
+
         resolve(element)
       })
     }

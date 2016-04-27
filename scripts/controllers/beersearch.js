@@ -16,7 +16,6 @@
       .then(function(data) {
         $scope.selectedTap = data;
         console.log($scope.selectedTap);
-
       })
 
     $scope.searchBeers = function(searchQuery) {

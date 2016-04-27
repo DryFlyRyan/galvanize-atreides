@@ -21,7 +21,7 @@ var Device = Bookshelf.Model.extend({
     return this.hasMany('FlowLog')
   },
   PurchasedKeg: function() {
-    return this.hasMany('PurchasedKeg').query({'where': {active: 'true'}})
+    return this.hasOne('PurchasedKeg').query({'where': {active: 'true'}})
   },
 })
 

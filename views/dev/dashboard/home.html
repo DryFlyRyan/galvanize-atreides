@@ -22,26 +22,27 @@
           <div class="tap-body col-sm-12" >
             <div class="tap-title-container">
               <p class="tap-headline-text-top">{{tap.device_name}}</p>
-            <p class="tap-headline-text">{{tap.campus_label}}</p>
+            <p class="tap-headline-text">{{tap.Campus.campus_label}}</p>
             </div>
             <div class="dashboard-content">
               <div class="col-sm-8 time-container" >
-                <div ng-init="displaySchedule(tap.schedule)">
-                  <div class="ng-hide" ng-show="nextTime.close.hour">
+                <div ng-init="displaySchedule(tap)">
+                  <div class="ng-hide" ng-show="tap.Schedule.nextTime.schedule.close.hour">
                     <div class="time-block tap-open drop-shadow-right col-sm-10 col-sm-offset-1" >
-                      <p class="col-sm-12 time-headline"><span ng-if="nextTime.open.hour < 13">Opening Time: {{nextTime.open.hour}}</span><span ng-if="nextTime.open.hour > 12">Opening Time: {{nextTime.open.hour - 12}}</span>:<span class="ng-hide" ng-show="nextTime.open.minute > 0">{{nextTime.open.minute}}</span><span class="ng-hide" ng-show="nextTime.open.minute < 1">00</span>
-                      <span ng-if="nextTime.open.hour < 12">AM</span>
-                      <span ng-if="nextTime.open.hour > 11">PM</span>
+                      <!-- Use Moment for these to filter them. -->
+                      <p class="col-sm-12 time-headline"><span ng-if="tap.Schedule.nextTime.schedule.open.hour < 13">Opening Time: {{tap.Schedule.nextTime.schedule.open.hour}}</span><span ng-if="tap.Schedule.nextTime.schedule.open.hour > 12">Opening Time: {{tap.Schedule.nextTime.schedule.open.hour - 12}}</span>:<span class="ng-hide" ng-show="tap.Schedule.nextTime.schedule.open.minute > 0">{{tap.Schedule.nextTime.schedule.open.minute}}</span><span class="ng-hide" ng-show="tap.Schedule.nextTime.schedule.open.minute < 1">00</span>
+                      <span ng-if="tap.Schedule.nextTime.schedule.open.hour < 12">AM</span>
+                      <span ng-if="tap.Schedule.nextTime.schedule.open.hour > 11">PM</span>
                     </p>
                     </div>
                     <div class="time-block tap-close drop-shadow-right col-sm-10 col-sm-offset-1">
-                      <p class="time-headline">Closing Time: <span ng-if="nextTime.close.hour < 13">{{nextTime.close.hour}}</span><span ng-if="nextTime.close.hour > 12">{{nextTime.close.hour - 12}}</span>:<span class="ng-hide" ng-show="nextTime.close.minute > 0">{{nextTime.close.minute}}</span><span class="ng-hide" ng-show="nextTime.close.minute < 1">00</span>
-                      <span ng-if="nextTime.open.hour < 12">AM</span>
-                      <span ng-if="nextTime.open.hour > 11">PM</span>
+                      <p class="time-headline">Closing Time: <span ng-if="tap.Schedule.nextTime.schedule.close.hour < 13">{{tap.Schedule.nextTime.schedule.close.hour}}</span><span ng-if="tap.Schedule.nextTime.schedule.close.hour > 12">{{tap.Schedule.nextTime.schedule.close.hour - 12}}</span>:<span class="ng-hide" ng-show="tap.Schedule.nextTime.schedule.close.minute > 0">{{tap.Schedule.nextTime.schedule.close.minute}}</span><span class="ng-hide" ng-show="tap.Schedule.nextTime.schedule.close.minute < 1">00</span>
+                      <span ng-if="tap.Schedule.nextTime.schedule.open.hour < 12">AM</span>
+                      <span ng-if="tap.Schedule.nextTime.schedule.open.hour > 11">PM</span>
                       </p>
                     </div>
                   </div>
-                  <div class="time-block tap-close col-sm-10 col-sm-offset-1 drop-shadow-right ng-hide" ng-show="!nextTime.close.hour">
+                  <div class="time-block tap-close col-sm-10 col-sm-offset-1 drop-shadow-right ng-hide" ng-show="!tap.Schedule.nextTime.schedule.close.hour">
                     <p class="col-sm-12 time-headline">Tap is Closed Today</p>
                   </div>
                 </div>
@@ -49,7 +50,7 @@
 
               <div class="keg-level-indicator col-sm-3">
                 <div class="keg-cover-container">
-                  <div class="keg-fill" ng-style="{height: tap.percentageRemaining() + '%', background: tap.getColor()}"></div>
+                  <div class="keg-fill" ng-style="{height: tap.PurchasedKeg.volumeRemainingPercentage + '%', background: tap.PurchasedKeg.volumeHue}"></div>
                   <div class="keg-cover-container">
                     <img class="keg-img" src="assets/keg-cover.png" alt='Keg Cover' />
                   </div>
@@ -67,8 +68,8 @@
               <div class="col-sm-6">
                 <div class="col-sm-12" ng-init="searchBeer(tap)">
                   <h5>Current Beer: <a href="https://untappd.com/b/{{tap.currentBeer.beer_slug}}/{{tap.currentBeer.bid}}" target="_blank">{{tap.currentBeer.beer_name}}</a></h5>
-                  <h5>Date Tapped: {{tap.created_at | amCalendar}}</h5>
-                  <h5># of Beers Remaining: {{tap.volumeRemaining() / 12 | number: 0}}</h5>
+                  <h5>Date Tapped: {{tap.PurchasedKeg.created_at | amCalendar}}</h5>
+                  <h5># of Beers Remaining: {{tap.PurchasedKeg.volumeRemaining / 12 | number: 0}}</h5>
                 </div>
               </div>
               <div class="col-sm-6">
