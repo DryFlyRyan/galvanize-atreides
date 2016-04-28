@@ -3,13 +3,29 @@ var express = require('express');
 var router = express.Router();
 var unirest = require('unirest');
 
+
+// Galvanize Members' Portal API Calls
 var RequestStarterUsers = unirest.get('https://members.galvanize.com/api/v2/users?limit=500');
-
 var RequestAllUsers = unirest.get('https://members.galvanize.com/api/v2/users?limit=10000');
-
 var RequestMe = unirest.get('https://members.galvanize.com/api/v2/me')
-
 var RequestUser = unirest.get('https://members.galvanize.com/api/v2/users')
+
+// Bookshelf Calls
+
+var Users = require('../../Bookshelf/collections/users');
+var User = require('../../bookshelf/models/device');
+
+router.get('/', function(req, res) {
+  new Users()
+    .fetch({withRelated: [
+      'Permisson',
+      'Permission.Campus'
+    ]})
+})
+
+// router.post('/addUser', function(req, res) {
+//
+// })
 
 
 router.get('/galvanize-starters', function(req, res){

@@ -18,7 +18,7 @@ router.get('/', function(req, res){
       'PurchasedKeg',
       'PurchasedKeg.Keg',
       'PurchasedKeg.FlowLog',
-      'PurchasedKeg.Keg.Size',
+      // 'PurchasedKeg.Keg.Size',
       'Schedule'
     ]})
   .then(function(results){

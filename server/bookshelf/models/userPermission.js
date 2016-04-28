@@ -6,13 +6,13 @@ require('./userRole');
 
 var UserPermission = Bookshelf.Model.extend({
   tableName: 'user_permissions',
-  user: function() {
+  User: function() {
     return this.belongsTo('User', 'user_id')
   },
-  campus: function() {
+  Campus: function() {
     return this.belongsTo('Campus', 'campus_id')
   },
-  roleLookup: function() {
+  RoleLookup: function() {
     return this.belongsTo('RoleLookup', 'role_id')
   }
 });
