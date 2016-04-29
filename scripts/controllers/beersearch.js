@@ -17,11 +17,27 @@
         $scope.selectedTap = data;
         console.log($scope.selectedTap);
       })
+    }
 
     $scope.searchBeers = function(searchQuery) {
       BeerSearchFactory.searchBeers(searchQuery)
       .then(function(data){
-        $scope.searchedBeers = data
+        console.log(data);
+        var beersArray = [];
+        // data.data.body.response.beers.items.forEach(function(element){
+        //   var newElement = element.beer;
+        //   newElement.brewery = element.brewery;
+        //   beersArray.push(newElement)
+        // })
+        $scope.searchedBeers = beersArray;
+      })
+    }
+
+    $scope.populatePurchasedBeers = function() {
+      BeerSearchFactory.getPreviouslyPurchasedBeers()
+      .then(function(data){
+        console.log(data);
+        $scope.searchedBeers = data.data
       })
     }
 
@@ -49,4 +65,4 @@
       });
     };
 
-}])
+}]);

@@ -1,4 +1,4 @@
-<div class="col-sm-12 page-sub-wrapper" ng-init="getTap()">
+<div class="col-sm-12 page-sub-wrapper" ng-init="getTap(); populatePurchasedBeers()">
   <div class="page-splash-profile">
     <h1 class="splash-title">BEER SEARCH</h1>
   </div>
@@ -21,18 +21,18 @@
 
   </div>
 
-  <div ng-show="searchedBeers" class="ng-hide" ng-repeat="beer in searchedBeers | filter: beerRefineSearch" ng-cloak>
+  <div ng-show="searchedBeers" class="ng-hide" ng-repeat="beer in searchedBeers | filter: beerRefineSearch | orderBy: beer_name" ng-cloak>
     <div class="col-lg-3 col-md-4 col-sm-6 profile-card" ng-click="changeKeg(beer)">
       <div class="card-container">
         <div class="card-header">
           <a>
-            <img class="profile-photo"  src="{{beer.brewery_label}}" alt="Photo of {{beer.brewery_name}}"/>
+            <img class="profile-photo"  src="{{beer.brewery.brewery_label}}" alt="Photo of {{beer.brewery.brewery_name}}"/>
           </a>
         </div>
         <div class="profile-body">
 
           <a href=""><h4 class="name-link-text">{{beer.beer_name}}</h4></a>
-          <h4>{{beer.brewery_name}}</h4>
+          <h4>{{beer.brewery.brewery_name}}</h4>
 
         </div>
       </div>

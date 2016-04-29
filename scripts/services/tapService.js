@@ -72,9 +72,9 @@ angular.module('atreides')
 
         flowRate(element.PurchasedKeg.volumeRead, element.created_at);
 
-        element.PurchasedKeg.volumeRemaining = volumeRemaining(element.PurchasedKeg.Keg.Size.volume, element.PurchasedKeg.volumeRead)
+        element.PurchasedKeg.volumeRemaining = volumeRemaining(element.PurchasedKeg.KegSize.volume, element.PurchasedKeg.volumeRead)
 
-        element.PurchasedKeg.volumeRemainingPercentage = percentageRemaining(element.PurchasedKeg.volumeRemaining, element.PurchasedKeg.Keg.Size.volume);
+        element.PurchasedKeg.volumeRemainingPercentage = percentageRemaining(element.PurchasedKeg.volumeRemaining, element.PurchasedKeg.KegSize.volume);
 
         element.PurchasedKeg.volumeHue = getColor(element.PurchasedKeg.volumeRemainingPercentage)
 
