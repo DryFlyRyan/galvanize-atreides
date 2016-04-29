@@ -4,8 +4,8 @@ require('./keg');
 
 var KegSize = Bookshelf.Model.extend({
   tableName: 'keg_size_table',
-  keg: function() {
-    return this.hasMany('Keg')
+  Keg: function() {
+    return this.hasMany('PurchasedKeg')
   }
 });
 

@@ -14,7 +14,6 @@ exports.up = function(knex, Promise) {
   }).then(function(){
     return knex.schema.createTable('kegs', function(table){
       table.increments().primary().unsigned();
-      table.integer('size_id').references('id').inTable('keg_size_table').onDelete('cascade');
       table.integer('untappd_id');
       table.timestamp('created_at').notNullable();
       table.timestamp('updated_at').nullable();
@@ -34,6 +33,7 @@ exports.up = function(knex, Promise) {
       table.increments().primary().unsigned();
       table.integer('keg_id').references('id').inTable('kegs').onDelete('cascade');
       table.integer('device_id').references('id').inTable('devices').onDelete('cascade');
+      table.integer('size_id').references('id').inTable('keg_size_table').onDelete('cascade');
       table.boolean('active').notNullable();
       table.timestamp('created_at').notNullable();
       table.timestamp('updated_at').nullable();

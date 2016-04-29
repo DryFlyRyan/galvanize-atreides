@@ -18,7 +18,7 @@ router.get('/', function(req, res){
       'PurchasedKeg',
       'PurchasedKeg.Keg',
       'PurchasedKeg.FlowLog',
-      // 'PurchasedKeg.Keg.Size',
+      'PurchasedKeg.KegSize',
       'Schedule'
     ]})
   .then(function(results){
@@ -34,8 +34,8 @@ router.get('/:deviceID', function(req, res){
       'PurchasedKeg',
       'PurchasedKeg.Keg',
       'PurchasedKeg.FlowLog',
-      'PurchasedKeg.Keg.Size',
-      'Schedule',
+      'PurchasedKeg.KegSize',
+      'Schedule'
     ]})
   .then(function(results){
     res.send(results)

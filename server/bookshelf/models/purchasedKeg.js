@@ -3,8 +3,6 @@ var Bookshelf = require('../../database');
 require('./keg');
 require('./device');
 require('./flowLog');
-require('./campus');
-require('./deviceSchedule');
 
 var PurchasedKeg = Bookshelf.Model.extend({
   tableName: 'purchased_kegs',
@@ -16,6 +14,9 @@ var PurchasedKeg = Bookshelf.Model.extend({
   },
   FlowLog: function() {
     return this.hasMany('FlowLog')
+  },
+  KegSize: function() {
+    return this.belongsTo('KegSize', 'size_id')
   }
 });
 

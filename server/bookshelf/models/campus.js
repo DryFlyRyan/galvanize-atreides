@@ -5,13 +5,13 @@ require('./purchasedKeg');
 
 var Campus = Bookshelf.Model.extend({
   tableName: 'campuses',
-  permission: function() {
+  Permission: function() {
     return this.hasMany('UserPermission', 'campus_id')
   },
-  device: function() {
+  Device: function() {
     return this.hasMany('Device')
   },
-  keg: function() {
+  PurchasedKeg: function() {
     return this.hasMany('PurchasedKeg', 'campus_id')
   }
 })

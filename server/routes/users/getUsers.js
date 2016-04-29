@@ -12,16 +12,16 @@ var RequestUser = unirest.get('https://members.galvanize.com/api/v2/users')
 
 // Bookshelf Calls
 
-var Users = require('../../Bookshelf/collections/users');
-var User = require('../../bookshelf/models/device');
-
-router.get('/', function(req, res) {
-  new Users()
-    .fetch({withRelated: [
-      'Permisson',
-      'Permission.Campus'
-    ]})
-})
+// var Users = require('../../Bookshelf/collections/users');
+// var User = require('../../bookshelf/models/device');
+//
+// router.get('/', function(req, res) {
+//   new Users()
+//     .fetch({withRelated: [
+//       'Permisson',
+//       'Permission.Campus'
+//     ]})
+// })
 
 // router.post('/addUser', function(req, res) {
 //
