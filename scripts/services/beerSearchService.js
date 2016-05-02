@@ -3,13 +3,23 @@ angular.module('atreides')
   function($modal, $http) {
     return {
       searchBeers: function(searchQuery) {
-        return $http.post('./api/v1/beersearch', {search: searchQuery})
+        return $http.post('./api/v1/beers/search', {search: searchQuery})
       },
       searchBeer: function(BID) {
-        return $http.get('./api/v1/beersearch/' + BID)
+        return $http.post('./api/v1/beers/search', {
+          BID: BID
+        })
       },
       getPreviouslyPurchasedBeers: function() {
-        return $http.get('./api/v1/beersearch/')
+        return $http.get('./api/v1/beers/')
+      },
+      changeKeg: function(tapID, beerID, sizeID) {
+        return http.post('./api/v1/beers/kegchange',
+        {
+          device_id: tapID,
+          untappd_id: beerID,
+          size_id: sizeID
+        })
       }
     }
   }]);

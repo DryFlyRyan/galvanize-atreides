@@ -4,6 +4,7 @@ require('./userPermission');
 
 var User = Bookshelf.Model.extend({
   tableName: 'users',
+  hasTimestamps: true,
   Permission: function() {
     return this.hasMany('UserPermission')
   }

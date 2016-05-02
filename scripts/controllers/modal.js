@@ -3,7 +3,7 @@
  * @ngdoc function
  * @name atreides.controller:ModalCtrl
  * @description
- * # OntapCtrl
+ * # ModalCtrl
  * Controller of the atreides application
  */
 

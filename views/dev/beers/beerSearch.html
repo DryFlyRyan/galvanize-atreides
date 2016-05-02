@@ -26,12 +26,14 @@
       <div class="card-container">
         <div class="card-header">
           <a>
-            <img class="profile-photo"  src="{{beer.brewery.brewery_label}}" alt="Photo of {{beer.brewery.brewery_name}}"/>
+            <img ng-show="beer.beer.brewery.brewery_label"class="profile-photo ng-hide"  src="{{beer.beer.brewery.brewery_label}}" alt="Photo of {{beer.beer.brewery.brewery_name}}"/>
+            <img ng-show="beer.brewery.brewery_label"class="profile-photo ng-hide"  src="{{beer.brewery.brewery_label}}" alt="Photo of {{beer.brewery.brewery_name}}"/>
           </a>
         </div>
         <div class="profile-body">
 
-          <a href=""><h4 class="name-link-text">{{beer.beer_name}}</h4></a>
+          <a href=""><h4 class="name-link-text">{{beer.beer.beer_name}}</h4></a>
+          <h4>{{beer.beer.brewery.brewery_name}}</h4>
           <h4>{{beer.brewery.brewery_name}}</h4>
 
         </div>

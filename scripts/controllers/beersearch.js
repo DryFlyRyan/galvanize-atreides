@@ -21,15 +21,10 @@
 
     $scope.searchBeers = function(searchQuery) {
       BeerSearchFactory.searchBeers(searchQuery)
-      .then(function(data){
-        console.log(data);
-        var beersArray = [];
-        // data.data.body.response.beers.items.forEach(function(element){
-        //   var newElement = element.beer;
-        //   newElement.brewery = element.brewery;
-        //   beersArray.push(newElement)
-        // })
-        $scope.searchedBeers = beersArray;
+      .then(function(beers){
+        console.log(beers);
+
+        $scope.searchedBeers = beers.data.body.response.beers.items;
       })
     }
 
@@ -41,15 +36,18 @@
       })
     }
 
+    $scope.sendChangedKeg = function(tapInfo) {
+      BeerSearchFactory.changeKeg(tapInfo.tap.id, tapInfo.beer.bid, 1)
+    }
+
     $scope.changeKeg = function (beer) {
       console.log("Trying to change keg");
 
       var modalOptions = {
         closeButtonText: 'Cancel',
         actionButtonText: 'Change Keg',
-        headerText: 'Change Keg',
         tap: $scope.selectedTap,
-        beer: beer
+        beer: beer,
       };
 
       var modalDefaults = {
@@ -60,8 +58,10 @@
       };
 
       modalService.showModal(modalDefaults, modalOptions)
-      .then(function (result) {
-        console.log(result);
+      .then(function (changedKeg) {
+        if (changedKeg) {
+          console.log(changedKeg);
+        }
       });
     };
 

@@ -5,6 +5,7 @@ require('./purchasedKeg');
 
 var Campus = Bookshelf.Model.extend({
   tableName: 'campuses',
+  hasTimestamps: true,
   Permission: function() {
     return this.hasMany('UserPermission', 'campus_id')
   },

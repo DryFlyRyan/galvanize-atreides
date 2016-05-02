@@ -67,7 +67,7 @@
             <div class="details-window col-sm-12 ng-hide" ng-show="tap.showDetails">
               <div class="col-sm-6">
                 <div class="col-sm-12" ng-init="searchBeer(tap)">
-                  <h5>Current Beer: <a href="https://untappd.com/b/{{tap.currentBeer.beer_slug}}/{{tap.currentBeer.bid}}" target="_blank">{{tap.currentBeer.beer_name}}</a></h5>
+                  <h5>Current Beer: <a href="https://untappd.com/b/{{tap.PurchasedKeg.currentBeer.beer_slug}}/{{tap.PurchasedKeg.currentBeer.bid}}" target="_blank">{{tap.PurchasedKeg.currentBeer.beer_name}}</a></h5>
                   <h5>Date Tapped: {{tap.PurchasedKeg.created_at | amCalendar}}</h5>
                   <h5># of Beers Remaining: {{tap.PurchasedKeg.volumeRemaining / 12 | number: 0}}</h5>
                 </div>

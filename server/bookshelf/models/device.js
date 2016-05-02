@@ -8,6 +8,7 @@ require('./purchasedKeg');
 
 var Device = Bookshelf.Model.extend({
   tableName: 'devices',
+  hasTimestamps: true,
   Campus: function() {
     return this.belongsTo('Campus', 'campus_id')
   },

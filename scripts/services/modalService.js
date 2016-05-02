@@ -18,6 +18,7 @@ angular.module('atreides').service('modalService',
         this.showModal = function (customModalDefaults, customModalOptions) {
             if (!customModalDefaults) customModalDefaults = {};
             customModalDefaults.backdrop = 'static';
+            console.log(customModalDefaults, customModalOptions);
             return this.show(customModalDefaults, customModalOptions);
         };
 

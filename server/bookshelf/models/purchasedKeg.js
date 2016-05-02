@@ -6,6 +6,7 @@ require('./flowLog');
 
 var PurchasedKeg = Bookshelf.Model.extend({
   tableName: 'purchased_kegs',
+  hasTimestamps: true,
   Keg: function() {
     return this.belongsTo('Keg', 'keg_id')
   },

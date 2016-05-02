@@ -6,6 +6,7 @@ require('./purchasedKeg');
 
 var FlowLog = Bookshelf.Model.extend({
   tableName: 'flow_logs',
+  hasTimestamps: true,
   device: function() {
     return this.belongsTo('Device', 'device_id')
   },

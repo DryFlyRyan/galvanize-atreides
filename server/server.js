@@ -15,7 +15,7 @@ var taps = require('./routes/taps/getTaps');
 var devices = require('./routes/devices/getDevices');
 var campuses = require('./routes/campuses/getCampuses');
 var users = require('./routes/users/getUsers');
-var beerSearch = require('./routes/beers/beerSearch');
+var beerSearch = require('./routes/beers/beers');
 
 // Modules
 
@@ -41,7 +41,7 @@ app.use(apiConnection + '/taps', taps);
 app.use(apiConnection + '/devices', devices);
 app.use(apiConnection + '/campuses', campuses);
 app.use(apiConnection + '/users', users);
-app.use(apiConnection + '/beersearch', beerSearch);
+app.use(apiConnection + '/beers', beerSearch);
 
 
 server.listen(port, function(){
