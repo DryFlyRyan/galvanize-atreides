@@ -1,7 +1,7 @@
 var Bookshelf = require('../../database');
 
 require('./device');
-require('./purchasedKeg');
+require('./keg');
 
 
 var FlowLog = Bookshelf.Model.extend({
@@ -10,8 +10,8 @@ var FlowLog = Bookshelf.Model.extend({
   device: function() {
     return this.belongsTo('Device', 'device_id')
   },
-  keg: function() {
-    return this.belongsTo('PurchasedKeg', 'purchased_keg_id')
+  Keg: function() {
+    return this.belongsTo('Keg', 'keg_id')
   }
 });
 

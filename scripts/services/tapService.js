@@ -68,15 +68,15 @@ angular.module('atreides')
 
     function formatTap(element) {
       return new Promise(function(resolve, reject){
-        element.PurchasedKeg.volumeRead = sumVolumeRead(element.PurchasedKeg.FlowLog);
+        element.Keg.volumeRead = sumVolumeRead(element.Keg.FlowLog);
 
-        flowRate(element.PurchasedKeg.volumeRead, element.created_at);
+        flowRate(element.Keg.volumeRead, element.created_at);
 
-        element.PurchasedKeg.volumeRemaining = volumeRemaining(element.PurchasedKeg.KegSize.volume, element.PurchasedKeg.volumeRead)
+        element.Keg.volumeRemaining = volumeRemaining(element.Keg.KegSize.volume, element.Keg.volumeRead)
 
-        element.PurchasedKeg.volumeRemainingPercentage = percentageRemaining(element.PurchasedKeg.volumeRemaining, element.PurchasedKeg.KegSize.volume);
+        element.Keg.volumeRemainingPercentage = percentageRemaining(element.Keg.volumeRemaining, element.Keg.KegSize.volume);
 
-        element.PurchasedKeg.volumeHue = getColor(element.PurchasedKeg.volumeRemainingPercentage)
+        element.Keg.volumeHue = getColor(element.Keg.volumeRemainingPercentage)
 
         resolve(element)
       })

@@ -32,7 +32,7 @@
       BeerSearchFactory.getPreviouslyPurchasedBeers()
       .then(function(data){
         console.log(data);
-        $scope.searchedBeers = data.data
+        $scope.previousBeers = data.data
       })
     }
 

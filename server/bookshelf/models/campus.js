@@ -1,7 +1,7 @@
 var Bookshelf = require('../../database');
 
 require('./userPermission');
-require('./purchasedKeg');
+require('./device');
 
 var Campus = Bookshelf.Model.extend({
   tableName: 'campuses',
@@ -11,9 +11,6 @@ var Campus = Bookshelf.Model.extend({
   },
   Device: function() {
     return this.hasMany('Device')
-  },
-  PurchasedKeg: function() {
-    return this.hasMany('PurchasedKeg', 'campus_id')
   }
 })
 

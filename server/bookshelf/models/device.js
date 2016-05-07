@@ -4,7 +4,7 @@ require('./flowLog');
 require('./deviceLookup');
 require('./campus');
 require('./deviceSchedule');
-require('./purchasedKeg');
+require('./keg');
 
 var Device = Bookshelf.Model.extend({
   tableName: 'devices',
@@ -21,8 +21,8 @@ var Device = Bookshelf.Model.extend({
   FlowLog: function() {
     return this.hasMany('FlowLog')
   },
-  PurchasedKeg: function() {
-    return this.hasOne('PurchasedKeg').query({'where': {active: 'true'}})
+  Keg: function() {
+    return this.hasOne('Keg').query({'where': {active: 'true'}})
   },
 })
 

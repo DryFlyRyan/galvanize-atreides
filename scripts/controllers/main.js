@@ -88,12 +88,4 @@ angular.module('atreides')
         $scope.selectedTap = data;
       })
     }
-
-    $scope.searchBeer = function(tap){
-      BeerSearchFactory.searchBeer(tap.PurchasedKeg.Keg.untappd_id)
-        .then(function(beer) {
-          tap.PurchasedKeg.currentBeer = beer.data.body.response.beer;
-          console.log(tap);
-        })
-    };
 }]);

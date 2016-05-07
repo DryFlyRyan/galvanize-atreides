@@ -3,10 +3,10 @@ var express = require('express');
 var router = express.Router();
 var unirest = require('unirest');
 
+var Beers = require('../../bookshelf/collections/beers').collection
+var Beer = require('../../bookshelf/models/beer')
 var Kegs = require('../../bookshelf/collections/kegs').collection
 var Keg = require('../../bookshelf/models/keg')
-var PurchasedKegs = require('../../bookshelf/collections/purchasedKegs').collection
-var PurchasedKeg = require('../../bookshelf/models/purchasedKeg')
 
 function searchBeers(searchParameters){
   return new Promise(function(resolve, reject){
@@ -38,37 +38,12 @@ function getBeer(beerID) {
 }
 
 router.get('/', function(req, res){
-  var dbResponse, utResponse;
-  new Kegs()
-    .fetch()
-  .then(function(results){
-    dbResponse = results;
-    var promiseArray = [];
-    dbResponse.forEach(function(element){
-      promiseArray.push(getBeer(parseInt(element.attributes.untappd_id)))
+  new Beers()
+    .fetch({withRelated:
+      'Brewery'
+    }).then(function(beers){
+      res.status(200).send(beers)
     })
-    return Promise.all(promiseArray)
-  })
-  .then(function(results){
-    results.forEach(function(element) {
-      console.log(element.status, element);
-      if (element.status !== 200) {
-        res.status(element.status).send(element.body.meta.error_detail)
-        return;
-      }
-    })
-    utResponse = results;
-    var resultsArray = [];
-    utResponse.forEach(function(utElement){
-      dbResponse.forEach(function(dbElement) {
-        if (dbElement.attributes.untappd_id == utElement.body.response.beer.bid) {
-          utElement.body.response.beer.atreidesEntry = dbElement.attributes
-          resultsArray.push(utElement.body.response)
-        }
-      })
-    })
-    res.send(resultsArray);
-  })
 })
 
 router.post('/search', function(req,res) {
@@ -77,12 +52,12 @@ router.post('/search', function(req,res) {
   if (searchParameters) {
     searchBeers(searchParameters)
     .then(function(response){
-      res.send(response)
+      res.status(200).send(response)
     })
   } else if (beerID) {
     getBeer(beerID)
       .then(function(results){
-        res.send(results)
+        res.status(200).send(results)
       })
   } else {
     res.status(404).send('Please enter a search parameter or Beer ID.')

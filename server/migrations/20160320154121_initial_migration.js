@@ -25,12 +25,22 @@ exports.up = function(knex, Promise) {
       table.increments().primary().unsigned();
       table.string('role_name');
     })
+  }).then(function(){
+    return knex.schema.createTable('breweries', function(table){
+      table.integer('id').primary().unique().unsigned();
+      table.string('brewery_name');
+      table.string('brewery_slug');
+      table.string('brewery_label');
+      table.string('country_name');
+    })
   })
 };
 
 exports.down = function(knex, Promise) {
-    return knex.schema.dropTable('user_roles')
+    return knex.schema.dropTable('breweries')
   .then(function(){
+    return knex.schema.dropTable('user_roles')
+  }).then(function(){
     return knex.schema.dropTable('campuses')
   })
   .then(function(){

@@ -1,6 +1,6 @@
 var Bookshelf = require('../../database');
-var PurchasedKeg = require('../models/purchasedKeg')
+var Beer = require('../models/beer')
 
 exports.collection = Bookshelf.Collection.extend({
-  model: PurchasedKeg
+  model: Beer
 })
