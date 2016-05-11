@@ -13,24 +13,7 @@ var later         = require('later');
 // Auth Middleware
 var passport      = require('passport');
 var session       = require('express-session')
-var LinkedInStrategy = require('passport-linkedin-oauth2').Strategy;
-
-passport.use(new LinkedInStrategy({
-  clientID: process.env.LINKEDIN_ID,
-  clientSecret: process.env.LINKEDIN_SECRET,
-  callbackURL: "http://localhost:3000/api/v1/auth/linkedin/callback",
-  scope: ['r_emailaddress', 'r_basicprofile'],
-  state: true
-}, function(accessToken, refreshToken, profile, done) {
-  // asynchronous verification, for effect...
-  process.nextTick(function () {
-    // To keep the example simple, the user's LinkedIn profile is returned to
-    // represent the logged-in user. In a typical application, you would want
-    // to associate the LinkedIn account with a user record in your database,
-    // and return that user instead.
-    return done(null, profile);
-  });
-}));
+var LIStrategy    = require('passport-linkedin-oauth2').Strategy;
 
 // Routes
 var apiConnection = '/api/v1';
@@ -49,11 +32,43 @@ var app           = express();
 var server        = http.Server(app);
 
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(passport.initialize());
+app.use(session({
+  secret: process.env.SESSION_SECRET
+}));
 app.use(express.static('.'));
-app.use(session());
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json());
+
+// Passport Authentication Functions
+
+passport.serializeUser(function(user, done) {
+  done(null, user);
+});
+
+passport.deserializeUser(function(obj, done) {
+  done(null, obj);
+});
+
+passport.use(new LIStrategy({
+  clientID:     process.env.LINKEDIN_ID,
+  clientSecret: process.env.LINKEDIN_SECRET,
+  callbackURL: process.env.LINKEDIN_CALLBACK,
+  scope: ['r_emailaddress', 'r_basicprofile'],
+  passReqToCallback: true,
+  state: true
+}, function(req, accessToken, refreshToken, profile, done) {
+  console.log(accessToken);
+  // asynchronous verification, for effect...
+  process.nextTick(function () {
+    // To keep the example simple, the user's LinkedIn profile is returned to
+    // represent the logged-in user. In a typical application, you would want
+    // to associate the LinkedIn account with a user record in your database,
+    // and return that user instead.
+    return done(null, profile);
+  });
+}));
 
 // Update Functions
 
