@@ -54,20 +54,19 @@ passport.deserializeUser(function(obj, done) {
 passport.use(new LIStrategy({
   clientID:     process.env.LINKEDIN_ID,
   clientSecret: process.env.LINKEDIN_SECRET,
-  callbackURL: process.env.LINKEDIN_CALLBACK,
+  callbackURL:  process.env.LINKEDIN_CALLBACK,
   scope: ['r_emailaddress', 'r_basicprofile'],
   passReqToCallback: true,
   state: true
 }, function(req, accessToken, refreshToken, profile, done) {
-  console.log(accessToken);
-  // asynchronous verification, for effect...
-  process.nextTick(function () {
+  // User.findorcreate
+
     // To keep the example simple, the user's LinkedIn profile is returned to
     // represent the logged-in user. In a typical application, you would want
     // to associate the LinkedIn account with a user record in your database,
     // and return that user instead.
-    return done(null, profile);
-  });
+  return done(null, profile);
+
 }));
 
 // Update Functions
