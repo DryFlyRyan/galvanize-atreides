@@ -3,21 +3,21 @@ var Bookshelf = require('../../database');
 require('./beer');
 require('./device');
 require('./flowLog');
-require('./kegSize')
+require('./kegSize');
 
 var Keg = Bookshelf.Model.extend({
   tableName: 'kegs',
   hasTimestamps: true,
-  Beer: function() {
+  Beer    : function() {
     return this.belongsTo('Beer', 'beer_id')
   },
-  Device: function() {
+  Device  : function() {
     return this.belongsTo('Device', 'device_id')
   },
-  FlowLog: function() {
+  FlowLog : function() {
     return this.hasMany('FlowLog')
   },
-  KegSize: function() {
+  KegSize : function() {
     return this.belongsTo('KegSize', 'size_id')
   }
 });

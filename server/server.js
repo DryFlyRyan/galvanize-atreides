@@ -4,6 +4,7 @@ var express       = require('express');
 var http          = require('http');
 var favicon       = require('serve-favicon');
 var port          = process.env.PORT || 3000;
+// Check if this vv is being used
 var fs            = require('fs');
 var cors          = require('cors');
 var cookieParser  = require('cookie-parser');
@@ -11,9 +12,11 @@ var bodyParser    = require('body-parser');
 var later         = require('later');
 
 // Auth Middleware
-var passport      = require('passport');
-var session       = require('express-session')
-var LIStrategy    = require('passport-linkedin-oauth2').Strategy;
+var auth          = require('./authentication');
+var passport      = auth.passport;
+var LIStrategy    = auth.LIStrategy;
+var session       = require('express-session');
+
 
 // Routes
 var apiConnection = '/api/v1';
@@ -59,14 +62,13 @@ passport.use(new LIStrategy({
   passReqToCallback: true,
   state: true
 }, function(req, accessToken, refreshToken, profile, done) {
-  // User.findorcreate
+  auth.findDBUser(profile.id)
+  .then(function(user){
+    console.log(user);
+    return done(null, user);
+  })
 
-    // To keep the example simple, the user's LinkedIn profile is returned to
-    // represent the logged-in user. In a typical application, you would want
-    // to associate the LinkedIn account with a user record in your database,
-    // and return that user instead.
-  return done(null, profile);
-
+  // return done(null, profile);
 }));
 
 // Update Functions

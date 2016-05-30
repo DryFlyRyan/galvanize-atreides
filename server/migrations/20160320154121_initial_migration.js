@@ -13,6 +13,12 @@ exports.up = function(knex, Promise) {
     return knex.schema.createTable('users', function(table){
       table.increments().primary().unsigned();
       table.integer('galvanize_user_id');
+      table.string('first_name');
+      table.string('last_name');
+      table.string('linkedin_profile_id').nullable();
+      table.boolean('authenticated').defaultTo(false);
+      table.timestamp('created_at');
+      table.timestamp('updated_at');
     })
   }).then(function(){
     return knex.schema.createTable('campuses', function(table){
@@ -46,7 +52,6 @@ exports.down = function(knex, Promise) {
   .then(function(){
     return knex.schema.dropTable('users')
   })
-
   .then(function(){
     return knex.schema.dropTable('keg_size_table')
   })

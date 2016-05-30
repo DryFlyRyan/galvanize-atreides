@@ -40,7 +40,12 @@ exports.seed = function(knex, Promise) {
     return knex('users').del().then(function(){
       return Promise.all([
         knex('users').insert({
-          galvanize_user_id: 3265
+          galvanize_user_id : 3265,
+          linkedin_profile_id : 'ba3K-ARSqt',
+          first_name: 'Ryan',
+          last_name: 'Douglas',
+          created_at: new Date(),
+          updated_at: new Date(),
         })
       ])
     })
