@@ -10,7 +10,7 @@ var cors          = require('cors');
 var cookieParser  = require('cookie-parser');
 var bodyParser    = require('body-parser');
 var later         = require('later');
-
+var cron          = require('./cron/cron')
 // Auth Middleware
 var auth          = require('./authentication');
 var passport      = auth.passport;
@@ -71,10 +71,6 @@ passport.use(new LIStrategy({
   // return done(null, profile);
 }));
 
-// Update Functions
-
-// update.updateCampuses();
-// update.updateUsers();
 
 //Routes
 

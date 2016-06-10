@@ -6,7 +6,7 @@ require('./device');
 var DeviceSchedule = Bookshelf.Model.extend({
   tableName: 'device_schedules',
   hasTimestamps: true,
-  device: function() {
+  Device: function() {
     return this.belongsTo('Device', 'device_id')
   }
 });
