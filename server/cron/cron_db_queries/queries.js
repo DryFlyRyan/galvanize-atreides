@@ -5,7 +5,8 @@ var Schedule = require('../../bookshelf/models/deviceSchedule')
 module.exports = {
   getSchedules: function() {
     return new Promise(function(resolve, reject){
-      new Schedules().fetch({withRelated: [
+      new Schedules()
+      .fetch({withRelated: [
         'Device',
         'Device.DeviceLookup'
       ]})

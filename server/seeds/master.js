@@ -134,7 +134,15 @@ exports.seed = function(knex, Promise) {
          campus_id: 1,
          active: true
        }, 'id'),
-     ])
+       knex('devices').insert({
+         device_name: "Offset Test Device",
+         serial_number: '00000c--Test',
+         created_at: new Date(),
+         model_id: 1,
+         campus_id: 3,
+         active: true
+       }, 'id')
+     ]);
    })
  }).then(function(){
    return knex('beers').del().then(function(){
@@ -227,220 +235,100 @@ return knex('kegs').del().then(function(){
     return Promise.all([
       knex('device_schedules').insert({
         device_id: 1,
-        schedule: JSON.stringify(
-          {
-            day: "Monday",
-            open: {
-              hour: 14,
-              minute: 30
-            },
-            close: {
-              hour: 18,
-              minute: 0
-            }
-          }
-        )
+        day: 1,
+        open_hour: 14,
+        open_minute: 30,
+        close_hour: 18,
+        close_minute: 0,
       }),
       knex('device_schedules').insert({
         device_id: 1,
-        schedule: JSON.stringify(
-          {
-            day: "Tuesday",
-            open: {
-              hour: 14,
-              minute: 30
-            },
-            close: {
-              hour: 18,
-              minute: 0
-            }
-          }
-        )
+        day: 2,
+        open_hour: 14,
+        open_minute: 30,
+        close_hour: 18,
+        close_minute: 0,
       }),
       knex('device_schedules').insert({
         device_id: 1,
-        schedule: JSON.stringify(
-          {
-            day: "Tuesday",
-            open: {
-              hour: 14,
-              minute: 30
-            },
-            close: {
-              hour: 18,
-              minute: 0
-            }
-          }
-        )
+        day: 3,
+        open_hour: 14,
+        open_minute: 30,
+        close_hour: 18,
+        close_minute: 0,
       }),
       knex('device_schedules').insert({
         device_id: 1,
-        schedule: JSON.stringify(
-          {
-            day: "Wednesday",
-            open: {
-              hour: 14,
-              minute: 30
-            },
-            close: {
-              hour: 18,
-              minute: 0
-            }
-          }
-        )
+        day: 4,
+        open_hour: 14,
+        open_minute: 30,
+        close_hour: 18,
+        close_minute: 0,
       }),
       knex('device_schedules').insert({
         device_id: 1,
-        schedule: JSON.stringify(
-          {
-            day: "Thursday",
-            open: {
-              hour: 14,
-              minute: 30
-            },
-            close: {
-              hour: 18,
-              minute: 0
-            }
-          }
-        )
-      }),
-      knex('device_schedules').insert({
-        device_id: 1,
-        schedule: JSON.stringify(
-          {
-            day: "Friday",
-            open: {
-              hour: 14,
-              minute: 30
-            },
-            close: {
-              hour: 18,
-              minute: 0
-            }
-          }
-        )
-      }),
-      knex('device_schedules').insert({
-        device_id: 1,
-        schedule: JSON.stringify(
-          {
-            day: "Saturday",
-            open: null,
-            close: null
-          },
-          {
-            day: "Sunday",
-            open: null,
-            close: null
-          }
-        )
+        day: 5,
+        open_hour: 14,
+        open_minute: 30,
+        close_hour: 18,
+        close_minute: 0,
       }),
       knex('device_schedules').insert({
         device_id: 2,
-        schedule: JSON.stringify(
-          {
-            day: "Monday",
-            open: {
-              hour: 16,
-              minute: 30
-            },
-            close: {
-              hour: 18,
-              minute: 0
-            }
-          }
-        )
+        day: 1,
+        open_hour: 16,
+        open_minute: 30,
+        close_hour: 18,
+        close_minute: 0,
       }),
       knex('device_schedules').insert({
         device_id: 2,
-        schedule: JSON.stringify(
-          {
-            day: "Tuesday",
-            open: {
-              hour: 16,
-              minute: 30
-            },
-            close: {
-              hour: 18,
-              minute: 0
-            }
-          }
-        )
+        day: 2,
+        open_hour: 16,
+        open_minute: 30,
+        close_hour: 18,
+        close_minute: 0,
       }),
       knex('device_schedules').insert({
         device_id: 2,
-        schedule: JSON.stringify(
-          {
-            day: "Wednesday",
-            open: {
-              hour: 16,
-              minute: 30
-            },
-            close: {
-              hour: 18,
-              minute: 0
-            }
-          }
-        )
+        day: 3,
+        open_hour: 16,
+        open_minute: 30,
+        close_hour: 18,
+        close_minute: 0,
       }),
       knex('device_schedules').insert({
         device_id: 2,
-        schedule: JSON.stringify(
-          {
-            day: "Thursday",
-            open: {
-              hour: 16,
-              minute: 30
-            },
-            close: {
-              hour: 18,
-              minute: 0
-            }
-          }
-        )
+        day: 4,
+        open_hour: 16,
+        open_minute: 30,
+        close_hour: 18,
+        close_minute: 0,
       }),
       knex('device_schedules').insert({
         device_id: 2,
-        schedule: JSON.stringify(
-          {
-            day: "Friday",
-            open: {
-              hour: 16,
-              minute: 30
-            },
-            close: {
-              hour: 18,
-              minute: 0
-            }
-          }
-        )
+        day: 5,
+        open_hour: 16,
+        open_minute: 30,
+        close_hour: 18,
+        close_minute: 0,
+
       }),
       knex('device_schedules').insert({
         device_id: 2,
-        schedule: JSON.stringify(
-          {
-            day: "Saturday",
-            open: {
-              hour: 13,
-              minute: 0
-            },
-            close: {
-              hour: 17,
-              minute: 0
-            }
-          }
-        )
+        day: 6,
+        open_hour: 13,
+        open_minute: 0,
+        close_hour: 17,
+        close_minute: 0,
       }),
       knex('device_schedules').insert({
-        device_id: 2,
-        schedule: JSON.stringify(
-          {
-            day: "Sunday",
-            open: null,
-            close: null
-          }
-        )
+        device_id: 3,
+        day: 0,
+        open_hour: 12,
+        open_minute: 0,
+        close_hour: 4,
+        close_minute: 0
       })
     ])
   })

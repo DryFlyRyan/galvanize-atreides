@@ -7,13 +7,17 @@ var CronJob = require('cron').CronJob;
 // open hours in order to control the Pis
 
 new CronJob('* * * * * *', function(){
-  var date   = new Date();
-  var day    = date.getDay();
-  var hour   = date.getHours();
-  var minute = date.getMinutes();
-
+  
   query.getSchedules()
   .then(function(results){
-    console.log(results);
-  });
+    // console.log(results.models);
+    return deviceFunctions.deviceIO(results.models)
+  })
+  .then(function(filteredSchedules){
+    return deviceFunctions.deviceOpen(filteredSchedules)
+  })
+  .then(function(openedTaps){
+    console.log(openedTaps);
+    return deviceFunctions.deviceClose(openedTaps)
+  })
 }, null, true, 'America/Denver');
