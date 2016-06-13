@@ -10,7 +10,7 @@ router.get('/',
   });
 
 router.get('/loginfailure', function(req, res){
-  res.status(500).send('User Could Not Be Found')
+  res.status(404).send('User Could Not Be Found')
 })
 
 router.get('/callback', passport.authenticate('linkedin', {

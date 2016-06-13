@@ -327,7 +327,7 @@ return knex('kegs').del().then(function(){
         day: 0,
         open_hour: 12,
         open_minute: 0,
-        close_hour: 4,
+        close_hour: 16,
         close_minute: 0
       })
     ])

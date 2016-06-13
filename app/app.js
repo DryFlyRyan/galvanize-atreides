@@ -24,7 +24,7 @@ angular.module('atreides', [
 
     $stateProvider
       .state('dashboard', {
-        url:'/dashboard',
+        url:'',
         templateUrl: 'app/dashboard/main.html',
         resolve: {
             loadMyDirectives:function($ocLazyLoad){
@@ -41,7 +41,9 @@ angular.module('atreides', [
                     'app/services/http-services/campus-service.js',
                     'app/services/http-services/beer-search-service.js',
                     'app/services/schedule-services/schedule-service.js',
-                    'app/services/modal-services/modal-service.js'
+                    'app/services/modal-services/modal-service.js',
+                    'app/services/error-services/errorRepsitory',
+                    'app/services/error-services/error.js'
                     ]
                 }),
                 $ocLazyLoad.load(
@@ -221,7 +223,7 @@ angular.module('atreides', [
             return $ocLazyLoad.load({
               name:'atreides',
               files:[
-              'app/dashboard/main.js',
+              'app/dashboard/dashboard.js',
               'app/services/http-services/tap-service.js',
               ]
             })

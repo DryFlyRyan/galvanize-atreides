@@ -62,9 +62,10 @@ passport.use(new LIStrategy({
   passReqToCallback: true,
   state: true
 }, function(req, accessToken, refreshToken, profile, done) {
-  auth.findDBUser(profile.id)
+  // console.log(profile);
+  auth.findOrAddUserWithLinkedin(profile, accessToken)
   .then(function(user){
-    console.log(user);
+    // console.log(accessToken, user);
     return done(null, user);
   })
 

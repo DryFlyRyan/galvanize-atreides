@@ -15,7 +15,12 @@ exports.up = function(knex, Promise) {
       table.integer('galvanize_user_id');
       table.string('first_name');
       table.string('last_name');
-      table.string('linkedin_profile_id').nullable();
+      table.string('linkedin_profile_id').nullable().defaultTo(null);
+      table.text('linkedin_access_token').nullable().defaultTo(null);
+      table.string('facebook_profile_id').nullable().defaultTo(null);
+      table.text('facebook_access_token').nullable().defaultTo(null);
+      table.string('google_profile_id').nullable().defaultTo(null);
+      table.text('google_access_token').nullable().defaultTo(null);
       table.boolean('authenticated').defaultTo(false);
       table.timestamp('created_at');
       table.timestamp('updated_at');

@@ -6,8 +6,8 @@ var CronJob = require('cron').CronJob;
 // This pulls from the DB once per minute during
 // open hours in order to control the Pis
 
-new CronJob('* * * * * *', function(){
-  
+new CronJob('* * * * *', function(){
+
   query.getSchedules()
   .then(function(results){
     // console.log(results.models);
